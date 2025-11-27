@@ -575,10 +575,9 @@ html {
   margin: 0;
 }
 
-/* Responsive */
 @media (max-width: 968px) {
   .benefits-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* Ya está bien */
     gap: 1.5rem;
   }
 
@@ -588,21 +587,162 @@ html {
 }
 
 @media (max-width: 768px) {
+  /* Sección más compacta */
   .benefits-section {
-    padding: 3rem 1.5rem;
+    padding: 3rem 0 4rem;
+    position: relative;
   }
 
+  .benefits-container {
+    padding: 0 1.5rem;
+    position: relative;
+  }
+
+  /* Título más pequeño */
   .benefits-title {
     font-size: 1.8rem;
-    margin-bottom: 2.5rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
   }
 
+  .benefits-subtitle {
+    font-size: 0.85rem;
+    margin-bottom: 0.8rem;
+  }
+
+  /* Wrapper para el scroll con gradiente */
+  .benefits-grid-wrapper {
+    position: relative;
+    margin: 0 -1.5rem;
+  }
+
+  /* HORIZONTAL SCROLL para móvil */
+  .benefits-grid {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: hidden;
+    gap: 1.2rem;
+    padding: 1rem 1.5rem 1.5rem;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch; /* Smooth scroll en iOS */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  /* Ocultar scrollbar */
+  .benefits-grid::-webkit-scrollbar {
+    display: none; /* Chrome, Safari */
+  }
+
+  /* Gradiente "hay más contenido" a la derecha */
+  .benefits-grid::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 80px;
+    height: 100%;
+    background: linear-gradient(to left, #1a1a1a 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 1;
+    transition: opacity 0.3s ease;
+  }
+
+  /* Ocultar gradiente cuando se llega al final */
+  .benefits-grid.at-end::after {
+    opacity: 0;
+  }
+
+  /* Cards en horizontal scroll */
   .benefit-card {
-    padding: 2rem;
+    min-width: 280px;
+    max-width: 280px;
+    padding: 1.8rem;
+    scroll-snap-align: center;
+    flex-shrink: 0;
   }
 
+  /* Primera card con margen izquierdo */
+  .benefit-card:first-child {
+    margin-left: 0.5rem;
+  }
+
+  /* Última card con margen derecho */
+  .benefit-card:last-child {
+    margin-right: 0.5rem;
+  }
+
+  /* Número decorativo visible pero más pequeño */
   .benefit-number {
-    font-size: 4rem;
+    font-size: 3.5rem;
+    top: 1.5rem;
+    right: 1.5rem;
+  }
+
+  /* Ícono optimizado */
+  .benefit-icon {
+    width: 45px;
+    height: 45px;
+    margin-bottom: 1rem;
+  }
+
+  .benefit-icon svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  /* Texto optimizado */
+  .benefit-title {
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .benefit-text {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  /* ===== INDICADORES DE SCROLL (DOTS) ===== */
+  .scroll-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .scroll-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .scroll-dot.active {
+    background: #0a8684;
+    width: 24px;
+    border-radius: 4px;
+  }
+
+  /* Texto de ayuda (desliza para ver más) */
+  .scroll-hint {
+    text-align: center;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.5);
+    margin-top: 0.8rem;
+    animation: fadeInOut 2s ease-in-out infinite;
+  }
+
+  @keyframes fadeInOut {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+  }
+
+  /* Ocultar hint después del primer scroll */
+  .scroll-hint.hidden {
+    display: none;
   }
 }
 

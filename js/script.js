@@ -255,3 +255,67 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 });
+
+// ===== INDICADORES DE SCROLL PARA BENEFICIOS (MÓVIL) =====
+document.addEventListener('DOMContentLoaded', function() {
+  const benefitsScroll = document.getElementById('benefits-scroll');
+  const scrollIndicators = document.getElementById('scroll-indicators');
+  const scrollHint = document.getElementById('scroll-hint');
+  const dots = document.querySelectorAll('.scroll-dot');
+
+  if (!benefitsScroll || !scrollIndicators) return;
+
+  let hasScrolled = false;
+
+  // Función para actualizar el dot activo
+  function updateActiveDot() {
+    const scrollLeft = benefitsScroll.scrollLeft;
+    const cardWidth = benefitsScroll.querySelector('.benefit-card').offsetWidth;
+    const gap = 19.2; // 1.2rem en px (aproximado)
+    const activeIndex = Math.round(scrollLeft / (cardWidth + gap));
+
+    dots.forEach((dot, index) => {
+      if (index === activeIndex) {
+        dot.classList.add('active');
+      } else {
+        dot.classList.remove('active');
+      }
+    });
+
+    // Ocultar hint después del primer scroll
+    if (!hasScrolled && scrollLeft > 10) {
+      hasScrolled = true;
+      if (scrollHint) {
+        scrollHint.classList.add('hidden');
+      }
+    }
+
+    // Detectar si llegó al final para ocultar gradiente
+    const isAtEnd = scrollLeft + benefitsScroll.clientWidth >= benefitsScroll.scrollWidth - 10;
+    if (isAtEnd) {
+      benefitsScroll.classList.add('at-end');
+    } else {
+      benefitsScroll.classList.remove('at-end');
+    }
+  }
+
+  // Escuchar scroll
+  benefitsScroll.addEventListener('scroll', updateActiveDot);
+
+  // Click en dots para navegar
+  dots.forEach((dot, index) => {
+    dot.addEventListener('click', function() {
+      const cardWidth = benefitsScroll.querySelector('.benefit-card').offsetWidth;
+      const gap = 19.2; // 1.2rem en px
+      const scrollTo = index * (cardWidth + gap);
+
+      benefitsScroll.scrollTo({
+        left: scrollTo,
+        behavior: 'smooth'
+      });
+    });
+  });
+
+  // Inicializar
+  updateActiveDot();
+});
