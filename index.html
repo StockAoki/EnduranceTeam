@@ -229,66 +229,84 @@
   </div>
 </section>
 
-<!-- Sección de Equipo -->
+<!-- ===== SECCIÓN DE EQUIPO ===== -->
 <section id="equipo" class="team-section">
   <div class="team-container">
     <p class="team-subtitle">EQUIPO</p>
     <h2 class="team-title">Nuestros entrenadores profesionales</h2>
 
-    <div class="team-grid">
-      <!-- Entrenador 1 -->
-      <div class="team-card" onclick="openModal('modal1')">
-        <div class="team-image">
-          <img src="img/Brenda.jpeg" alt="Brenda Corrales">
-          <div class="team-overlay">
-            <h3 class="team-name">Brenda Corrales</h3>
-            <p class="team-role">Coach</p>
-          </div>
-          <div class="team-hover-overlay">
-            <span class="view-profile">Ver perfil completo</span>
-          </div>
-        </div>
-      </div>
+    <!-- Wrapper para el scroll -->
+    <div class="team-grid-wrapper">
+      <div class="team-grid" id="team-scroll">
+        
 
-      <!-- Entrenador 2 -->
-      <div class="team-card" onclick="openModal('modal2')">
-        <div class="team-image">
-          <img src="img/Carlos.jpg" alt="Carlos Ortega">
-          <div class="team-overlay">
-            <h3 class="team-name">Carlos Ortega</h3>
-            <p class="team-role">Head Coach</p>
-          </div>
-          <div class="team-hover-overlay">
-            <span class="view-profile">Ver perfil completo</span>
+        <!-- Entrenador 1 -->
+        <div class="team-card" onclick="openModal('modal1')">
+          <div class="team-image">
+            <img src="img/Carlos.jpg" alt="Carlos Ortega">
+            <div class="team-overlay">
+              <h3 class="team-name">Carlos Ortega</h3>
+              <p class="team-role">Head Coach</p>
+            </div>
+            <div class="team-hover-overlay">
+              <span class="view-profile">Ver perfil completo</span>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- Entrenador 3 -->
-      <div class="team-card" onclick="openModal('modal3')">
-        <div class="team-image">
-          <img src="img/Anderson.jpg" alt="Anderson Solano">
-          <div class="team-overlay">
-            <h3 class="team-name">Anderson Solano</h3>
-            <p class="team-role">Coach</p>
-          </div>
-          <div class="team-hover-overlay">
-            <span class="view-profile">Ver perfil completo</span>
+        <!-- Entrenador 2 -->
+        <div class="team-card" onclick="openModal('modal2')">
+          <div class="team-image">
+            <img src="img/Brenda.jpeg" alt="Brenda Corrales">
+            <div class="team-overlay">
+              <h3 class="team-name">Brenda Corrales</h3>
+              <p class="team-role">Coach</p>
+            </div>
+            <div class="team-hover-overlay">
+              <span class="view-profile">Ver perfil completo</span>
+            </div>
           </div>
         </div>
+
+        <!-- Entrenador 3 -->
+        <div class="team-card" onclick="openModal('modal3')">
+          <div class="team-image">
+            <img src="img/Anderson.jpg" alt="Anderson Solano">
+            <div class="team-overlay">
+              <h3 class="team-name">Anderson Solano</h3>
+              <p class="team-role">Coach</p>
+            </div>
+            <div class="team-hover-overlay">
+              <span class="view-profile">Ver perfil completo</span>
+            </div>
+          </div>
+        </div>
+
       </div>
+    </div>
+
+    <!-- Indicadores de scroll (dots) - SOLO MÓVIL -->
+    <div class="team-scroll-indicators" id="team-scroll-indicators">
+      <span class="team-scroll-dot active"></span>
+      <span class="team-scroll-dot"></span>
+      <span class="team-scroll-dot"></span>
+    </div>
+
+    <!-- Hint de deslizar CON FLECHAS -->
+    <p class="team-scroll-hint" id="team-scroll-hint">
+      <span class="hint-arrow-left">←</span>
+      Desliza para ver más
+      <span class="hint-arrow-right">→</span>
+    </p>
 
   </div>
 </section>
 
-
-
-
 <!-- Modales de Entrenadores -->
-<!-- Modal 1 - María González -->
-<div id="modal1" class="trainer-modal">
+<!-- Modal 2 - Brenda Corrales -->
+<div id="modal2" class="trainer-modal">
   <div class="modal-content">
-    <button class="modal-close" onclick="closeModal('modal1')">&times;</button>
+    <button class="modal-close" onclick="closeModal('modal2')">&times;</button>
     
     <div class="modal-header">
       <img src="img/Brenda.jpeg" alt="Brenda Corrales" class="modal-photo">
@@ -303,56 +321,134 @@
     </div>
 
     <div class="modal-body">
-      <div class="modal-section">
-        <h3>Sobre mí</h3>
-        <p>Soy entrenadora personal certificada con más de 8 años de experiencia en el mundo del running. Mi pasión es ayudar a personas de todos los niveles a alcanzar sus metas, ya sea completar su primer 5K o mejorar su tiempo en maratón.</p>
-        <p>Creo firmemente en el entrenamiento personalizado y en la importancia de escuchar al cuerpo. Cada corredor es único y merece un plan adaptado a sus necesidades.</p>
-      </div>
-
-      <div class="modal-section">
-        <h3>Certificaciones</h3>
-        <ul>
-          <li>Certificación RRCA (Road Runners Club of America)</li>
-          <li>Entrenadora Personal Nivel 3 - ACE</li>
-          <li>Especialización en Nutrición Deportiva</li>
-          <li>Primeros Auxilios y RCP</li>
-        </ul>
-      </div>
-
-      <div class="modal-section">
-        <h3>Especialidades</h3>
-        <div class="specialty-tags">
-          <span>Principiantes</span>
-          <span>5K - 10K</span>
-          <span>Pérdida de peso</span>
-          <span>Técnica de carrera</span>
-          <span>Prevención de lesiones</span>
+      
+      <!-- ========== VERSIÓN DESKTOP (siempre expandida) ========== -->
+      <div class="modal-desktop-content">
+        
+        <div class="modal-section">
+          <h3>Sobre mí</h3>
+          <p>Soy entrenadora personal certificada con más de 8 años de experiencia en el mundo del running. Mi pasión es ayudar a personas de todos los niveles a alcanzar sus metas, ya sea completar su primer 5K o mejorar su tiempo en maratón.</p>
+          <p>Creo firmemente en el entrenamiento personalizado y en la importancia de escuchar al cuerpo. Cada corredor es único y merece un plan adaptado a sus necesidades.</p>
         </div>
+
+        <div class="modal-section">
+          <h3>Certificaciones</h3>
+          <ul>
+            <li>Certificación RRCA (Road Runners Club of America)</li>
+            <li>Entrenadora Personal Nivel 3 - ACE</li>
+            <li>Especialización en Nutrición Deportiva</li>
+            <li>Primeros Auxilios y RCP</li>
+          </ul>
+        </div>
+
+        <div class="modal-section">
+          <h3>Especialidades</h3>
+          <div class="specialty-tags">
+            <span>Principiantes</span>
+            <span>5K - 10K</span>
+            <span>Pérdida de peso</span>
+            <span>Técnica de carrera</span>
+            <span>Prevención de lesiones</span>
+          </div>
+        </div>
+
+        <div class="modal-section">
+          <h3>Testimonios</h3>
+          <div class="testimonial">
+            <p>"María transformó completamente mi forma de correr. Pasé de no poder correr 5 minutos a completar mi primer medio maratón en 6 meses."</p>
+            <span>- Laura S.</span>
+          </div>
+          <div class="testimonial">
+            <p>"Su paciencia y conocimiento son increíbles. Siempre motivándome y adaptando los entrenamientos a mis necesidades."</p>
+            <span>- Roberto M.</span>
+          </div>
+        </div>
+
+      </div>
+      
+      <!-- ========== VERSIÓN MÓVIL (con acordeones) ========== -->
+      <div class="modal-mobile-content">
+        
+        <!-- Sobre mí - SIEMPRE VISIBLE -->
+        <div class="modal-section">
+          <h3>Sobre mí</h3>
+          <p>Soy entrenadora personal certificada con más de 8 años de experiencia en el mundo del running. Mi pasión es ayudar a personas de todos los niveles a alcanzar sus metas, ya sea completar su primer 5K o mejorar su tiempo en maratón.</p>
+          <p>Creo firmemente en el entrenamiento personalizado y en la importancia de escuchar al cuerpo. Cada corredor es único y merece un plan adaptado a sus necesidades.</p>
+        </div>
+
+        <!-- ACORDEÓN: Certificaciones -->
+        <div class="collapsible-section">
+          <div class="collapsible-header" onclick="toggleCollapse(this)">
+            <h3>Certificaciones</h3>
+            <span class="collapsible-icon">▼</span>
+          </div>
+          <div class="collapsible-content">
+            <div class="collapsible-body">
+              <ul>
+                <li>Certificación RRCA (Road Runners Club of America)</li>
+                <li>Entrenadora Personal Nivel 3 - ACE</li>
+                <li>Especialización en Nutrición Deportiva</li>
+                <li>Primeros Auxilios y RCP</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- ACORDEÓN: Especialidades -->
+        <div class="collapsible-section">
+          <div class="collapsible-header" onclick="toggleCollapse(this)">
+            <h3>Especialidades</h3>
+            <span class="collapsible-icon">▼</span>
+          </div>
+          <div class="collapsible-content">
+            <div class="collapsible-body">
+              <div class="specialty-tags">
+                <span>Principiantes</span>
+                <span>5K - 10K</span>
+                <span>Pérdida de peso</span>
+                <span>Técnica de carrera</span>
+                <span>Prevención de lesiones</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ACORDEÓN: Testimonios -->
+        <div class="collapsible-section">
+          <div class="collapsible-header" onclick="toggleCollapse(this)">
+            <h3>Testimonios</h3>
+            <span class="collapsible-icon">▼</span>
+          </div>
+          <div class="collapsible-content">
+            <div class="collapsible-body">
+              <div class="testimonial">
+                <p>"María transformó completamente mi forma de correr. Pasé de no poder correr 5 minutos a completar mi primer medio maratón en 6 meses."</p>
+                <span>- Laura S.</span>
+              </div>
+              <div class="testimonial">
+                <p>"Su paciencia y conocimiento son increíbles. Siempre motivándome y adaptando los entrenamientos a mis necesidades."</p>
+                <span>- Roberto M.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
 
-      <div class="modal-section">
-        <h3>Testimonios</h3>
-        <div class="testimonial">
-          <p>"María transformó completamente mi forma de correr. Pasé de no poder correr 5 minutos a completar mi primer medio maratón en 6 meses."</p>
-          <span>- Laura S.</span>
-        </div>
-        <div class="testimonial">
-          <p>"Su paciencia y conocimiento son increíbles. Siempre motivándome y adaptando los entrenamientos a mis necesidades."</p>
-          <span>- Roberto M.</span>
-        </div>
-      </div>
-
+      <!-- Botones de acción -->
       <div class="modal-actions">
-                <a href="https://wa.me/50660787111?text=Hola!+Estoy+interesado+en+iniciar+el+plan+grupal" class="btn-modal-secondary">¡Iniciar hoy!</a>
+        <a href="https://wa.me/50660787111?text=Hola!+Estoy+interesado+en+iniciar+hoy" class="btn-modal-secondary">¡Iniciar hoy!</a>
       </div>
+      
     </div>
   </div>
 </div>
 
-<!-- Modal 2 - Carlos Ortega -->
-<div id="modal2" class="trainer-modal">
+
+<!-- Modal 1 - Carlos Ortega -->
+<div id="modal1" class="trainer-modal">
   <div class="modal-content">
-    <button class="modal-close" onclick="closeModal('modal2')">&times;</button>
+    <button class="modal-close" onclick="closeModal('modal1')">&times;</button>
     
     <div class="modal-header">
       <img src="img/Carlos.jpg" alt="Carlos Ortega" class="modal-photo">
@@ -367,47 +463,121 @@
     </div>
 
     <div class="modal-body">
-      <div class="modal-section">
-        <h3>Sobre mí</h3>
-        <p>Soy Licenciado en Enseñanza de la Educación Fisica con más de 10 años de experiencia y fundador del Endurance Program.</p>
-        <p>He participado en juegos nacionales de Natación en el 2019, Maratonista en 2018-2019 y Triatleta del 2017-2020</p>
-      </div>
-
-      <div class="modal-section">
-        <h3>Certificaciones y Cursos</h3>
-        <ul>
-          <li>Complex Coach Funcional</li>
-          <li>Postgrado Entrenamiento Personal USP</li>
-          <li>Capacitación en Movilidad</li>
-          <li>Seminarios Entrenamientos Bandas de resistencia TRX, Sand Bag</li>
-        </ul>
-      </div>
-
-      <div class="modal-section">
-        <h3>Especialidades</h3>
-        <div class="specialty-tags">
-          <span>Especialización en deporte Endurance (CON)</span>
-          <span>Entrenador de Atletismo 1 y 2 (FECOA)</span>
-          <span>Formadores Triatlón 1 y 2 (FEUTRI)</span>
+      
+      <!-- ========== VERSIÓN DESKTOP (siempre expandida) ========== -->
+      <div class="modal-desktop-content">
+        
+        <div class="modal-section">
+          <h3>Sobre mí</h3>
+          <p>Soy Licenciado en Enseñanza de la Educación Fisica con más de 10 años de experiencia y fundador del Endurance Program.</p>
+          <p>He participado en juegos nacionales de Natación en el 2019, Maratonista en 2018-2019 y Triatleta del 2017-2020</p>
         </div>
+
+        <div class="modal-section">
+          <h3>Certificaciones y Cursos</h3>
+          <ul>
+            <li>Complex Coach Funcional</li>
+            <li>Postgrado Entrenamiento Personal USP</li>
+            <li>Capacitación en Movilidad</li>
+            <li>Seminarios Entrenamientos Bandas de resistencia TRX, Sand Bag</li>
+          </ul>
+        </div>
+
+        <div class="modal-section">
+          <h3>Especialidades</h3>
+          <div class="specialty-tags">
+            <span>Especialización en deporte Endurance (CON)</span>
+            <span>Entrenador de Atletismo 1 y 2 (FECOA)</span>
+            <span>Formadores Triatlón 1 y 2 (FEUTRI)</span>
+          </div>
+        </div>
+
+        <div class="modal-section">
+          <h3>Testimonios</h3>
+          <div class="testimonial">
+            <p>"Gracias a Carlos logré mi objetivo de correr mi primer maratón en menos de 4 horas. Su plan fue perfecto y siempre estuvo disponible para resolver dudas."</p>
+            <span>- Patricia G.</span>
+          </div>
+          <div class="testimonial">
+            <p>"Un entrenador excepcional. Su experiencia en maratones se nota en cada detalle del entrenamiento."</p>
+            <span>- Miguel A.</span>
+          </div>
+        </div>
+
+      </div>
+      
+      <!-- ========== VERSIÓN MÓVIL (con acordeones) ========== -->
+      <div class="modal-mobile-content">
+        
+        <!-- Sobre mí - SIEMPRE VISIBLE -->
+        <div class="modal-section">
+          <h3>Sobre mí</h3>
+          <p>Soy Licenciado en Enseñanza de la Educación Fisica con más de 10 años de experiencia y fundador del Endurance Program.</p>
+          <p>He participado en juegos nacionales de Natación en el 2019, Maratonista en 2018-2019 y Triatleta del 2017-2020</p>
+        </div>
+
+        <!-- ACORDEÓN: Certificaciones -->
+        <div class="collapsible-section">
+          <div class="collapsible-header" onclick="toggleCollapse(this)">
+            <h3>Certificaciones y Cursos</h3>
+            <span class="collapsible-icon">▼</span>
+          </div>
+          <div class="collapsible-content">
+            <div class="collapsible-body">
+              <ul>
+                <li>Complex Coach Funcional</li>
+                <li>Postgrado Entrenamiento Personal USP</li>
+                <li>Capacitación en Movilidad</li>
+                <li>Seminarios Entrenamientos Bandas de resistencia TRX, Sand Bag</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- ACORDEÓN: Especialidades -->
+        <div class="collapsible-section">
+          <div class="collapsible-header" onclick="toggleCollapse(this)">
+            <h3>Especialidades</h3>
+            <span class="collapsible-icon">▼</span>
+          </div>
+          <div class="collapsible-content">
+            <div class="collapsible-body">
+              <div class="specialty-tags">
+                <span>Especialización en deporte Endurance (CON)</span>
+                <span>Entrenador de Atletismo 1 y 2 (FECOA)</span>
+                <span>Formadores Triatlón 1 y 2 (FEUTRI)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ACORDEÓN: Testimonios -->
+        <div class="collapsible-section">
+          <div class="collapsible-header" onclick="toggleCollapse(this)">
+            <h3>Testimonios</h3>
+            <span class="collapsible-icon">▼</span>
+          </div>
+          <div class="collapsible-content">
+            <div class="collapsible-body">
+              <div class="testimonial">
+                <p>"Gracias a Carlos logré mi objetivo de correr mi primer maratón en menos de 4 horas. Su plan fue perfecto y siempre estuvo disponible para resolver dudas."</p>
+                <span>- Patricia G.</span>
+              </div>
+              <div class="testimonial">
+                <p>"Un entrenador excepcional. Su experiencia en maratones se nota en cada detalle del entrenamiento."</p>
+                <span>- Miguel A.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
 
-      <div class="modal-section">
-        <h3>Testimonios</h3>
-        <div class="testimonial">
-          <p>"Gracias a Carlos logré mi objetivo de correr mi primer maratón en menos de 4 horas. Su plan fue perfecto y siempre estuvo disponible para resolver dudas."</p>
-          <span>- Patricia G.</span>
-        </div>
-        <div class="testimonial">
-          <p>"Un entrenador excepcional. Su experiencia en maratones se nota en cada detalle del entrenamiento."</p>
-          <span>- Miguel A.</span>
-        </div>
-      </div>
-
+      <!-- Botones de acción -->
       <div class="modal-actions">
-       
-        <a href="https://wa.me/50660787111?text=Hola!+Estoy+interesado+en+iniciar+el+plan+grupal" class="btn-modal-secondary">¡Iniciar hoy!</a>
+        <a href="https://wa.me/50660787111?text=Hola!+Estoy+interesado+en+iniciar+hoy" class="btn-modal-secondary">¡Iniciar hoy!</a>
       </div>
+      
     </div>
   </div>
 </div>
@@ -430,48 +600,125 @@
     </div>
 
     <div class="modal-body">
-      <div class="modal-section">
-        <h3>Sobre mí</h3>
-        <p>Me especializo en hacer que el running sea divertido y educativo para los más pequeños. Creo que inculcar el amor por el deporte desde temprana edad es fundamental para crear hábitos saludables de por vida.</p>
-        <p>Mis sesiones combinan juegos, técnicas de carrera apropiadas para la edad y valores como el trabajo en equipo y la perseverancia.</p>
-      </div>
-
-      <div class="modal-section">
-        <h3>Certificaciones</h3>
-        <ul>
-          <li>Entrenadora Infantil Certificada - IAAF Kids</li>
-          <li>Educación Física Infantil</li>
-          <li>Psicología Deportiva Infantil</li>
-          <li>Primeros Auxilios Pediátricos</li>
-        </ul>
-      </div>
-
-      <div class="modal-section">
-        <h3>Especialidades</h3>
-        <div class="specialty-tags">
-          <span>Edades 6-12 años</span>
-          <span>Atletismo infantil</span>
-          <span>Juegos deportivos</span>
-          <span>Desarrollo motor</span>
-          <span>Motivación infantil</span>
+      
+      <!-- ========== VERSIÓN DESKTOP (siempre expandida) ========== -->
+      <div class="modal-desktop-content">
+        
+        <div class="modal-section">
+          <h3>Sobre mí</h3>
+          <p>Me especializo en hacer que el running sea divertido y educativo para los más pequeños. Creo que inculcar el amor por el deporte desde temprana edad es fundamental para crear hábitos saludables de por vida.</p>
+          <p>Mis sesiones combinan juegos, técnicas de carrera apropiadas para la edad y valores como el trabajo en equipo y la perseverancia.</p>
         </div>
+
+        <div class="modal-section">
+          <h3>Certificaciones</h3>
+          <ul>
+            <li>Entrenadora Infantil Certificada - IAAF Kids</li>
+            <li>Educación Física Infantil</li>
+            <li>Psicología Deportiva Infantil</li>
+            <li>Primeros Auxilios Pediátricos</li>
+          </ul>
+        </div>
+
+        <div class="modal-section">
+          <h3>Especialidades</h3>
+          <div class="specialty-tags">
+            <span>Edades 6-12 años</span>
+            <span>Atletismo infantil</span>
+            <span>Juegos deportivos</span>
+            <span>Desarrollo motor</span>
+            <span>Motivación infantil</span>
+          </div>
+        </div>
+
+        <div class="modal-section">
+          <h3>Testimonios</h3>
+          <div class="testimonial">
+            <p>"Mi hijo espera con ansias cada entrenamiento. Ana ha logrado que ame correr de una manera divertida y saludable."</p>
+            <span>- Carmen L. (Mamá de Mateo, 8 años)</span>
+          </div>
+          <div class="testimonial">
+            <p>"Excelente con los niños. Sabe cómo motivarlos y hacer que den su mejor esfuerzo mientras se divierten."</p>
+            <span>- Jorge P. (Papá de Sofía, 10 años)</span>
+          </div>
+        </div>
+
+      </div>
+      
+      <!-- ========== VERSIÓN MÓVIL (con acordeones) ========== -->
+      <div class="modal-mobile-content">
+        
+        <!-- Sobre mí - SIEMPRE VISIBLE -->
+        <div class="modal-section">
+          <h3>Sobre mí</h3>
+          <p>Me especializo en hacer que el running sea divertido y educativo para los más pequeños. Creo que inculcar el amor por el deporte desde temprana edad es fundamental para crear hábitos saludables de por vida.</p>
+          <p>Mis sesiones combinan juegos, técnicas de carrera apropiadas para la edad y valores como el trabajo en equipo y la perseverancia.</p>
+        </div>
+
+        <!-- ACORDEÓN: Certificaciones -->
+        <div class="collapsible-section">
+          <div class="collapsible-header" onclick="toggleCollapse(this)">
+            <h3>Certificaciones</h3>
+            <span class="collapsible-icon">▼</span>
+          </div>
+          <div class="collapsible-content">
+            <div class="collapsible-body">
+              <ul>
+                <li>Entrenadora Infantil Certificada - IAAF Kids</li>
+                <li>Educación Física Infantil</li>
+                <li>Psicología Deportiva Infantil</li>
+                <li>Primeros Auxilios Pediátricos</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- ACORDEÓN: Especialidades -->
+        <div class="collapsible-section">
+          <div class="collapsible-header" onclick="toggleCollapse(this)">
+            <h3>Especialidades</h3>
+            <span class="collapsible-icon">▼</span>
+          </div>
+          <div class="collapsible-content">
+            <div class="collapsible-body">
+              <div class="specialty-tags">
+                <span>Edades 6-12 años</span>
+                <span>Atletismo infantil</span>
+                <span>Juegos deportivos</span>
+                <span>Desarrollo motor</span>
+                <span>Motivación infantil</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ACORDEÓN: Testimonios -->
+        <div class="collapsible-section">
+          <div class="collapsible-header" onclick="toggleCollapse(this)">
+            <h3>Testimonios</h3>
+            <span class="collapsible-icon">▼</span>
+          </div>
+          <div class="collapsible-content">
+            <div class="collapsible-body">
+              <div class="testimonial">
+                <p>"Mi hijo espera con ansias cada entrenamiento. Ana ha logrado que ame correr de una manera divertida y saludable."</p>
+                <span>- Carmen L. (Mamá de Mateo, 8 años)</span>
+              </div>
+              <div class="testimonial">
+                <p>"Excelente con los niños. Sabe cómo motivarlos y hacer que den su mejor esfuerzo mientras se divierten."</p>
+                <span>- Jorge P. (Papá de Sofía, 10 años)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
 
-      <div class="modal-section">
-        <h3>Testimonios</h3>
-        <div class="testimonial">
-          <p>"Mi hijo espera con ansias cada entrenamiento. Ana ha logrado que ame correr de una manera divertida y saludable."</p>
-          <span>- Carmen L. (Mamá de Mateo, 8 años)</span>
-        </div>
-        <div class="testimonial">
-          <p>"Excelente con los niños. Sabe cómo motivarlos y hacer que den su mejor esfuerzo mientras se divierten."</p>
-          <span>- Jorge P. (Papá de Sofía, 10 años)</span>
-        </div>
-      </div>
-
+      <!-- Botones de acción -->
       <div class="modal-actions">
-                <a href="https://wa.me/50660787111?text=Hola!+Estoy+interesado+en+iniciar+el+plan+grupal" class="btn-modal-secondary">¡Iniciar hoy!</a>
+        <a href="https://wa.me/50660787111?text=Hola!+Estoy+interesado+en+iniciar+hoy" class="btn-modal-secondary">¡Iniciar hoy!</a>
       </div>
+      
     </div>
   </div>
 </div>

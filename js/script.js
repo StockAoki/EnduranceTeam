@@ -319,3 +319,89 @@ document.addEventListener('DOMContentLoaded', function() {
   // Inicializar
   updateActiveDot();
 });
+
+// ===== HORIZONTAL SCROLL CON DOTS PARA ENTRENADORES (MÓVIL) =====
+document.addEventListener('DOMContentLoaded', function() {
+  const teamScroll = document.getElementById('team-scroll');
+  const scrollIndicators = document.getElementById('team-scroll-indicators');
+  const scrollHint = document.getElementById('team-scroll-hint');
+  const dots = document.querySelectorAll('.team-scroll-dot');
+
+  // Verificar que los elementos existan
+  if (!teamScroll || !scrollIndicators) {
+    console.log('Elementos de team scroll no encontrados');
+    return;
+  }
+
+  let hasScrolled = false;
+
+  // Función para actualizar el dot activo
+  function updateActiveDot() {
+    const scrollLeft = teamScroll.scrollLeft;
+    const cardWidth = teamScroll.querySelector('.team-card').offsetWidth;
+    const gap = 19.2; // 1.2rem en px (aproximado)
+    const activeIndex = Math.round(scrollLeft / (cardWidth + gap));
+
+    dots.forEach((dot, index) => {
+      if (index === activeIndex) {
+        dot.classList.add('active');
+      } else {
+        dot.classList.remove('active');
+      }
+    });
+
+    // Ocultar hint después del primer scroll
+    if (!hasScrolled && scrollLeft > 10) {
+      hasScrolled = true;
+      if (scrollHint) {
+        scrollHint.classList.add('hidden');
+      }
+    }
+
+    // Detectar si llegó al final para ocultar gradiente
+    const isAtEnd = scrollLeft + teamScroll.clientWidth >= teamScroll.scrollWidth - 10;
+    if (isAtEnd) {
+      teamScroll.classList.add('at-end');
+    } else {
+      teamScroll.classList.remove('at-end');
+    }
+  }
+
+  // Escuchar scroll
+  teamScroll.addEventListener('scroll', updateActiveDot);
+
+  // Click en dots para navegar
+  dots.forEach((dot, index) => {
+    dot.addEventListener('click', function() {
+      const cardWidth = teamScroll.querySelector('.team-card').offsetWidth;
+      const gap = 19.2; // 1.2rem en px
+      const scrollTo = index * (cardWidth + gap);
+
+      teamScroll.scrollTo({
+        left: scrollTo,
+        behavior: 'smooth'
+      });
+    });
+  });
+
+  // Inicializar
+  updateActiveDot();
+});
+
+
+// ===== FUNCIÓN PARA ACORDEONES EN MODALES =====
+function toggleCollapse(header) {
+  const content = header.nextElementSibling;
+  const icon = header.querySelector('.collapsible-icon');
+  
+  // Toggle active class
+  header.classList.toggle('active');
+  content.classList.toggle('active');
+  
+  // Animar icono
+  if (content.classList.contains('active')) {
+    icon.style.transform = 'rotate(180deg)';
+  } else {
+    icon.style.transform = 'rotate(0deg)';
+  }
+}
