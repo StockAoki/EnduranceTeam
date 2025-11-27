@@ -423,27 +423,41 @@ html {
 
 @media (max-width: 768px) {
   .about-section {
-    padding: 3rem 1.5rem;
+    padding: 3rem 1.5rem; /* Menos padding */
   }
 
+  .about-header {
+    margin-bottom: 2rem; /* Menos margen */
+  }
+  
   .about-title {
-    font-size: 1.8rem;
+    font-size: 1.6rem; /* Más pequeño */
+    line-height: 1.2;
   }
 
   .about-description {
-    font-size: 1rem;
+    display: none; /* Ocultar descripción larga */
+  }
+
+  .about-content {
+    gap: 2rem; /* Menos espacio entre elementos */
   }
 
   .about-image img {
-    height: 300px;
+    height: 240px; /* Imagen más pequeña */
   }
 
   .about-card {
-    padding: 1.5rem;
+    padding: 1.5rem; /* Cards más compactas */
+  }
+  
+  .card-title {
+    font-size: 1.2rem;
   }
 
-  .card-title {
-    font-size: 1.3rem;
+  .card-text {
+    font-size: 0.88rem;
+    line-height: 1.5;
   }
 }
 
