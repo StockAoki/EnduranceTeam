@@ -10,37 +10,51 @@
 </head>
 <body>
   <!-- NAV -->
-  <header  class="navbar">
-     <div class="logo">
+<!-- NAV -->
+<header class="navbar">
+  <div class="logo">
     <a href="index.html"><img src="img/logo2.png" alt="Logo Running Club"></a>
-    <!-- <span>ENDURANCE <span>TEAM</span></span> -->
   </div>
-    <button class="menu-toggle" id="menu-toggle">☰</button>
-    <nav>
-      <ul id="menu">
+  
+  <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú">
+    <span class="hamburger-icon">☰</span>
+    <span class="close-icon" style="display: none;">✕</span>
+  </button>
+  
+  <nav>
+    <ul id="menu">
+      <li><a href="#inicio" class="menu-link">Inicio</a></li>
+      <li><a href="#sobre-nosotros" class="menu-link">Sobre Nosotros</a></li>           
+      <li><a href="#BENEFICIOS" class="menu-link">Beneficios</a></li>
+      <li><a href="#entrenamientos" class="menu-link">Entrenamientos</a></li>
+      <li><a href="#equipo" class="menu-link">Equipo</a></li>
+      <li><a href="#precios" class="menu-link">Precios</a></li>
+      
+      <!-- Botón Contáctanos DENTRO del menú (solo visible en móvil) -->
+      <li class="menu-cta-item">
+        <a href="#contacto" class="menu-cta">Contáctanos</a>
+      </li>
+    </ul>
+  </nav>
+  
+  <!-- Botón desktop (se oculta en móvil) -->
+  <a id="btnContacto" href="#contacto" class="btn-contacto">Contáctanos</a>
+</header>
 
-        <li><a href="#inicio">Inicio</a></li>
-        <li><a href="#sobre-nosotros">Sobre Nosotros</a></li>           
-        <li><a href="#BENEFICIOS">Beneficios</a></li>
-        <li><a href="#entrenamientos">Entrenamientos</a></li>
-        <li><a href="#equipo">Equipo</a></li>
-        <li><a href="#precios">Precios</a></li>
-      </ul>
-    </nav>
-    <a id="btnContacto" href="#contacto" class="btn-contacto">Contáctanos</a>
-  </header>
+<!-- Overlay para cerrar menú (solo móvil) -->
+<div class="menu-overlay" id="menu-overlay"></div>
 
   <!-- HERO -->
   <section id="inicio" class="hero">
-    <div class="overlay"></div>
-    <div class="hero-content">
-      <div class="fade-up">
-      <h1>Disfrutemos<br><span>el proceso</h1>
-      <p>¿Estás listo para dar tus primero pasos en el runnig o mejorarlos?</p>
-      <a href="#contacto" class="btn-primary">¡Empecemos a correr!</a>
-     
+  <div class="overlay"></div>
+  <div class="hero-content">
+    <div class="fade-up">
+      <h1>Disfrutemos<br><span>el proceso</span></h1>
+      <p>Tu primer paso hoy. Tu mejor versión mañana.</p>
+      <a href="#sobre-nosotros" class="btn-primary">¡Empecemos a correr!</a>
     </div>
-  </section>
+  </div>
+</section>
  <!-- Sección de Estadísticas -->
 <section id="stats" class="stats-section">
   <div class="stats-container">
@@ -120,6 +134,14 @@
 </div>
     </div>
   </div>
+  <div class="section-next" style="text-align: center; padding: 2rem 0;">
+  <p style="color: #e0f2f1; font-size: 1.1rem; margin-bottom: 1rem;">
+    Descubre todos los beneficios de entrenar con nosotros
+  </p>
+  <a href="#BENEFICIOS" style="color: #fff; font-size: 2rem; text-decoration: none; animation: bounce 2s infinite;">
+    ↓
+  </a>
+</div>
 </section>
 
 <!-- Sección de Beneficios -->

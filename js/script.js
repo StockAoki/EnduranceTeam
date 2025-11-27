@@ -1,6 +1,59 @@
-document.getElementById('menu-toggle').addEventListener('click', function () {
-  document.getElementById('menu').classList.toggle('active');
+// ===== MENÚ MÓVIL FULL-SCREEN =====
+const menuToggle = document.getElementById('menu-toggle');
+const menu = document.querySelector('.navbar nav');
+const menuOverlay = document.getElementById('menu-overlay');
+const menuLinks = document.querySelectorAll('.menu-link, .menu-cta');
+const hamburgerIcon = document.querySelector('.hamburger-icon');
+const closeIcon = document.querySelector('.close-icon');
+
+// Abrir/Cerrar menú
+menuToggle.addEventListener('click', function () {
+  menu.classList.toggle('active');
+  menuOverlay.classList.toggle('active');
+  document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : 'auto';
+  
+  // Cambiar ícono
+  if (menu.classList.contains('active')) {
+    hamburgerIcon.style.display = 'none';
+    closeIcon.style.display = 'block';
+  } else {
+    hamburgerIcon.style.display = 'block';
+    closeIcon.style.display = 'none';
+  }
 });
+
+// Cerrar menú al hacer click en overlay
+menuOverlay.addEventListener('click', function() {
+  menu.classList.remove('active');
+  menuOverlay.classList.remove('active');
+  document.body.style.overflow = 'auto';
+  hamburgerIcon.style.display = 'block';
+  closeIcon.style.display = 'none';
+});
+
+// Cerrar menú al hacer click en un enlace
+menuLinks.forEach(link => {
+  link.addEventListener('click', function() {
+    menu.classList.remove('active');
+    menuOverlay.classList.remove('active');
+    document.body.style.overflow = 'auto';
+    hamburgerIcon.style.display = 'block';
+    closeIcon.style.display = 'none';
+  });
+});
+
+// Cerrar con tecla ESC
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape' && menu.classList.contains('active')) {
+    menu.classList.remove('active');
+    menuOverlay.classList.remove('active');
+    document.body.style.overflow = 'auto';
+    hamburgerIcon.style.display = 'block';
+    closeIcon.style.display = 'none';
+  }
+});
+
+
 
 // Animación de números contador
 function animateCounter(element) {

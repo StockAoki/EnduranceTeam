@@ -129,13 +129,20 @@ html {
 }
 
 .hero h1 span {
-  color: #0a8684;
+   color: #0a8684;
+   font-style: italic; /* Añade énfasis */
 }
 
 .hero p {
   margin: 1.5rem 0;
   font-size: 1.1rem;
   color: #ffffff;
+  line-height: 1.8; /* Más espaciado entre líneas */ 
+}
+/* Hacer las frases poéticas más destacadas */
+.hero p br + span {
+  color: #e0f2f1;
+  font-weight: 600;
 }
 
 .btn-primary {
@@ -2249,5 +2256,156 @@ grid-template-columns: 1fr;
   .separator-icon svg {
     width: 32px;
     height: 32px;
+  }
+}
+
+/* ===== OVERLAY (solo móvil) ===== */
+.menu-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(5px);
+  z-index: 998;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.menu-overlay.active {
+  display: block;
+  opacity: 1;
+}
+
+/* ===== RESPONSIVE - SOLO MÓVIL ===== */
+@media (max-width: 768px) {
+  
+  /* Ocultar botón Contáctanos del navbar */
+  .btn-contacto {
+    display: none;
+  }
+  
+  /* Navbar más compacto */
+  .navbar {
+    padding: 0.8rem 1rem;
+  }
+  
+  /* Logo más pequeño */
+  .logo img {
+    height: 28px;
+  }
+  
+  /* Botón hamburguesa */
+  .menu-toggle {
+    display: block;
+    position: relative;
+    z-index: 1001;
+    font-size: 1.8rem;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 0.3rem;
+  }
+  
+  .close-icon {
+    font-size: 2rem;
+  }
+  
+  /* Menú FULL-SCREEN */
+  .navbar nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 999;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+  
+  .navbar ul {
+    display: flex;
+    flex-direction: column;
+    background: rgba(11, 31, 42, 0.98);
+    backdrop-filter: blur(20px);
+    width: 100%;
+    height: 100vh;
+    padding: 6rem 2rem 2rem;
+    gap: 0;
+    justify-content: flex-start;
+    align-items: center;
+    overflow-y: auto;
+  }
+  
+  /* Cuando el menú está activo */
+  .navbar nav.active {
+    transform: translateX(0);
+  }
+  
+  /* Enlaces del menú */
+  .navbar ul li {
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .navbar ul li:last-child {
+    border-bottom: none;
+  }
+  
+  .navbar ul a.menu-link {
+    display: block;
+    padding: 1.2rem 1rem;
+    font-size: 1.1rem;
+    color: #fff;
+    transition: all 0.3s ease;
+  }
+  
+  .navbar ul a.menu-link:hover {
+    background: rgba(10, 134, 132, 0.2);
+    color: #0a8684;
+  }
+  
+  /* Botón Contáctanos DENTRO del menú */
+  .menu-cta-item {
+    margin-top: 2rem;
+    border: none !important;
+  }
+  
+  .menu-cta {
+    display: block;
+    background: #0a8684;
+    color: #fff;
+    padding: 1.2rem 2.5rem; /* Más padding */
+    border-radius: 15px; /* Menos redondeado */
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 8px 30px rgba(10, 134, 132, 0.4);
+    transition: all 0.3s ease;
+  }
+  
+  .menu-cta:hover {
+    background: #08706e;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(10, 134, 132, 0.6);
+  }
+}
+
+/* Móviles muy pequeños */
+@media (max-width: 380px) {
+  .logo img {
+    height: 24px;
+  }
+  
+  .navbar ul a.menu-link {
+    font-size: 1rem;
+  }
+  
+  .menu-cta {
+    font-size: 1.1rem;
   }
 }
