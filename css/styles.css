@@ -575,6 +575,8 @@ html {
 }
 
 @media (min-width: 769px) {
+  .programs-scroll-indicators,
+  .programs-scroll-hint,
   .pricing-scroll-hint,
   .pricing-scroll-indicators,
   .team-scroll-indicators,
@@ -1990,7 +1992,8 @@ html {
     text-align: center;
     font-size: 0.85rem;
     color: rgba(255, 255, 255, 0.8);
-    margin-top: 1rem;
+    margin-top: 0.2rem;     /* Más cerca de los dots */
+    margin-bottom: 0;       /* Agregamos esto */
     font-weight: 500;
     animation: fadeInOut 2.5s ease-in-out infinite;
   }
@@ -2033,8 +2036,8 @@ html {
     display: flex;
     justify-content: center;
     gap: 0.5rem;
-    margin-top: 1rem;      /* De 1.5rem a 1rem */
-  padding-bottom: 0;     /* Quitamos padding bottom */
+    margin-top: 0rem;     /* Más cerca de las cards */      
+    padding-bottom: 0;     /* Quitamos padding bottom */
   }
 
   .pricing-scroll-dot {
@@ -2052,7 +2055,7 @@ html {
     border-radius: 4px;
   }
   .pricing-section {
-    padding: 3rem 0 2rem;
+     padding: 3rem 0 1.5rem;
     position: relative;
   }
 
@@ -2787,16 +2790,140 @@ html {
   /* PROGRAMAS */
   .programs-section {
     padding: 3rem 1.5rem;
+    position: relative;
   }
-
+ .programs-container {
+    padding: 0 1.5rem;
+    position: relative;
+  }
   .programs-title {
-    font-size: 1.8rem;
-    margin-bottom: 2.5rem;
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+  }
+ .programs-subtitle {
+    font-size: 0.85rem;
+    margin-bottom: 0.8rem;
   }
 
   .programs-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
+  }
+ .programs-grid {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: hidden;
+    gap: 1rem;
+    padding: 0.8rem 0 0.5rem;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    margin: 0 -1.5rem;
+    padding-left: 1.5rem;
+    padding-right: 0;
+    margin-bottom: 0;
+  }
+  .programs-grid::-webkit-scrollbar {
+    display: none;
+  }
+  /* Gradiente derecha */
+  .programs-grid::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 80px;
+    height: 100%;
+    background: linear-gradient(to left, #0a8684 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 1;
+    transition: opacity 0.3s ease;
+  }
+
+  .programs-grid.at-end::after {
+    opacity: 0;
+  }
+  .program-card {
+    min-width: 280px;
+    max-width: 280px;
+    scroll-snap-align: center;
+    flex-shrink: 0;
+  }
+
+  .program-card:first-child {
+    margin-left: 0.5rem;
+  }
+
+  .program-card:last-child {
+    margin-right: 1.5rem;
+  }
+
+  .program-image {
+    height: 180px;
+  }
+
+  .program-content {
+    padding: 1.3rem 1rem;
+  }
+
+  .program-title {
+    font-size: 1.2rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .program-description {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+  }
+
+  .program-link {
+    font-size: 0.9rem;
+  }
+
+  /* ===== INDICADORES (DOTS) ===== */
+  .programs-scroll-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 0.8rem;
+    padding-bottom: 0;
+  }
+
+  .programs-scroll-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .programs-scroll-dot.active {
+    background: #fff;
+    width: 24px;
+    border-radius: 4px;
+  }
+
+  /* ===== HINT ===== */
+  .programs-scroll-hint {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    text-align: center;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-top: 0.6rem;
+    margin-bottom: 0;
+    font-weight: 500;
+    animation: fadeInOut 2.5s ease-in-out infinite;
+  }
+
+  .programs-scroll-hint.hidden {
+    display: none !important;
   }
 
   .program-image {

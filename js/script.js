@@ -518,3 +518,66 @@ document.addEventListener('DOMContentLoaded', function() {
   // Inicializar
   updateActiveDot();
 });
+
+// ===== DOTS DE NAVEGACIÓN PARA PROGRAMAS (MÓVIL) =====
+document.addEventListener('DOMContentLoaded', function() {
+  const programsScroll = document.querySelector('.programs-grid');
+  const scrollHint = document.getElementById('programs-scroll-hint');
+  const dots = document.querySelectorAll('.programs-scroll-dot');
+
+  if (!programsScroll || !dots.length) return;
+
+  let hasScrolled = false;
+
+  // Función para actualizar el dot activo
+  function updateActiveDot() {
+    const scrollLeft = programsScroll.scrollLeft;
+    const cardWidth = programsScroll.querySelector('.program-card').offsetWidth;
+    const gap = 16; // 1rem en px
+    const activeIndex = Math.round(scrollLeft / (cardWidth + gap));
+
+    dots.forEach((dot, index) => {
+      if (index === activeIndex) {
+        dot.classList.add('active');
+      } else {
+        dot.classList.remove('active');
+      }
+    });
+
+    // Ocultar hint después del primer scroll
+    if (!hasScrolled && scrollLeft > 10) {
+      hasScrolled = true;
+      if (scrollHint) {
+        scrollHint.classList.add('hidden');
+      }
+    }
+
+    // Detectar si llegó al final para ocultar gradiente
+    const isAtEnd = scrollLeft + programsScroll.clientWidth >= programsScroll.scrollWidth - 10;
+    if (isAtEnd) {
+      programsScroll.classList.add('at-end');
+    } else {
+      programsScroll.classList.remove('at-end');
+    }
+  }
+
+  // Escuchar scroll
+  programsScroll.addEventListener('scroll', updateActiveDot);
+
+  // Click en dots para navegar
+  dots.forEach((dot, index) => {
+    dot.addEventListener('click', function() {
+      const cardWidth = programsScroll.querySelector('.program-card').offsetWidth;
+      const gap = 16;
+      const scrollTo = index * (cardWidth + gap);
+
+      programsScroll.scrollTo({
+        left: scrollTo,
+        behavior: 'smooth'
+      });
+    });
+  });
+
+  // Inicializar
+  updateActiveDot();
+});
