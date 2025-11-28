@@ -405,3 +405,116 @@ function toggleCollapse(header) {
     icon.style.transform = 'rotate(0deg)';
   }
 }
+// ===== DOTS DE NAVEGACIÓN PARA PRECIOS (MÓVIL) =====
+document.addEventListener('DOMContentLoaded', function() {
+  const pricingScroll = document.querySelector('.pricing-grid');
+  const dots = document.querySelectorAll('.pricing-scroll-dot');
+
+  if (!pricingScroll || !dots.length) return;
+
+  // Función para actualizar el dot activo
+  function updateActiveDot() {
+    const scrollLeft = pricingScroll.scrollLeft;
+    const cardWidth = pricingScroll.querySelector('.pricing-card').offsetWidth;
+    const gap = 16; // 1rem en px
+    const activeIndex = Math.round(scrollLeft / (cardWidth + gap));
+
+    dots.forEach((dot, index) => {
+      if (index === activeIndex) {
+        dot.classList.add('active');
+      } else {
+        dot.classList.remove('active');
+      }
+    });
+
+    // Detectar si llegó al final para ocultar gradiente
+    const isAtEnd = scrollLeft + pricingScroll.clientWidth >= pricingScroll.scrollWidth - 10;
+    if (isAtEnd) {
+      pricingScroll.classList.add('at-end');
+    } else {
+      pricingScroll.classList.remove('at-end');
+    }
+  }
+
+  // Escuchar scroll
+  pricingScroll.addEventListener('scroll', updateActiveDot);
+
+  // Click en dots para navegar
+  dots.forEach((dot, index) => {
+    dot.addEventListener('click', function() {
+      const cardWidth = pricingScroll.querySelector('.pricing-card').offsetWidth;
+      const gap = 16;
+      const scrollTo = index * (cardWidth + gap);
+
+      pricingScroll.scrollTo({
+        left: scrollTo,
+        behavior: 'smooth'
+      });
+    });
+  });
+
+  // Inicializar
+  updateActiveDot();
+});
+// ===== DOTS DE NAVEGACIÓN PARA PRECIOS (MÓVIL) =====
+document.addEventListener('DOMContentLoaded', function() {
+  const pricingScroll = document.querySelector('.pricing-grid');
+  const scrollHint = document.getElementById('pricing-scroll-hint');
+  const dots = document.querySelectorAll('.pricing-scroll-dot');
+
+  if (!pricingScroll || !dots.length) return;
+
+  let hasScrolled = false;
+
+  // Función para actualizar el dot activo
+  function updateActiveDot() {
+    const scrollLeft = pricingScroll.scrollLeft;
+    const cardWidth = pricingScroll.querySelector('.pricing-card').offsetWidth;
+    const gap = 16; // 1rem en px
+    const activeIndex = Math.round(scrollLeft / (cardWidth + gap));
+
+    dots.forEach((dot, index) => {
+      if (index === activeIndex) {
+        dot.classList.add('active');
+      } else {
+        dot.classList.remove('active');
+      }
+    });
+
+    // Ocultar hint después del primer scroll
+    if (!hasScrolled && scrollLeft > 10) {
+      hasScrolled = true;
+      if (scrollHint) {
+        scrollHint.classList.add('hidden');
+      }
+    }
+
+    // Detectar si llegó al final para ocultar gradiente
+    const isAtEnd = scrollLeft + pricingScroll.clientWidth >= pricingScroll.scrollWidth - 10;
+    if (isAtEnd) {
+      pricingScroll.classList.add('at-end');
+    } else {
+      pricingScroll.classList.remove('at-end');
+    }
+  }
+
+  // Escuchar scroll
+  pricingScroll.addEventListener('scroll', updateActiveDot);
+
+  // Click en dots para navegar
+  dots.forEach((dot, index) => {
+    dot.addEventListener('click', function() {
+      const cardWidth = pricingScroll.querySelector('.pricing-card').offsetWidth;
+      const gap = 16;
+      const scrollTo = index * (cardWidth + gap);
+
+      pricingScroll.scrollTo({
+        left: scrollTo,
+        behavior: 'smooth'
+      });
+    });
+  });
+
+  // Inicializar
+  updateActiveDot();
+});

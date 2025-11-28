@@ -575,6 +575,8 @@ html {
 }
 
 @media (min-width: 769px) {
+  .pricing-scroll-hint,
+  .pricing-scroll-indicators,
   .team-scroll-indicators,
   .team-scroll-hint {
     display: none;
@@ -1979,6 +1981,224 @@ html {
 }
 
 @media (max-width: 768px) {
+  /* ===== HINT DE AYUDA CON FLECHAS ===== */
+  .pricing-scroll-hint {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    text-align: center;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 1rem;
+    font-weight: 500;
+    animation: fadeInOut 2.5s ease-in-out infinite;
+  }
+
+  .hint-arrow-left,
+  .hint-arrow-right {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #0a8684;
+  }
+
+  .hint-arrow-left {
+    animation: slideLeft 1.5s ease-in-out infinite;
+  }
+
+  .hint-arrow-right {
+    animation: slideRight 1.5s ease-in-out infinite;
+  }
+
+  @keyframes fadeInOut {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+  }
+
+  @keyframes slideLeft {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(-5px); }
+  }
+
+  @keyframes slideRight {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(5px); }
+  }
+
+  /* Ocultar hint después del primer scroll */
+  .pricing-scroll-hint.hidden {
+    display: none !important;
+  }
+  .pricing-scroll-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1rem;      /* De 1.5rem a 1rem */
+  padding-bottom: 0;     /* Quitamos padding bottom */
+  }
+
+  .pricing-scroll-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .pricing-scroll-dot.active {
+    background: #0a8684;
+    width: 24px;
+    border-radius: 4px;
+  }
+  .pricing-section {
+    padding: 3rem 0 2rem;
+    position: relative;
+  }
+
+  .pricing-container {
+    padding: 0 1.5rem;
+    position: relative;
+  }
+
+  .pricing-title {
+    font-size: 1.8rem;
+    margin-bottom: 0.8rem;
+    line-height: 1.2;
+  }
+
+  .pricing-subtitle {
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+  }
+
+  /* HORIZONTAL SCROLL */
+  .pricing-grid {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: hidden;
+    gap: 1rem;
+    padding: 1rem 0 0.5rem;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    margin: 0 -1.5rem;
+    padding-left: 0.7rem;
+    padding-right: 0;
+  }
+
+  .pricing-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Gradiente derecha */
+  .pricing-grid::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 80px;
+    height: 100%;
+    background: linear-gradient(to left, #1a1a1a 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 1;
+    transition: opacity 0.3s ease;
+  }
+
+  .pricing-grid.at-end::after {
+    opacity: 0;
+  }
+
+  /* Cards normales */
+  .pricing-card {
+    min-width: 280px;
+    max-width: 280px;
+    scroll-snap-align: center;
+    flex-shrink: 0;
+    padding: 1.3rem 1rem;
+    transform: scale(1) !important;
+  }
+
+  /* Card POPULAR destacada (más grande) */
+  .pricing-card.popular {
+    min-width: 320px;
+    max-width: 320px;
+    border: 2px solid #0a8684;
+    box-shadow: 0 15px 50px rgba(10, 134, 132, 0.4);
+  }
+
+  .pricing-card.popular:hover {
+    transform: scale(1) !important;
+  }
+
+  .pricing-card:first-child {
+    margin-left: 0.5rem;
+  }
+
+  .pricing-card:last-child {
+    margin-right: 1.5rem;
+  }
+
+  /* Ajustes internos */
+  .plan-header {
+    height: auto;
+    margin-bottom: 0.8rem;
+  }
+
+  .plan-name {
+    font-size: 1.2rem;  /* Un poco más pequeño */
+  margin-bottom: 0.3rem;
+  }
+
+  .plan-description {
+    font-size: 0.8rem;
+    line-height: 1.4;
+  }
+
+  .plan-price {
+    height: auto;
+    margin-bottom: 0.8rem;
+  }
+
+  .price {
+    font-size: 2rem;
+  }
+
+  .popular-badge {
+    font-size: 0.7rem;
+    padding: 0.35rem 1rem;
+    top: -10px;
+  }
+
+  .plan-features {
+    padding-top: 0.8rem;  /* Reducimos espacio */
+  }
+
+  .features-title {
+   font-size: 0.75rem;
+  margin-bottom: 0.5rem;  /* Menos espacio */
+  }
+
+  .plan-features ul {
+     gap: 0.4rem;  /* Items más juntos */
+  }
+
+  .plan-features ul li {
+    font-size: 0.8rem;
+  }
+
+  .plan-features ul li svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .btn-new,
+  .btn-planes {
+  padding: 0.7rem;      /* Más compacto */
+  font-size: 0.88rem;
+  margin-bottom: 0.8rem;  /* Menos espacio */
+  }
   .navbar {
     padding: 1rem;
   }
