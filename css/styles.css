@@ -580,6 +580,7 @@ html {
   .pricing-scroll-hint,
   .pricing-scroll-indicators,
   .team-scroll-indicators,
+  .scroll-hint,
   .team-scroll-hint {
     display: none;
   }
@@ -1645,26 +1646,36 @@ html {
 }
 
 .gallery-subtitle {
-  font-size: 0.9rem;
-  font-weight: 600;
-  letter-spacing: 2px;
-  color: #fff;
-  margin-bottom: 1rem;
+  font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: #fff;
+    margin-bottom: 0.8rem;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
 }
 
 .gallery-title {
-  font-size: 3.5rem;
-  font-weight: 800;
-  margin-bottom: 1.5rem;
-  line-height: 1.2;
-  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    font-size: 2.5rem;           /* Grande pero controlado */
+    font-weight: 900;            /* Muy bold */
+    line-height: 1;            /* Compacto */
+    letter-spacing: -1px;        /* Letras juntas */
+    margin-bottom: 1rem;
+    text-shadow: 0 4px 16px rgba(0, 0, 0, 0.9);  /* Sombra fuerte */
+    max-width: 320px;            /* Limita ancho para controlar breaks */
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .gallery-description {
-  font-size: 1.2rem;
-  color: #e0f2f1;
-  margin-bottom: 2rem;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    font-size: 0.88rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #e0f2f1;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .btn-gallery-hero {
@@ -2517,6 +2528,25 @@ html {
     padding: 1.8rem;
     scroll-snap-align: center;
     flex-shrink: 0;
+    opacity: 0.6;  /* Opacidad reducida */
+    transform: scale(0.95);  /* Ligeramente más pequeña */
+    transition: all 0.3s ease;
+  }
+  .benefit-card.active {
+    opacity: 1;  /* Opacidad completa */
+    transform: scale(1);  /* Tamaño normal */
+    border-color: rgba(10, 134, 132, 0.8);  /* Borde más visible */
+    box-shadow: 0 20px 60px rgba(10, 134, 132, 0.5);  /* Sombra fuerte */
+    background: linear-gradient(135deg, rgba(22, 99, 97, 0.9) 0%, rgba(10, 25, 25, 0.95) 100%);
+  }
+
+  .benefit-card.active .benefit-icon {
+    background: #0a8684;  /* Icono destacado */
+    transform: scale(1.1);
+  }
+
+  .benefit-card.active .benefit-icon svg {
+    color: #fff;
   }
 
   .benefit-card:first-child {
@@ -2578,6 +2608,7 @@ html {
   }
 
   .scroll-hint {
+    display: block; /* Forzar para probar */
     text-align: center;
     font-size: 0.85rem;
     color: rgba(255, 255, 255, 0.5);

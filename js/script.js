@@ -282,6 +282,17 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
 
+
+    // ✨ NUEVO: Actualizar cards
+  const cards = document.querySelectorAll('.benefit-card');
+  cards.forEach((card, index) => {
+    if (index === activeIndex) {
+      card.classList.add('active');
+    } else {
+      card.classList.remove('active');
+    }
+  });
+
     // Ocultar hint después del primer scroll
     if (!hasScrolled && scrollLeft > 10) {
       hasScrolled = true;
@@ -318,6 +329,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Inicializar
   updateActiveDot();
+  document.querySelector('.benefit-card').classList.add('active');
 });
 
 // ===== HORIZONTAL SCROLL CON DOTS PARA ENTRENADORES (MÓVIL) =====
