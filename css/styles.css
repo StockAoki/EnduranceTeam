@@ -1988,6 +1988,163 @@ html {
 }
 
 @media (max-width: 768px) {
+
+/* FOOTER - Optimizado para conversión */
+  .footer {
+    padding: 2.5rem 1.5rem 2rem;
+  }
+
+  .footer-container {
+    max-width: 100%;
+  }
+
+  /* Una sola columna en móvil */
+  .footer-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;  /* Cambia de 2rem a 1.5rem */
+    margin-bottom: 1.5rem;  /* Cambia de 2rem a 1.5rem */
+  }
+
+/* Logo y descripción */
+  .footer-column:first-child {
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .footer-logo {
+    display: flex;
+    justify-content: center;
+  }
+
+  .footer-logo img {
+    height: 35px;
+  }
+
+  .footer-description {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: #888;
+    /* Descripción más corta */
+    max-width: 280px;
+    margin: 0 auto;
+  }
+
+  /* CTA DE WHATSAPP - MUY IMPORTANTE */
+  .footer-whatsapp-cta {
+    background: #0a8684;
+    color: #fff;
+    padding: 1rem 1.5rem;
+    border-radius: 50px;
+    text-align: center;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    margin: 1.5rem auto;
+    max-width: 280px;
+    text-decoration: none;
+    font-size: 1rem;
+    box-shadow: 0 4px 15px rgba(10, 134, 132, 0.4); 
+    transition: all 0.3s ease;
+  }
+
+  .footer-whatsapp-cta:hover {
+    background: #20BA5A;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+  }
+
+  /* Redes sociales MÁS GRANDES y centradas */
+  .footer-social {
+    justify-content: center;
+    gap: 1.2rem;
+    margin-top: 1rem;
+  }
+
+  .footer-social a {
+    width: 45px;
+    height: 45px;
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .footer-social a svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  /* Sección de programas - COMPACTA */
+  .footer-column:nth-child(2) {
+    text-align: center;
+  }
+
+  .footer-heading {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  .footer-links {
+    align-items: center;
+     gap: 0.5rem;
+  }
+
+  .footer-links a {
+    font-size: 0.88rem;
+    padding: 0.4rem 0;
+  }
+
+  /* Ocultar algunos links para compactar */
+  .footer-links li:nth-child(n+4) {
+    display: none; /* Oculta Plan Estándar, Plan Gold si tienes 5+ items */
+  }
+
+  /* Sección de contacto - COMPACTA */
+  .footer-column:nth-child(3) {
+    text-align: center;
+  }
+
+  .footer-contact {
+    align-items: center;
+    gap: 0.7rem;
+  }
+
+  .footer-contact li,
+  .footer-contact a {
+    font-size: 0.88rem;
+    justify-content: center;
+    color: #b0b0b0;
+  }
+
+  .footer-contact svg {
+    width: 18px;
+    height: 18px;
+    color: #0a8684;
+  }
+
+  /* Footer bottom */
+  .footer-bottom {
+    padding-top: 1.5rem;
+    flex-direction: column;
+    gap: 0.8rem;
+    text-align: center;
+  }
+
+  .footer-bottom p {
+    font-size: 0.85rem;
+  }
+
+  .footer-legal {
+    gap: 1.5rem;
+    justify-content: center;
+  }
+
+  .footer-legal a {
+    font-size: 0.85rem;
+  }
+
+
   /* ===== HINT DE AYUDA CON FLECHAS ===== */
   .pricing-scroll-hint {
     display: flex !important;
@@ -2947,7 +3104,142 @@ html {
   .contact-title {
     font-size: 2rem;
   }
+  /**/
+  .contact-subtitle {
+    font-size: 0.85rem;
+    margin-bottom: 0.8rem;
+  }
+/* INVERTIR ORDEN: Formulario primero, Info después */
+  .contact-content {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 2rem;
+  }
 
+  /* ===== FORMULARIO (arriba en móvil) ===== */
+  .contact-forms {
+    border-radius: 15px;
+    overflow: hidden;
+  }
+
+  .form-content {
+    padding: 1.5rem;
+  }
+
+  .form-title {
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .form-description {
+    font-size: 0.85rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+  }
+
+  .contact-form {
+    gap: 0.9rem;
+  }
+
+  .form-group {
+    gap: 0.3rem;
+  }
+
+  .form-group label {
+    font-size: 0.85rem;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 0.75rem;
+    font-size: 0.9rem;
+  }
+
+  .form-group textarea {
+    min-height: 100px;
+  }
+
+  /* TABS más touch-friendly */
+  .form-tabs {
+    background: #f5f5f5;
+  }
+
+  .tab-btn {
+    padding: 1rem 1.2rem;
+    font-size: 0.9rem;
+    gap: 0.4rem;
+  }
+
+  .tab-btn svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .tab-btn.active {
+    border-bottom: 3px solid #0a8684;
+  }
+
+  /* Botones */
+  .btn-submit,
+  .btn-whatsapp {
+    padding: 0.9rem 1.2rem;
+    font-size: 0.95rem;
+  }
+
+  .form-actions {
+    gap: 0.8rem;
+    margin-top: 0.5rem;
+  }
+
+  /* ===== INFO DE CONTACTO (abajo en móvil) ===== */
+  .contact-info {
+    padding: 1.5rem;
+    border-radius: 15px;
+  }
+
+  .info-title {
+    font-size: 1.4rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .info-description {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+  }
+
+  .contact-details {
+    gap: 1rem;
+  }
+
+  .detail-item {
+    gap: 0.8rem;
+  }
+
+  .detail-icon {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+  }
+
+  .detail-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .detail-label {
+    font-size: 0.8rem;
+  }
+
+  .detail-value {
+    font-size: 0.9rem;
+  }
+
+  /* Row en formulario */
+  .form-row {
+    grid-template-columns: 1fr;
+  }
   .form-tabs {
     flex-direction: column;
   }
