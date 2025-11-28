@@ -555,7 +555,15 @@ document.addEventListener('DOMContentLoaded', function() {
         dot.classList.remove('active');
       }
     });
-
+// ✨ Actualizar cards
+  const cards = document.querySelectorAll('.program-card');
+  cards.forEach((card, index) => {
+    if (index === activeIndex) {
+      card.classList.add('active');
+    } else {
+      card.classList.remove('active');
+    }
+  });
     // Ocultar hint después del primer scroll
     if (!hasScrolled && scrollLeft > 10) {
       hasScrolled = true;
@@ -592,4 +600,5 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Inicializar
   updateActiveDot();
+  document.querySelector('.program-card').classList.add('active');
 });
