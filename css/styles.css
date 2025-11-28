@@ -2537,7 +2537,7 @@ html {
     opacity: 1;  /* Opacidad completa */
     transform: scale(1);  /* Tamaño normal */
     border-color: rgba(10, 134, 132, 0.8);  /* Borde más visible */
-    box-shadow: 0 20px 60px rgba(10, 134, 132, 0.5);  /* Sombra fuerte */
+    box-shadow: 0 3px 20px rgba(10, 134, 132, 0.5);  /* Sombra fuerte */
     background: linear-gradient(135deg, rgba(22, 99, 97, 0.9) 0%, rgba(10, 25, 25, 0.95) 100%);
   }
 
