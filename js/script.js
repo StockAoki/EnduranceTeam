@@ -602,3 +602,28 @@ document.addEventListener('DOMContentLoaded', function() {
   updateActiveDot();
   document.querySelector('.program-card').classList.add('active');
 });
+
+// ===== PRICING TABS FUNCTIONALITY =====
+document.addEventListener('DOMContentLoaded', function() {
+  const tabButtons = document.querySelectorAll('.pricing-tab-btn');
+  const tabContents = document.querySelectorAll('.pricing-tab-content');
+
+  if (!tabButtons.length || !tabContents.length) return;
+
+  tabButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      const targetTab = this.getAttribute('data-tab');
+
+      // Remove active class from all buttons and contents
+      tabButtons.forEach(btn => btn.classList.remove('active'));
+      tabContents.forEach(content => content.classList.remove('active'));
+
+      // Add active class to clicked button and corresponding content
+      this.classList.add('active');
+      const targetContent = document.getElementById('tab-' + targetTab);
+      if (targetContent) {
+        targetContent.classList.add('active');
+      }
+    });
+  });
+});
