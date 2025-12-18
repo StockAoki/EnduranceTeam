@@ -2891,15 +2891,22 @@ html {
   .modal-desktop-content {
     display: none;
   }
-  
+
   .modal-mobile-content {
     display: block;
   }
-  
+
+  .trainer-modal.active {
+    align-items: flex-end;
+    padding: 0;
+  }
+
   .modal-content {
     margin: 0;
-    max-height: 100vh;
+    max-height: 95vh;
     border-radius: 20px 20px 0 0;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   .modal-header {
