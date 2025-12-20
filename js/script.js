@@ -176,7 +176,7 @@ function switchTab(tabName) {
         "Mi nivel de experiencia es: *" + nivel + "*\n" +
         comentario ;
 
-       const url = "https://wa.me/" + 50660787111 + "?text=" + encodeURIComponent(mensaje);
+       const url = "https://wa.me/" + 50672786445 + "?text=" + encodeURIComponent(mensaje);
  this.href = url;
       window.open(url, '_blank', 'noopener');
 // 🔄 Limpiar los campos después de abrir WhatsApp
@@ -206,7 +206,7 @@ function switchTab(tabName) {
         "Tipo de Colaboración: *" + tipo + "*\n" +
         "Mensaje adicional: *" + mensajeAdicional + "*";
 
-      const url = "https://wa.me/" + 50660787111 + "?text=" + encodeURIComponent(mensaje);
+      const url = "https://wa.me/" + 50672786445 + "?text=" + encodeURIComponent(mensaje);
 
       this.href = url;
       window.open(url, '_blank', 'noopener');
