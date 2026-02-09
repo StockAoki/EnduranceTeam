@@ -616,61 +616,61 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // ===== MODAL PROMOCIONAL DE BIENVENIDA =====
-window.addEventListener('DOMContentLoaded', function() {
-  const welcomeModal = document.getElementById('welcome-modal');
-  const closeModalBtn = document.getElementById('close-welcome-modal');
-  const modalOverlay = document.querySelector('.welcome-modal-overlay');
-  const modalImage = document.querySelector('.welcome-modal-image');
+// window.addEventListener('DOMContentLoaded', function() {
+//   const welcomeModal = document.getElementById('welcome-modal');
+//   const closeModalBtn = document.getElementById('close-welcome-modal');
+//   const modalOverlay = document.querySelector('.welcome-modal-overlay');
+//   const modalImage = document.querySelector('.welcome-modal-image');
 
   // Mostrar el modal después de un pequeño delay para mejor experiencia
-  setTimeout(function() {
-    if (welcomeModal) {
-      welcomeModal.classList.add('show');
-      document.body.style.overflow = 'hidden';
-    }
-  }, 500);
+  // setTimeout(function() {
+  //   if (welcomeModal) {
+  //     welcomeModal.classList.add('show');
+  //     document.body.style.overflow = 'hidden';
+  //   }
+  // }, 500);
 
   // Cerrar modal al hacer clic en el botón X
-  if (closeModalBtn) {
-    closeModalBtn.addEventListener('click', function() {
-      closeWelcomeModal();
-    });
-  }
+  // if (closeModalBtn) {
+  //   closeModalBtn.addEventListener('click', function() {
+  //     closeWelcomeModal();
+  //   });
+  // }
 
   // Cerrar modal al hacer clic en el overlay
-  if (modalOverlay) {
-    modalOverlay.addEventListener('click', function() {
-      closeWelcomeModal();
-    });
-  }
+  // if (modalOverlay) {
+  //   modalOverlay.addEventListener('click', function() {
+  //     closeWelcomeModal();
+  //   });
+  // }
 
   // Cerrar modal al hacer clic en la imagen (opcional)
   // Si quieres que la imagen sea un enlace, descomenta esto y ajusta el enlace en el HTML
-  if (modalImage) {
-    modalImage.addEventListener('click', function() {
-      // Aquí puedes redirigir a una sección específica
-      // window.location.href = '#ofertas';
-      closeWelcomeModal();
-    });
-  }
+//   if (modalImage) {
+//     modalImage.addEventListener('click', function() {
+//       // Aquí puedes redirigir a una sección específica
+//       // window.location.href = '#ofertas';
+//       closeWelcomeModal();
+//     });
+//   }
 
-  // Cerrar modal con tecla ESC
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape' && welcomeModal && welcomeModal.classList.contains('show')) {
-      closeWelcomeModal();
-    }
-  });
+//   // Cerrar modal con tecla ESC
+//   document.addEventListener('keydown', function(e) {
+//     if (e.key === 'Escape' && welcomeModal && welcomeModal.classList.contains('show')) {
+//       closeWelcomeModal();
+//     }
+//   });
 
-  // Función para cerrar el modal
-  function closeWelcomeModal() {
-    if (welcomeModal) {
-      welcomeModal.classList.remove('show');
-      document.body.style.overflow = 'auto';
+//   // Función para cerrar el modal
+//   function closeWelcomeModal() {
+//     if (welcomeModal) {
+//       welcomeModal.classList.remove('show');
+//       document.body.style.overflow = 'auto';
 
-      // Remover el modal del DOM después de la animación
-      setTimeout(function() {
-        welcomeModal.style.display = 'none';
-      }, 300);
-    }
-  }
-});
+//       // Remover el modal del DOM después de la animación
+//       setTimeout(function() {
+//         welcomeModal.style.display = 'none';
+//       }, 300);
+//     }
+//   }
+// });
