@@ -101,6 +101,11 @@ document.addEventListener('DOMContentLoaded', () => {
   if (statsSection) {
     observer.observe(statsSection);
   }
+
+  // Lazy loading imágenes galería
+  document.querySelectorAll('.gallery-grid img').forEach(function(img) {
+    img.setAttribute('loading', 'lazy');
+  });
 });
 // ===== MODALES DE ENTRENADORES =====
 let _modalTrigger = null; // guarda la card que abrió el modal
@@ -160,6 +165,45 @@ document.addEventListener('keydown', function(event) {
   }
 });
 
+
+// ===== NAV ACTIVO POR SECCIÓN =====
+(function() {
+  const sections = Array.from(document.querySelectorAll('section[id]'));
+  const navLinks = document.querySelectorAll('.navbar a.menu-link, .navbar a.menu-cta');
+
+  const tealSections = ['sobre-nosotros', 'equipo', 'programas', 'contacto'];
+  const navbar = document.querySelector('.navbar');
+
+  function updateActiveNav() {
+    const scrollY = window.scrollY + 120; // offset navbar fijo
+    let current = '';
+
+    sections.forEach(function(section) {
+      const sectionTop = section.getBoundingClientRect().top + window.scrollY;
+      if (sectionTop <= scrollY) {
+        current = section.id;
+      }
+    });
+
+    navLinks.forEach(function(link) {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === '#' + current) {
+        link.classList.add('active');
+      }
+    });
+
+    if (navbar) {
+      if (tealSections.includes(current)) {
+        navbar.classList.add('on-teal');
+      } else {
+        navbar.classList.remove('on-teal');
+      }
+    }
+  }
+
+  window.addEventListener('scroll', updateActiveNav, { passive: true });
+  updateActiveNav();
+})();
 
 // Agregar fondo al navbar al hacer scroll
 window.addEventListener('scroll', function() {
@@ -676,7 +720,7 @@ window.addEventListener('DOMContentLoaded', function() {
       welcomeModal.classList.add('show');
       document.body.style.overflow = 'hidden';
     }
-  }, 500);
+  }, 1500);
 
   // Cerrar modal al hacer clic en el botón X
   if (closeModalBtn) {

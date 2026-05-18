@@ -30,6 +30,16 @@ html {
   border-bottom: 1px solid rgba(255, 255, 255, 0.18);
 }
 
+.navbar.on-teal {
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(20px);
+}
+
+.navbar.on-teal a,
+.navbar.on-teal .btn-contacto {
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+}
+
 .logo {
   display: flex;
   align-items: center;
@@ -71,7 +81,12 @@ html {
   transition: color 0.3s;
 }
 
-.navbar a:hover {
+.navbar a:hover,
+.navbar a.active {
+  color: #0a8684;
+}
+
+.navbar a.menu-cta.active {
   color: #0a8684;
 }
 
@@ -1623,6 +1638,56 @@ html {
 
 .btn-whatsapp:hover svg {
   transform: scale(1.1) rotate(-5deg);
+}
+
+/* ===== TOOLTIP TRAININGPEAKS ===== */
+.tp-tooltip {
+  position: relative;
+  border-bottom: 1px dashed rgba(10, 134, 132, 0.7);
+  cursor: help;
+  white-space: nowrap;
+}
+
+.tp-tooltip::after {
+  content: attr(data-tip);
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #111;
+  color: #e0f2f1;
+  padding: 0.5rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  line-height: 1.5;
+  width: 220px;
+  white-space: normal;
+  text-align: center;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  z-index: 200;
+  border: 1px solid rgba(10, 134, 132, 0.35);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.tp-tooltip::before {
+  content: '';
+  position: absolute;
+  bottom: calc(100% + 2px);
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: rgba(10, 134, 132, 0.35);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  z-index: 200;
+}
+
+.tp-tooltip:hover::after,
+.tp-tooltip:hover::before {
+  opacity: 1;
 }
 
 /* ===== FORM VALIDATION STATES ===== */
