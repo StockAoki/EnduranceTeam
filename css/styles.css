@@ -81,13 +81,14 @@ html {
   transition: color 0.3s;
 }
 
-.navbar a:hover,
-.navbar a.active {
+.navbar a.menu-link:hover,
+.navbar a.menu-link.active {
   color: #0a8684;
 }
 
 .navbar a.menu-cta.active {
-  color: #0a8684;
+  background: #08706e;
+  color: #fff;
 }
 
 .btn-contacto {
