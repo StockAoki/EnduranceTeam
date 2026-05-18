@@ -102,34 +102,60 @@ document.addEventListener('DOMContentLoaded', () => {
     observer.observe(statsSection);
   }
 });
-// Funciones para abrir y cerrar modales
+// ===== MODALES DE ENTRENADORES =====
+let _modalTrigger = null; // guarda la card que abrió el modal
+
 function openModal(modalId) {
+  _modalTrigger = document.activeElement;
   const modal = document.getElementById(modalId);
   modal.classList.add('active');
-  document.body.style.overflow = 'hidden'; // Previene scroll del body
+  document.body.style.overflow = 'hidden';
+  // Mover foco al botón de cierre
+  const closeBtn = modal.querySelector('.modal-close');
+  if (closeBtn) closeBtn.focus();
 }
 
 function closeModal(modalId) {
   const modal = document.getElementById(modalId);
   modal.classList.remove('active');
-  document.body.style.overflow = 'auto'; // Restaura scroll del body
+  document.body.style.overflow = 'auto';
+  // Devolver foco a la card que abrió el modal
+  if (_modalTrigger) {
+    _modalTrigger.focus();
+    _modalTrigger = null;
+  }
 }
 
-// Cerrar modal al hacer clic fuera del contenido
+// Cerrar al hacer clic en el backdrop
 document.addEventListener('click', function(event) {
   if (event.target.classList.contains('trainer-modal')) {
-    event.target.classList.remove('active');
-    document.body.style.overflow = 'auto';
+    closeModal(event.target.id);
   }
 });
 
-// Cerrar modal con tecla ESC
+// ESC cierra el modal + trampa de foco con Tab
 document.addEventListener('keydown', function(event) {
+  const activeModal = document.querySelector('.trainer-modal.active');
+  if (!activeModal) return;
+
   if (event.key === 'Escape') {
-    const activeModal = document.querySelector('.trainer-modal.active');
-    if (activeModal) {
-      activeModal.classList.remove('active');
-      document.body.style.overflow = 'auto';
+    closeModal(activeModal.id);
+    return;
+  }
+
+  if (event.key === 'Tab') {
+    const focusable = Array.from(activeModal.querySelectorAll(
+      'button:not([disabled]), [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+    )).filter(el => el.offsetParent !== null); // solo elementos visibles
+
+    if (focusable.length === 0) return;
+    const first = focusable[0];
+    const last  = focusable[focusable.length - 1];
+
+    if (event.shiftKey) {
+      if (document.activeElement === first) { event.preventDefault(); last.focus(); }
+    } else {
+      if (document.activeElement === last)  { event.preventDefault(); first.focus(); }
     }
   }
 });
@@ -164,61 +190,83 @@ function switchTab(tabName) {
   }
 }
 
-    document.getElementById('enviar').addEventListener('click', function () {
-      const nombre = document.getElementById('nombre').value || '*[sin nombre]*';
-      const nivel = document.getElementById('nivel').value || '*[sin nivel]*';
-      const comentario = "Comentarios adicionales: " +document.getElementById('comentario').value || '';
+  // ===== FORMULARIO ATLETAS =====
+  document.getElementById('enviar').addEventListener('click', function (e) {
+    e.preventDefault();
 
-      // Mantengo los asteriscos alrededor para que WhatsApp muestre texto en negrita si lo desea.
-      const mensaje =
-        "Hola! Estoy interesado en iniciar en el Running.\n" +
-        "Mi nombre es *" + nombre + "*\n" +
-        "Mi nivel de experiencia es: *" + nivel + "*\n" +
-        comentario ;
+    const nombreEl = document.getElementById('nombre');
+    const nivelEl  = document.getElementById('nivel');
 
-       const url = "https://wa.me/" + 50672786445 + "?text=" + encodeURIComponent(mensaje);
- this.href = url;
-      window.open(url, '_blank', 'noopener');
-// 🔄 Limpiar los campos después de abrir WhatsApp
-      document.getElementById('nombre').value = "";
-      document.getElementById('nivel').value = "";
-      document.getElementById('comentario').value = "";
-    });
+    // Limpiar errores previos
+    [nombreEl, nivelEl].forEach(el => el.closest('.form-group').classList.remove('has-error'));
 
-      document.getElementById('enviarColaboracion').addEventListener('click', function (e) {
-      e.preventDefault();
+    let valid = true;
+    if (!nombreEl.value.trim()) { nombreEl.closest('.form-group').classList.add('has-error'); valid = false; }
+    if (!nivelEl.value)         { nivelEl.closest('.form-group').classList.add('has-error');  valid = false; }
+    if (!valid) return;
 
-      const telefono = "506TU_NUMERO_AQUI"; // ← Cambiar aquí
+    const nombre    = nombreEl.value.trim();
+    const nivel     = nivelEl.value;
+    const comentario = document.getElementById('comentario').value.trim();
 
-      const empresa = document.getElementById('empresa').value || '*[sin empresa]*';
-      const contacto = document.getElementById('contacto').value || '*[sin contacto]*';
-      const email = document.getElementById('email').value || '*[sin email]*';
-      const tel = document.getElementById('telefono').value || '*[sin teléfono]*';
-      const tipo = document.getElementById('tipo').value || '*[sin tipo]*';
-      const mensajeAdicional = document.getElementById('mensaje').value || '*[sin mensaje]*';
+    const mensaje =
+      "Hola! Estoy interesado en iniciar en el Running.\n" +
+      "Mi nombre es *" + nombre + "*\n" +
+      "Mi nivel de experiencia es: *" + nivel + "*" +
+      (comentario ? "\nComentarios adicionales: " + comentario : "");
 
-      const mensaje =
-        "Hola! Estoy interesado en una colaboración empresarial.\n" +
-        "Nombre de la Empresa: *" + empresa + "*\n" +
-        "Persona de Contacto: *" + contacto + "*\n" +
-        "Email Corporativo: *" + email + "*\n" +
-        "Teléfono: *" + tel + "*\n" +
-        "Tipo de Colaboración: *" + tipo + "*\n" +
-        "Mensaje adicional: *" + mensajeAdicional + "*";
+    const url = "https://wa.me/50672786445?text=" + encodeURIComponent(mensaje);
+    this.href = url;
+    window.open(url, '_blank', 'noopener');
 
-      const url = "https://wa.me/" + 50672786445 + "?text=" + encodeURIComponent(mensaje);
+    // Limpiar campos
+    nombreEl.value = '';
+    nivelEl.value  = '';
+    document.getElementById('comentario').value = '';
+  });
 
-      this.href = url;
-      window.open(url, '_blank', 'noopener');
+  // ===== FORMULARIO COLABORACIONES =====
+  document.getElementById('enviarColaboracion').addEventListener('click', function (e) {
+    e.preventDefault();
 
-      // Limpiar después de enviar
-      document.getElementById('empresa').value = "";
-      document.getElementById('contacto').value = "";
-      document.getElementById('email').value = "";
-      document.getElementById('telefono').value = "";
-      document.getElementById('tipo').value = "";
-      document.getElementById('mensaje').value = "";
-    });
+    const empresaEl   = document.getElementById('empresa');
+    const contactoEl  = document.getElementById('contacto-nombre');
+    const emailEl     = document.getElementById('email');
+    const telefonoEl  = document.getElementById('telefono');
+    const tipoEl      = document.getElementById('tipo');
+    const mensajeEl   = document.getElementById('mensaje');
+
+    // Limpiar errores previos
+    [empresaEl, contactoEl, emailEl, telefonoEl, tipoEl, mensajeEl]
+      .forEach(el => el.closest('.form-group').classList.remove('has-error'));
+
+    let valid = true;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!empresaEl.value.trim())              { empresaEl.closest('.form-group').classList.add('has-error');  valid = false; }
+    if (!contactoEl.value.trim())             { contactoEl.closest('.form-group').classList.add('has-error'); valid = false; }
+    if (!emailRegex.test(emailEl.value.trim())){ emailEl.closest('.form-group').classList.add('has-error');   valid = false; }
+    if (!telefonoEl.value.trim())             { telefonoEl.closest('.form-group').classList.add('has-error'); valid = false; }
+    if (!tipoEl.value)                        { tipoEl.closest('.form-group').classList.add('has-error');     valid = false; }
+    if (!mensajeEl.value.trim())              { mensajeEl.closest('.form-group').classList.add('has-error');  valid = false; }
+    if (!valid) return;
+
+    const mensaje =
+      "Hola! Estoy interesado en una colaboración empresarial.\n" +
+      "Nombre de la Empresa: *" + empresaEl.value.trim() + "*\n" +
+      "Persona de Contacto: *"  + contactoEl.value.trim() + "*\n" +
+      "Email Corporativo: *"    + emailEl.value.trim() + "*\n" +
+      "Teléfono: *"             + telefonoEl.value.trim() + "*\n" +
+      "Tipo de Colaboración: *" + tipoEl.value + "*\n" +
+      "Mensaje adicional: *"    + mensajeEl.value.trim() + "*";
+
+    const url = "https://wa.me/50672786445?text=" + encodeURIComponent(mensaje);
+    this.href = url;
+    window.open(url, '_blank', 'noopener');
+
+    // Limpiar campos
+    [empresaEl, contactoEl, emailEl, telefonoEl, mensajeEl].forEach(el => el.value = '');
+    tipoEl.value = '';
+  });
 
     // Inicializar GLightbox
 document.addEventListener('DOMContentLoaded', function() {

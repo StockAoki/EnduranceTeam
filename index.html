@@ -100,7 +100,7 @@
     <div class="fade-up">
       <h1>Disfrutemos<br><span>el proceso</span></h1>
       <p>Únete a nuestra comunidad de corredores.</p>
-      <a href="#stats" class="btn-primary">¡Empecemos a correr!</a>
+      <a href="#precios" class="btn-primary">¡Empecemos a correr!</a>
     </div>
   </div>
 </section>
@@ -221,8 +221,8 @@
         <div class="benefit-number">2</div>
         <h3 class="benefit-title">Fondos grupales</h3>
         <p class="benefit-text">
-          Correr regularmente con nosotros promueve mejor salud física y mental, 
-          ayudándote a reducir el estrés.
+          Participa en nuestros fondos grupales de fin de semana: la mejor forma de
+          aumentar el volumen de entrenamiento y compartir la experiencia con el equipo.
         </p>
       </div>
 
@@ -292,7 +292,13 @@
         
 
         <!-- Entrenador 1 -->
-        <div class="team-card" onclick="openModal('modal1')">
+        <div class="team-card"
+             role="button"
+             tabindex="0"
+             aria-label="Ver perfil de Carlos Ortega"
+             aria-haspopup="dialog"
+             onclick="openModal('modal1')"
+             onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openModal('modal1')}">
           <div class="team-image">
             <img src="img/SectionHero-Carlos.webp" alt="Carlos Ortega - Head Coach de running en Endurance Team Costa Rica">
             <div class="team-overlay">
@@ -306,7 +312,13 @@
         </div>
 
         <!-- Entrenador 2 -->
-        <div class="team-card" onclick="openModal('modal2')">
+        <div class="team-card"
+             role="button"
+             tabindex="0"
+             aria-label="Ver perfil de Brenda Corrales"
+             aria-haspopup="dialog"
+             onclick="openModal('modal2')"
+             onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openModal('modal2')}">
           <div class="team-image">
             <img src="img/SectionHero-Brenda.webp" alt="Brenda Corrales Coach de running en Endurance Team Costa Rica">
             <div class="team-overlay">
@@ -320,7 +332,13 @@
         </div>
 
         <!-- Entrenador 3 -->
-        <div class="team-card" onclick="openModal('modal3')">
+        <div class="team-card"
+             role="button"
+             tabindex="0"
+             aria-label="Ver perfil de Anderson Solano"
+             aria-haspopup="dialog"
+             onclick="openModal('modal3')"
+             onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openModal('modal3')}">
           <div class="team-image">
             <img src="img/SectionHero-Anderson.webp" alt="Anderson Solano Coach de running en Endurance Team Costa Rica">
             <div class="team-overlay">
@@ -355,14 +373,14 @@
 
 <!-- Modales de Entrenadores -->
 <!-- Modal 2 - Brenda Corrales -->
-<div id="modal2" class="trainer-modal">
+<div id="modal2" class="trainer-modal" role="dialog" aria-modal="true" aria-labelledby="modal2-title">
   <div class="modal-content">
-    <button class="modal-close" onclick="closeModal('modal2')">&times;</button>
+    <button class="modal-close" id="modal2-close" aria-label="Cerrar perfil de Brenda Corrales" onclick="closeModal('modal2')">&times;</button>
     
     <div class="modal-header">
       <img src="img/SectionHero-Brenda.webp" alt="Brenda Corrales Coach de running en Endurance Team Costa Rica" class="modal-photo">
       <div class="modal-info">
-        <h2>Brenda Corrales</h2>
+        <h2 id="modal2-title">Brenda Corrales</h2>
         <p class="modal-role">Coach</p>
         <div class="modal-experience">
           <span>🏃‍♀️ 3 años de experiencia</span>
@@ -419,8 +437,7 @@ como preparadora física, tengo como objetivo ayudar a las personas a mejorar su
         <!-- Sobre mí - SIEMPRE VISIBLE -->
         <div class="modal-section">
           <h3>Sobre mí</h3>
-          <p>Soy entrenadora personal certificada con más de 8 años de experiencia en el mundo del running. Mi pasión es ayudar a personas de todos los niveles a alcanzar sus metas, ya sea completar su primer 5K o mejorar su tiempo en maratón.</p>
-          <p>Creo firmemente en el entrenamiento personalizado y en la importancia de escuchar al cuerpo. Cada corredor es único y merece un plan adaptado a sus necesidades.</p>
+          <p>Mi pasión por el deporte me ha llevado a desarrollar mi carrera profesional como preparadora física. Tengo como objetivo ayudar a las personas a mejorar su rendimiento, enfoque y energía de una forma sostenible y con ello lograr personas más integrales.</p>
         </div>
 
         <!-- ACORDEÓN: Certificaciones -->
@@ -488,14 +505,14 @@ como preparadora física, tengo como objetivo ayudar a las personas a mejorar su
 
 
 <!-- Modal 1 - Carlos Ortega -->
-<div id="modal1" class="trainer-modal">
+<div id="modal1" class="trainer-modal" role="dialog" aria-modal="true" aria-labelledby="modal1-title">
   <div class="modal-content">
-    <button class="modal-close" onclick="closeModal('modal1')">&times;</button>
+    <button class="modal-close" id="modal1-close" aria-label="Cerrar perfil de Carlos Ortega" onclick="closeModal('modal1')">&times;</button>
     
     <div class="modal-header">
       <img src="img/SectionHero-Carlos.webp" alt="Carlos Ortega Coach de running en Endurance Team Costa Rica" class="modal-photo">
       <div class="modal-info">
-        <h2>Carlos Ortega</h2>
+        <h2 id="modal1-title">Carlos Ortega</h2>
         <p class="modal-role">Head Coach</p>
         <div class="modal-experience">
           <span>🏆 2 maratones completados</span>
@@ -620,14 +637,14 @@ como preparadora física, tengo como objetivo ayudar a las personas a mejorar su
 </div>
 
 <!-- Modal 3 - Anderson Solano -->
-<div id="modal3" class="trainer-modal">
+<div id="modal3" class="trainer-modal" role="dialog" aria-modal="true" aria-labelledby="modal3-title">
   <div class="modal-content">
-    <button class="modal-close" onclick="closeModal('modal3')">&times;</button>
+    <button class="modal-close" id="modal3-close" aria-label="Cerrar perfil de Anderson Solano" onclick="closeModal('modal3')">&times;</button>
     
     <div class="modal-header">
       <img src="img/SectionHero-Anderson.webp" alt="Anderson Solano Coach de running en Endurance Team Costa Rica" class="modal-photo">
       <div class="modal-info">
-        <h2>Anderson Solano</h2>
+        <h2 id="modal3-title">Anderson Solano</h2>
         <p class="modal-role">Coach</p>
         <div class="modal-experience">
           <span>🏃‍♀️ 3 años de experiencia</span>
@@ -749,12 +766,8 @@ combinando ciencia y disciplina.</p>
           <div class="collapsible-content">
             <div class="collapsible-body">
               <div class="testimonial">
-                <p>"Mi hijo espera con ansias cada entrenamiento. Ana ha logrado que ame correr de una manera divertida y saludable."</p>
-                <span>- Carmen L. (Mamá de Mateo, 8 años)</span>
-              </div>
-              <div class="testimonial">
-                <p>"Excelente con los niños. Sabe cómo motivarlos y hacer que den su mejor esfuerzo mientras se divierten."</p>
-                <span>- Jorge P. (Papá de Sofía, 10 años)</span>
+                <p>"Los últimos 10km fueron muy desafiantes, @coach_anderson.solano los corrió conmigo y no puedo estar más agradecida porque ese retorno me tiraba abajo. Después del 38 hacía retorno y fue más llevadero, ya solo quedaban 4 km. Los cerré a 4:40 min/km entre lágrimas. No podía creer que lo había logrado."</p>
+                <span>- Dani</span>
               </div>
             </div>
           </div>
@@ -1345,8 +1358,8 @@ combinando ciencia y disciplina.</p>
           <span class="price">₡35.000</span>
           <span class="period">/mes</span>
         </div>
-        <a href="https://wa.me/50672786445?text=Hola!+Estoy+interesado+en+iniciar+el+plan+gold" 
-         class="btn-planes">Empezar</a>
+        <a href="https://wa.me/50672786445?text=Hola!+Estoy+interesado+en+iniciar+el+plan+gold"
+         class="btn-new btn-plan-popular">Empezar</a>
         <div class="plan-features">
           <p class="features-title">Incluye:</p>
           <ul>
@@ -1825,21 +1838,22 @@ combinando ciencia y disciplina.</p>
           <h3 class="form-title">Únete como Atleta</h3>
           <p class="form-description">¿Listo para empezar? Contáctanos por WhatsApp y comienza tu entrenamiento hoy.</p>
           
-          <form class="contact-form">
+          <form class="contact-form" id="form-athletes">
             <div class="form-group">
               <label>Nombre Completo</label>
-              <input id="nombre" type="text" placeholder="Tu nombre" required>
+              <input id="nombre" type="text" placeholder="Tu nombre">
+              <span class="form-error-msg">Por favor ingresa tu nombre.</span>
             </div>
-
 
             <div class="form-group">
               <label>Nivel de experiencia</label>
-              <select required id="nivel">
+              <select id="nivel">
                 <option value="">Selecciona tu nivel</option>
                 <option value="principiante">Principiante</option>
                 <option value="intermedio">Intermedio</option>
                 <option value="avanzado">Avanzado</option>
               </select>
+              <span class="form-error-msg">Por favor selecciona tu nivel.</span>
             </div>
 
             <div class="form-group">
@@ -1863,43 +1877,49 @@ combinando ciencia y disciplina.</p>
         <div id="business-form" class="form-content">
           <h3 class="form-title">Colaboraciones Empresariales</h3>
           <p class="form-description">¿Interesado en patrocinar, colaborar o crear eventos corporativos? Hablemos.</p>
-          
-          <form class="contact-form">
+
+          <form class="contact-form" id="form-business">
             <div class="form-group">
               <label>Nombre de la Empresa</label>
-              <input id="empresa" type="text" placeholder="Nombre de tu empresa" required>
+              <input id="empresa" type="text" placeholder="Nombre de tu empresa">
+              <span class="form-error-msg">Por favor ingresa el nombre de la empresa.</span>
             </div>
 
             <div class="form-group">
               <label>Persona de Contacto</label>
-              <input id="contacto" type="text" placeholder="Tu nombre completo" required>
+              <input id="contacto-nombre" type="text" placeholder="Tu nombre completo">
+              <span class="form-error-msg">Por favor ingresa tu nombre.</span>
             </div>
 
             <div class="form-row">
               <div class="form-group">
                 <label>Email Corporativo</label>
-                <input id="email"  type="email" placeholder="contacto@empresa.com" required>
+                <input id="email" type="email" placeholder="contacto@empresa.com">
+                <span class="form-error-msg">Por favor ingresa un email válido.</span>
               </div>
               <div class="form-group">
                 <label>Teléfono</label>
-                <input id="telefono" type="tel" placeholder="+506 1234 5678" required>
+                <input id="telefono" type="tel" placeholder="+506 1234 5678">
+                <span class="form-error-msg">Por favor ingresa tu teléfono.</span>
               </div>
             </div>
 
             <div class="form-group">
               <label>Tipo de Colaboración</label>
-              <select id="tipo" required>
+              <select id="tipo">
                 <option value="">Selecciona una opción</option>
                 <option value="patrocinio">Patrocinio</option>
                 <option value="eventos">Eventos Corporativos</option>
                 <option value="alianza">Alianza Estratégica</option>
                 <option value="otro">Otro</option>
               </select>
+              <span class="form-error-msg">Por favor selecciona un tipo de colaboración.</span>
             </div>
 
             <div class="form-group">
               <label>Mensaje</label>
-              <textarea id="mensaje" rows="4" placeholder="Cuéntanos sobre tu propuesta..." required></textarea>
+              <textarea id="mensaje" rows="4" placeholder="Cuéntanos sobre tu propuesta..."></textarea>
+              <span class="form-error-msg">Por favor ingresa tu mensaje.</span>
             </div>
 
             <a id="enviarColaboracion" href="" target="_blank" class="btn-whatsapp">
