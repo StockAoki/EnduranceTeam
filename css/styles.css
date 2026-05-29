@@ -214,6 +214,7 @@ html {
 }
 
 .stat-number {
+  display: block;
   font-size: 3rem;
   font-weight: 800;
   color: #0a8684;

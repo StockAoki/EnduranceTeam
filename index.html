@@ -6,7 +6,7 @@
   <link rel="stylesheet" href="css/styles.css">
   <!-- GLightbox CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
-  <title>Endurance Team CR - Entrenamiento Running y Triatlón en Costa Rica</title>
+  <title>Endurance Team CR | Running y Triatlón, Cartago Costa Rica</title>
   
     <!-- Canonical URL -->
     <link rel="canonical" href="https://enduranceteamcr.com/">
@@ -42,13 +42,38 @@
 
   <!-- WhatsApp específico -->
   <meta property="og:image:alt" content="Entrenamiento grupal Endurance Team Costa Rica">
+
+  <!-- Schema Markup: LocalBusiness -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SportsOrganization",
+    "name": "Endurance Team CR",
+    "description": "Club de entrenamiento de running y triatlón en Cartago, Costa Rica. Programas grupales y personalizados para todos los niveles.",
+    "url": "https://enduranceteamcr.com",
+    "telephone": "+50672786445",
+    "email": "enduranceprogram@outlook.es",
+    "image": "https://enduranceteamcr.com/img/gallery/Entreno1.webp",
+    "priceRange": "₡17.000 - ₡45.000",
+    "areaServed": {
+      "@type": "State",
+      "name": "Cartago",
+      "addressCountry": "CR"
+    },
+    "sameAs": [
+      "https://www.instagram.com/enduranceteamcr/",
+      "https://www.facebook.com/EnduranceTeamCR"
+    ],
+    "sport": ["Running", "Triatlón", "Ciclismo", "Natación"]
+  }
+  </script>
 </head>
 <body>
   <!-- NAV -->
 <!-- NAV -->
 <header class="navbar">
   <div class="logo">
-    <a href="index.html"><img src="img/logo2.png" alt="Logo Running Club"></a>
+    <a href="index.html"><img src="img/logo2.png" alt="Endurance Team CR - Club de running y triatlón en Costa Rica"></a>
   </div>
   
   <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú">
@@ -87,7 +112,7 @@
     <div class="welcome-modal-body">
 
       <a href="https://wa.me/50672786445?text=Hola!+Estoy+interesado+en+información+del+plan+de+la+Media+Maraton+Cartago!" id="modal-cta-link">
-        <img src="img/banner.jpg" alt="Promoción Maraton Cartago" class="welcome-modal-image">
+        <img src="img/banner.webp" alt="Promoción Maraton Cartago" class="welcome-modal-image">
       </a>
     </div>
   </div>
@@ -98,9 +123,9 @@
   <div class="overlay"></div>
   <div class="hero-content">
     <div class="fade-up">
-      <h1>Disfrutemos<br><span>el proceso</span></h1>
-      <p>Únete a nuestra comunidad de corredores.</p>
-      <a href="#precios" class="btn-primary">¡Empecemos a correr!</a>
+      <h1>Entrenamiento Running y Triatlón<br><span>en Cartago, Costa Rica</span></h1>
+      <p>Disfrutemos el proceso · Únete a nuestra comunidad de corredores.</p>
+      <a href="#sobre-nosotros" class="btn-primary">¡Empecemos a correr!</a>
     </div>
   </div>
 </section>
@@ -108,15 +133,15 @@
 <section id="stats" class="stats-section">
   <div class="stats-container">
     <div class="stat-item">
-      <h2 class="stat-number" data-target="30">0</h2>
+      <span class="stat-number" data-target="30">0</span>
       <p class="stat-label">Corredores activos</p>
     </div>
     <div class="stat-item">
-      <h2 class="stat-number" data-target="9">0</h2>
+      <span class="stat-number" data-target="9">0</span>
       <p class="stat-label">Años de experiencia</p>
     </div>
     <div class="stat-item">
-      <h2 class="stat-number" data-target="20">0</h2>
+      <span class="stat-number" data-target="20">0</span>
       <p class="stat-label">Carreras asistidas</p>
     </div>
   </div>
@@ -140,7 +165,7 @@
     <div class="about-content">
       <!-- Imagen -->
       <div class="about-image">
-        <img src="img/runnerC.webp" alt="Corredor en acción">
+        <img src="img/runnerC.webp" alt="Corredor en acción" loading="lazy">
       </div>
 
       <!-- Cards de Visión y Misión -->
@@ -300,7 +325,7 @@
              onclick="openModal('modal1')"
              onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openModal('modal1')}">
           <div class="team-image">
-            <img src="img/SectionHero-Carlos.webp" alt="Carlos Ortega - Head Coach de running en Endurance Team Costa Rica">
+            <img src="img/SectionHero-Carlos.webp" alt="Carlos Ortega - Head Coach de running en Endurance Team Costa Rica" loading="lazy">
             <div class="team-overlay">
               <h3 class="team-name">Carlos Ortega</h3>
               <p class="team-role">Head Coach</p>
@@ -320,7 +345,7 @@
              onclick="openModal('modal2')"
              onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openModal('modal2')}">
           <div class="team-image">
-            <img src="img/SectionHero-Brenda.webp" alt="Brenda Corrales Coach de running en Endurance Team Costa Rica">
+            <img src="img/SectionHero-Brenda.webp" alt="Brenda Corrales Coach de running en Endurance Team Costa Rica" loading="lazy">
             <div class="team-overlay">
               <h3 class="team-name">Brenda Corrales</h3>
               <p class="team-role">Coach</p>
@@ -340,7 +365,7 @@
              onclick="openModal('modal3')"
              onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openModal('modal3')}">
           <div class="team-image">
-            <img src="img/SectionHero-Anderson.webp" alt="Anderson Solano Coach de running en Endurance Team Costa Rica">
+            <img src="img/SectionHero-Anderson.webp" alt="Anderson Solano Coach de running en Endurance Team Costa Rica" loading="lazy">
             <div class="team-overlay">
               <h3 class="team-name">Anderson Solano</h3>
               <p class="team-role">Coach</p>
@@ -819,7 +844,7 @@ combinando ciencia y disciplina.</p>
    class="gallery-item glightbox carreras"
    data-gallery="gallery-gmc"
    data-glightbox="title:Felicidades a todos nuestros atletas!; description:Gran Maratón Cartago Abril 2026">
-  <img src="img/GMC1.webp" alt="Gran Maratón Cartago 2026">
+  <img src="img/GMC1.webp" alt="Atletas Endurance Team CR en la Gran Maratón Cartago 2026" loading="lazy">
   <div class="gallery-overlay">
     <div class="gallery-icon">
       <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -851,7 +876,7 @@ combinando ciencia y disciplina.</p>
    class="gallery-item glightbox entrenamientos" 
    data-gallery="gallery1"
    data-glightbox="title:¡Conoce nuestras charlas de iniciación en running!; description: Charla iniciación en running">
-  <img src="img/gallery/CaratulaCharla.jpg" alt="Gran Maratón Costa Rica 2025">
+  <img src="img/gallery/CaratulaCharla.webp" alt="Charla de iniciación en running con Endurance Team CR" loading="lazy">
   <div class="gallery-overlay">
     <div class="gallery-icon">
       <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -873,7 +898,7 @@ combinando ciencia y disciplina.</p>
    class="gallery-item glightbox entrenamientos" 
    data-gallery="gallery1"
    data-glightbox="title:¡Inicia a entrenar hoy con nostros!; description: Maratón Cartago 2026">
-  <img src="img/gallery/CaratulaMC.jpg" alt="Gran Maratón Costa Rica 2025">
+  <img src="img/gallery/CaratulaMC.webp" alt="Media Maratón Cartago 2026 - Endurance Team CR" loading="lazy">
   <div class="gallery-overlay">
     <div class="gallery-icon">
       <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -895,7 +920,7 @@ combinando ciencia y disciplina.</p>
    class="gallery-item glightbox carreras" 
    data-gallery="gallery1"
    data-glightbox="title:Felicidades a todos nuestros atletas!; description:Gran Maratón Costa Rica 2025">
-  <img src="img/gallery/GMRC.webp" alt="Gran Maratón Costa Rica 2025">
+  <img src="img/gallery/GMRC.webp" alt="Equipo Endurance Team CR en la Gran Maratón Costa Rica 2025" loading="lazy">
   <div class="gallery-overlay">
     <div class="gallery-icon">
       <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -916,7 +941,7 @@ combinando ciencia y disciplina.</p>
    class="gallery-item glightbox entrenamientos" 
    data-gallery="gallery1"
    data-glightbox="title:Basílica Los Ángeles - Paraíso; description:Sesión 12km inicio de preparación">
-  <img src="img/gallery/Entreno1.webp" alt="Entrenamiento grupal">
+  <img src="img/gallery/Entreno1.webp" alt="Entrenamiento grupal de running 12km en Basílica Los Ángeles, Paraíso - Endurance Team CR" loading="lazy">
   <div class="gallery-overlay">
     <div class="gallery-icon">
       <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -934,11 +959,11 @@ combinando ciencia y disciplina.</p>
 </a>
 
       <!-- Item 3 - Carrera -->
-      <a href="img/gallery/Carrera1.jpeg" 
+      <a href="img/gallery/Carrera1.webp" 
          class="gallery-item glightbox carreras" 
          data-gallery="gallery1"
          data-glightbox="title: Crono Endurance; description: II Edición de Crono Endurance">
-        <img src="img/gallery/Carrera1.jpeg" alt="Maratón">
+        <img src="img/gallery/Carrera1.webp" alt="II Edición Crono Endurance en Cartago, Costa Rica" loading="lazy">
         <div class="gallery-overlay">
           <div class="gallery-icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -960,7 +985,7 @@ combinando ciencia y disciplina.</p>
          class="gallery-item glightbox entrenamientos video-item" 
          data-gallery="gallery1"
          data-glightbox="title: Entrenamiento de Ascensos y Descensos; description: ; type: video">
-        <img src="img/gallery/EntrenamientoVideoCaratula.png" alt="Video entrenamiento">
+        <img src="img/gallery/EntrenamientoVideoCaratula.webp" alt="Video: Entrenamiento de ascensos y descensos Z2-Z3 - Endurance Team CR" loading="lazy">
         <div class="gallery-overlay">
           <div class="gallery-icon video-icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="currentColor">
@@ -979,7 +1004,7 @@ combinando ciencia y disciplina.</p>
          class="gallery-item glightbox logros" 
          data-gallery="gallery1"
          data-glightbox="title: Tercer lugar carrera Credix para nuestra atleta!; description: ¡Felicidades Dani!">
-        <img src="img/gallery/logro2.webp" alt="Tercer lugar carrera Credix para nuestra atleta">
+        <img src="img/gallery/logro2.webp" alt="Tercer lugar carrera Credix para nuestra atleta - Endurance Team CR" loading="lazy">
         <div class="gallery-overlay">
           <div class="gallery-icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1001,7 +1026,7 @@ combinando ciencia y disciplina.</p>
          class="gallery-item glightbox entrenamientos" 
          data-gallery="gallery1"
          data-glightbox="title: Entrenamiento de 16km para la Gran Maratón de Costa Rica; description: 5AM con energía total">
-        <img src="img/gallery/Entreno2.webp" alt="Entrenamiento matutino">
+        <img src="img/gallery/Entreno2.webp" alt="Entrenamiento grupal de running 16km a las 5AM - Endurance Team CR" loading="lazy">
         <div class="gallery-overlay">
           <div class="gallery-icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1023,7 +1048,7 @@ combinando ciencia y disciplina.</p>
          class="gallery-item glightbox carreras" 
          data-gallery="gallery1"
          data-glightbox="title:Reconocimiento de ruta de Candelaria Internacional; description: Gran participación del equipo">
-        <img src="img/gallery/Carrera2.webp" alt="10K Cartago">
+        <img src="img/gallery/Carrera2.webp" alt="Reconocimiento de ruta Candelaria Internacional - Endurance Team CR" loading="lazy">
         <div class="gallery-overlay">
           <div class="gallery-icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1045,7 +1070,7 @@ combinando ciencia y disciplina.</p>
          class="gallery-item glightbox entrenamientos" 
          data-gallery="gallery1"
          data-glightbox="title: Taller de técnica de running para @thunderboxcr; description: ">
-        <img src="img/gallery/TallerVideoCaratula.webp" alt="Técnica de carrera">
+        <img src="img/gallery/TallerVideoCaratula.webp" alt="Taller de técnica de running para atletas en Cartago - Endurance Team CR" loading="lazy">
         <div class="gallery-overlay">
           <div class="gallery-icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1067,7 +1092,7 @@ combinando ciencia y disciplina.</p>
          class="gallery-item glightbox carreras" 
          data-gallery="gallery1"
          data-glightbox="title: Primer Medio Maratón; description: ¡Meta cumplida!">
-        <img src="img/gallery/MediaMaratonCaratula.webp" alt="Medio maratón">
+        <img src="img/gallery/MediaMaratonCaratula.webp" alt="Primer medio maratón completado - Maratón Cartago 2025 - Endurance Team CR" loading="lazy">
         <div class="gallery-overlay">
           <div class="gallery-icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1089,7 +1114,7 @@ combinando ciencia y disciplina.</p>
          class="gallery-item glightbox logros" 
          data-gallery="gallery1"
          data-glightbox="title: Carrera Coronado Trail 2025 Primer Lugar; description:¡Felicidades Fabian!">
-        <img src="img/gallery/Logro1.webp" alt="Grupo entrenando">
+        <img src="img/gallery/Logro1.webp" alt="Primer lugar Carrera Coronado Trail 2025 - Fabián con Endurance Team CR" loading="lazy">
         <div class="gallery-overlay">
           <div class="gallery-icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1111,7 +1136,7 @@ combinando ciencia y disciplina.</p>
          class="gallery-item glightbox carreras logros" 
          data-gallery="gallery1"
          data-glightbox="title: II Triatlon de nuestra atleta Dani!; description: ¡Felicidades Dani!">
-        <img src="img/gallery/triatlonCaratulaVideo.webp" alt="Trail run">
+        <img src="img/gallery/triatlonCaratulaVideo.webp" alt="Serie Triatlón 2025 - Atleta Dani con Endurance Team CR" loading="lazy">
         <div class="gallery-overlay">
           <div class="gallery-icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1133,7 +1158,7 @@ combinando ciencia y disciplina.</p>
          class="gallery-item glightbox entrenamientos" 
          data-gallery="gallery1"
          data-glightbox="title: Entrenamiento Hyrox 2025; description: ">
-        <img src="img/gallery/hyrox.webp" alt="Equipo completo">
+        <img src="img/gallery/hyrox.webp" alt="Entrenamiento Hyrox 2025 con coaches Endurance Team CR en Cartago" loading="lazy">
         <div class="gallery-overlay">
           <div class="gallery-icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1155,7 +1180,7 @@ combinando ciencia y disciplina.</p>
          class="gallery-item glightbox entrenamientos" 
          data-gallery="gallery1"
          data-glightbox="title: Calentamiento Previo a entrenamiento; description:">
-        <img src="img/gallery/calentamientoCaratulaVideo.png" alt="Calentamiento">
+        <img src="img/gallery/calentamientoCaratulaVideo.webp" alt="Calentamiento previo a entrenamiento grupal de running - Endurance Team CR" loading="lazy">
         <div class="gallery-overlay">
           <div class="gallery-icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1223,7 +1248,7 @@ combinando ciencia y disciplina.</p>
       <div class="pricing-card">
         <div class="plan-header">
           <h3 class="plan-name">Sesión de Cortesía</h3>
-          <p class="plan-description">Conoce nuestra metodología con nuestra semana de prueba.</p>
+          <p class="plan-description">Conoce de primera mano cómo entrenamos. Una sesión gratuita para que vivas la experiencia Endurance Team CR sin compromiso.</p>
         </div>
         <div class="plan-price">
           <span class="price">Gratis!</span>
@@ -1260,8 +1285,8 @@ combinando ciencia y disciplina.</p>
  <!-- Plan grupal -->
       <div class="pricing-card">
         <div class="plan-header">
-          <h3 class="plan-name"> Grupal</h3>
-          <p class="plan-description">Entrena con nuestros grupos.</p>
+          <h3 class="plan-name">Grupal</h3>
+          <p class="plan-description">Entrena martes y jueves con nuestros grupos de running en Cartago. Ideal para quienes buscan motivación y comunidad.</p>
         </div>
         <div class="plan-price">
           <span class="price">₡17.000</span>
@@ -1297,8 +1322,8 @@ combinando ciencia y disciplina.</p>
       <div class="pricing-card popular">
         <span class="popular-badge">Más Popular</span>
         <div class="plan-header">
-          <h3 class="plan-name">Estandar</h3>
-          <p class="plan-description">Nuestro plan más buscado por nuestros atletas.</p>
+          <h3 class="plan-name">Estándar</h3>
+          <p class="plan-description">El favorito de nuestros atletas. Combina entrenamientos grupales con tu plan de running personalizado en TrainingPeaks, desde 5km hasta maratón.</p>
         </div>
         <div class="plan-price">
           <span class="price">₡25.000</span>
@@ -1352,7 +1377,7 @@ combinando ciencia y disciplina.</p>
         <span class="premium-badge">⭐ PREMIUM</span>
         <div class="plan-header">
           <h3 class="plan-name">Gold</h3>
-          <p class="plan-description">Máxima capacidad con soporte especializado.</p>
+          <p class="plan-description">Todo lo del plan Estándar más rutinas de fortalecimiento para casa, gimnasio o box. El plan más completo para atletas que buscan el siguiente nivel.</p>
         </div>
         <div class="plan-price">
           <span class="price">₡35.000</span>
@@ -1415,7 +1440,7 @@ combinando ciencia y disciplina.</p>
       <div class="pricing-card">
         <div class="plan-header">
           <h3 class="plan-name">Dos deportes</h3>
-          <p class="plan-description">Ideal para personas que necesitan programas para 2 deportes.</p>
+          <p class="plan-description">Perfecta para duatletas o quienes combinan running con natación o ciclismo. Incluye planificación en TrainingPeaks y simulacros de transición.</p>
         </div>
         <div class="plan-price">
           <span class="price">₡25.000</span>
@@ -1459,7 +1484,7 @@ combinando ciencia y disciplina.</p>
         <span class="popular-badge">Más Popular</span>
         <div class="plan-header">
           <h3 class="plan-name">Tres deportes</h3>
-          <p class="plan-description">Programas para atletas que practican 3 deportes.</p>
+          <p class="plan-description">Diseñado para triatletas que entrenan natación, ciclismo y running. Con análisis de métricas y plan avanzado personalizado en TrainingPeaks.</p>
         </div>
         <div class="plan-price">
           <span class="price">₡35.000</span>
@@ -1503,7 +1528,7 @@ combinando ciencia y disciplina.</p>
         <span class="premium-badge">⭐ PREMIUM</span>
         <div class="plan-header">
           <h3 class="plan-name">Gold</h3>
-          <p class="plan-description">Máxima capacidad con soporte especializado.</p>
+          <p class="plan-description">El plan más completo para modalidades mixtas. Running, natación, ciclismo y fortalecimiento, todo integrado en TrainingPeaks.</p>
         </div>
         <div class="plan-price">
           <span class="price">₡45.000</span>
@@ -1652,11 +1677,11 @@ combinando ciencia y disciplina.</p>
       <!-- Programa 1: Iniciación -->
       <div class="program-card">
         <div class="program-image">
-          <img src="img/IniciacionRunning.jpg" alt="Iniciación en el running">
+          <img src="img/IniciacionRunning.webp" alt="Iniciación en el running">
         </div>
         <div class="program-content">
           <h3 class="program-title">Iniciación en el running</h3>
-          <p class="program-description">Enfocado en personas que quieren iniciar en el running.</p>
+          <p class="program-description">Aprende las bases del running desde cero. Diseñado para quienes nunca han corrido o quieren hacerlo de forma correcta y sin lesiones.</p>
           <a href="https://wa.me/50672786445?text=Hola!+Estoy+interesado+en+recibir+informacion+del+programa+de+iniciación+en+el+running" class="program-link">
             Recibir Información
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1673,7 +1698,7 @@ combinando ciencia y disciplina.</p>
         </div>
         <div class="program-content">
           <h3 class="program-title">Taller técnicas de carrera</h3>
-          <p class="program-description">Enfocado en detectar fallas y mejorar la técnica de carrera.</p>
+          <p class="program-description">Detecta errores en tu zancada y corrígelos con nuestros coaches certificados. Mejora tu eficiencia, reduce el riesgo de lesión y corre más rápido.</p>
           <a href="https://wa.me/50672786445?text=Hola!+Estoy+interesado+en+recibir+informacion+del+taller+de+tecnicas+de+carrera" class="program-link">
             Recibir Información
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1687,11 +1712,11 @@ combinando ciencia y disciplina.</p>
       <!-- Programa 3: Maratón -->
       <div class="program-card">
         <div class="program-image">
-          <img src="img/MediaMaratonMaraton.jpg" alt="Programa de Maratón">
+          <img src="img/MediaMaratonMaraton.webp" alt="Programa de Maratón">
         </div>
         <div class="program-content">
           <h3 class="program-title">Programa media maratón y maratón</h3>
-          <p class="program-description">Especializado para alcanzar tu objetivo de correr media maratón o maratón.</p>
+          <p class="program-description">Prepárate con periodización profesional para cruzar la línea de 21km o 42km. Incluye seguimiento en TrainingPeaks y control de carga semanal.</p>
           <a href="https://wa.me/50672786445?text=Hola!+Estoy+interesado+en+recibir+informacion+del+programa+de+media+maraton" class="program-link">
             Recibir Información
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1704,11 +1729,11 @@ combinando ciencia y disciplina.</p>
       <!-- Programa 4: Triatlon -->
       <div class="program-card">
         <div class="program-image">
-          <img src="img/Triatlon.JPG" alt="Programa de Triatlon">
+          <img src="img/Triatlon.webp" alt="Programa de Triatlon">
         </div>
         <div class="program-content">
-          <h3 class="program-title">Programa  Triatlón</h3>
-          <p class="program-description">Especializado para alcanzar tu objetivo de Triatlón.</p>
+          <h3 class="program-title">Programa Triatlón</h3>
+          <p class="program-description">Programa integral de natación, ciclismo y running para completar tu primer triatlón o mejorar tu tiempo con periodización profesional.</p>
           <a href="https://wa.me/50672786445?text=Hola!+Estoy+interesado+en+recibir+informacion+del+programa+de+Triatlon" class="program-link">
             Recibir Información
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1721,11 +1746,11 @@ combinando ciencia y disciplina.</p>
       <!-- Programa 4: Triatlon -->
       <div class="program-card">
         <div class="program-image">
-          <img src="img/banner.jpg" alt="Pace Mastery">
+          <img src="img/banner.webp" alt="Pace Mastery">
         </div>
         <div class="program-content">
           <h3 class="program-title">Pace Mastery</h3>
-          <p class="program-description">¿Querés enfocarte en mejorar tu ritmo y tiempos? este es el plan para vos.</p>
+          <p class="program-description">Optimizá tus tiempos de 5K a maratón con metodología basada en zonas de ritmo y análisis de rendimiento. El programa para correr más rápido.</p>
           <a href="https://wa.me/50672786445?text=Hola!+Estoy+interesado+en+recibir+informacion+del+programa+de+Pace+Mastery" class="program-link">
             Recibir Información
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1805,7 +1830,7 @@ combinando ciencia y disciplina.</p>
             </div>
             <div>
               <p class="detail-label">Email</p>
-              <a href="mailto:hola@enduranceteam.com" class="detail-value">enduranceprogram@outlook.es</a>
+              <a href="mailto:enduranceprogram@outlook.es" class="detail-value">enduranceprogram@outlook.es</a>
             </div>
           </div>
           
@@ -1943,7 +1968,7 @@ combinando ciencia y disciplina.</p>
       <!-- Columna 1: Logo y descripción -->
       <div class="footer-column">
         <div class="footer-logo">
-          <a href="#inicio"><img src="img/logo2.png" alt="Endurance Team logo"></a>
+          <a href="#inicio"><img src="img/logo2.png" alt="Endurance Team CR - Club de running y triatlón en Costa Rica"></a>
         </div>
         <p class="footer-description">
           Transformamos vidas a través del running. Únete a nuestra comunidad y alcanza tus metas.
@@ -2006,8 +2031,12 @@ combinando ciencia y disciplina.</p>
 
     <!-- Copyright -->
     <div class="footer-bottom">
-      <p>&copy; 2025 Endurance Team. Todos los derechos reservados.</p>
-      <p>¿Interesado en una página web?: <a style="text-decoration: none; color: #0a8684;" href="https://stockaoki.github.io/Portafolio/" target="_blank" rel="noopener">Sergio Ramírez Leiton</a></p>
+      <p>&copy; 2026 Endurance Team CR. Todos los derechos reservados.</p>
+      <p>
+        <a style="text-decoration: none; color: #0a8684;" href="privacidad.html">Política de Privacidad</a>
+        &nbsp;·&nbsp;
+        ¿Interesado en una página web?: <a style="text-decoration: none; color: #0a8684;" href="https://stockaoki.github.io/Portafolio/" target="_blank" rel="noopener">Sergio Ramírez Leiton</a>
+      </p>
     </div>
   </div>
 </footer>
