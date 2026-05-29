@@ -107,6 +107,22 @@ document.addEventListener('DOMContentLoaded', () => {
     img.setAttribute('loading', 'lazy');
   });
 });
+// ===== SCROLL REVEAL =====
+(function() {
+  const revealObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach(function(el) {
+    revealObserver.observe(el);
+  });
+})();
+
 // ===== MODALES DE ENTRENADORES =====
 let _modalTrigger = null; // guarda la card que abrió el modal
 
