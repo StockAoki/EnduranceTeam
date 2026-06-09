@@ -1864,6 +1864,26 @@ html {
   color: #0a8684;
 }
 
+.footer-dev-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.2rem 0.65rem;
+  border: 1px solid #2D9D8D;
+  border-radius: 999px;
+  color: #3DBDAA;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+.footer-dev-badge:hover {
+  background: #2D9D8D;
+  color: #fff;
+}
+
 /* ===== SECCIÓN DE GALERÍA ===== */
 .gallery-section {
   background: #1a1a1a;
