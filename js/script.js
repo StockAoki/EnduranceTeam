@@ -182,6 +182,45 @@ document.addEventListener('keydown', function(event) {
 });
 
 
+// ===== WHATSAPP: QR EN DESKTOP, APP DIRECTO EN MOBILE =====
+(function() {
+  const qrContainer = document.getElementById('whatsapp-qr-code');
+  const webLink = document.getElementById('whatsapp-web-link');
+
+  if (!qrContainer || !webLink || typeof QRCode === 'undefined') return;
+
+  function isMobile() {
+    return window.innerWidth <= 768;
+  }
+
+  function buildWebUrl(waUrl) {
+    const url = new URL(waUrl);
+    const phone = url.pathname.replace(/^\//, '');
+    const text = url.searchParams.get('text') || '';
+    return 'https://web.whatsapp.com/send?phone=' + phone + '&text=' + encodeURIComponent(text);
+  }
+
+  document.addEventListener('click', function(event) {
+    const link = event.target.closest('a[href*="wa.me"]');
+    if (!link) return;
+    if (isMobile()) return; // en móvil, comportamiento normal (abre la app)
+
+    event.preventDefault();
+
+    qrContainer.innerHTML = '';
+    new QRCode(qrContainer, {
+      text: link.href,
+      width: 180,
+      height: 180,
+      colorDark: '#0a1919',
+      colorLight: '#ffffff'
+    });
+
+    webLink.href = buildWebUrl(link.href);
+    openModal('whatsapp-qr-modal');
+  });
+})();
+
 // ===== NAV ACTIVO POR SECCIÓN =====
 (function() {
   const sections = Array.from(document.querySelectorAll('section[id]'));
@@ -364,23 +403,23 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-// ===== INDICADORES DE SCROLL PARA BENEFICIOS (MÓVIL) =====
+// ===== PAGINACIÓN PARA BENEFICIOS (MÓVIL) =====
 document.addEventListener('DOMContentLoaded', function() {
-  const benefitsScroll = document.getElementById('benefits-scroll');
-  const scrollIndicators = document.getElementById('scroll-indicators');
-  const scrollHint = document.getElementById('scroll-hint');
-  const dots = document.querySelectorAll('.scroll-dot');
+  const benefitsTrack = document.getElementById('benefits-track');
+  const benefitsPagination = document.getElementById('benefits-pagination');
+  const benefitsHint = document.getElementById('benefits-hint');
+  const dots = document.querySelectorAll('.benefits-pagination-dot');
 
-  if (!benefitsScroll || !scrollIndicators) return;
+  if (!benefitsTrack || !benefitsPagination) return;
 
   let hasScrolled = false;
 
   // Función para actualizar el dot activo
   function updateActiveDot() {
-    const scrollLeft = benefitsScroll.scrollLeft;
-    const cardWidth = benefitsScroll.querySelector('.benefit-card').offsetWidth;
+    const scrollLeft = benefitsTrack.scrollLeft;
+    const slideWidth = benefitsTrack.querySelector('.benefit-slide').offsetWidth;
     const gap = 19.2; // 1.2rem en px (aproximado)
-    const activeIndex = Math.round(scrollLeft / (cardWidth + gap));
+    const activeIndex = Math.round(scrollLeft / (slideWidth + gap));
 
     dots.forEach((dot, index) => {
       if (index === activeIndex) {
@@ -390,45 +429,43 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
 
-
-    // ✨ NUEVO: Actualizar cards
-  const cards = document.querySelectorAll('.benefit-card');
-  cards.forEach((card, index) => {
-    if (index === activeIndex) {
-      card.classList.add('active');
-    } else {
-      card.classList.remove('active');
-    }
-  });
+    const slides = document.querySelectorAll('.benefit-slide');
+    slides.forEach((slide, index) => {
+      if (index === activeIndex) {
+        slide.classList.add('active');
+      } else {
+        slide.classList.remove('active');
+      }
+    });
 
     // Ocultar hint después del primer scroll
     if (!hasScrolled && scrollLeft > 10) {
       hasScrolled = true;
-      if (scrollHint) {
-        scrollHint.classList.add('hidden');
+      if (benefitsHint) {
+        benefitsHint.classList.add('hidden');
       }
     }
 
     // Detectar si llegó al final para ocultar gradiente
-    const isAtEnd = scrollLeft + benefitsScroll.clientWidth >= benefitsScroll.scrollWidth - 10;
+    const isAtEnd = scrollLeft + benefitsTrack.clientWidth >= benefitsTrack.scrollWidth - 10;
     if (isAtEnd) {
-      benefitsScroll.classList.add('at-end');
+      benefitsTrack.classList.add('at-end');
     } else {
-      benefitsScroll.classList.remove('at-end');
+      benefitsTrack.classList.remove('at-end');
     }
   }
 
   // Escuchar scroll
-  benefitsScroll.addEventListener('scroll', updateActiveDot);
+  benefitsTrack.addEventListener('scroll', updateActiveDot);
 
   // Click en dots para navegar
   dots.forEach((dot, index) => {
     dot.addEventListener('click', function() {
-      const cardWidth = benefitsScroll.querySelector('.benefit-card').offsetWidth;
+      const slideWidth = benefitsTrack.querySelector('.benefit-slide').offsetWidth;
       const gap = 19.2; // 1.2rem en px
-      const scrollTo = index * (cardWidth + gap);
+      const scrollTo = index * (slideWidth + gap);
 
-      benefitsScroll.scrollTo({
+      benefitsTrack.scrollTo({
         left: scrollTo,
         behavior: 'smooth'
       });
@@ -437,7 +474,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Inicializar
   updateActiveDot();
-  document.querySelector('.benefit-card').classList.add('active');
+  document.querySelector('.benefit-slide').classList.add('active');
 });
 
 // ===== HORIZONTAL SCROLL CON DOTS PARA ENTRENADORES (MÓVIL) =====

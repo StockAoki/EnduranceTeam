@@ -467,15 +467,16 @@ html {
   line-height: 1.2;
 }
 
-.benefits-grid {
+.benefits-track {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
 }
 
-.benefit-card {
+.benefit-slide {
   background: linear-gradient(135deg, rgba(13, 59, 58, 0.8) 0%, rgba(10, 25, 25, 0.9) 100%);
   border: 1px solid rgba(10, 134, 132, 0.3);
+  border-top: 3px solid rgba(10, 134, 132, 0.3);
   border-radius: 15px;
   padding: 2.5rem;
   text-align: left;
@@ -483,13 +484,13 @@ html {
   transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
-.benefit-card:hover {
+.benefit-slide:hover {
   transform: translateY(-5px);
   border-color: rgba(10, 134, 132, 0.6);
   background: linear-gradient(135deg, rgba(22, 99, 97, 0.8) 0%, rgba(10, 25, 25, 0.9) 100%);
 }
 
-.benefit-icon {
+.benefit-slide-icon {
   width: 50px;
   height: 50px;
   background: rgba(10, 134, 132, 0.2);
@@ -501,25 +502,21 @@ html {
   transition: all 0.3s ease;
 }
 
-.benefit-icon:hover {
-  background: #0d7b7a;
-}
-
-.benefit-icon svg {
+.benefit-slide-icon svg {
   color: #0a8684;
   transition: color 0.3s ease;
 }
 
-.benefit-card:hover .benefit-icon {
+.benefit-slide:hover .benefit-slide-icon {
   background: #0a8684;
   transform: scale(1.1);
 }
 
-.benefit-card:hover .benefit-icon svg {
+.benefit-slide:hover .benefit-slide-icon svg {
   color: #fff;
 }
 
-.benefit-number {
+.benefit-slide-badge {
   position: absolute;
   top: 2rem;
   right: 2rem;
@@ -529,22 +526,14 @@ html {
   line-height: 1;
 }
 
-.benefit-title {
+.benefit-slide-title {
   font-size: 1.4rem;
   font-weight: 700;
   margin-bottom: 1rem;
   color: #fff;
 }
 
-.benefit-title::before {
-  content: attr(data-number);
-  color: #0a8684;
-  font-size: 1.4rem;
-  font-weight: 700;
-  margin-right: 0.5rem;
-}
-
-.benefit-text {
+.benefit-slide-text {
   font-size: 0.95rem;
   line-height: 1.7;
   color: #b0b0b0;
@@ -680,7 +669,7 @@ html {
   .pricing-scroll-hint,
   .pricing-scroll-indicators,
   .team-scroll-indicators,
-  .scroll-hint,
+  .benefits-hint,
   .team-scroll-hint,
   .footer-whatsapp-cta {
     display: none;
@@ -713,6 +702,57 @@ html {
   padding: 2rem;
 }
 
+.whatsapp-modal-content {
+  background: linear-gradient(135deg, #0d3b3a 0%, #0a1919 100%);
+  border: 1px solid rgba(10, 134, 132, 0.4);
+  border-radius: 20px;
+  max-width: 360px;
+  width: 100%;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  position: relative;
+  animation: slideUp 0.3s ease;
+}
+
+.whatsapp-modal-title {
+  font-size: 1.2rem;
+  font-weight: 60;
+  color: #fff;
+  margin-bottom: 1.5rem;
+  padding-right: 2.5rem;
+  text-align: left;
+}
+
+.whatsapp-qr-code {
+  display: inline-flex;
+  background: #fff;
+  padding: 1rem;
+  border-radius: 12px;
+  margin: 0 auto 1.2rem;
+}
+
+.whatsapp-modal-or {
+  color: #b0b0b0;
+  font-size: 0.85rem;
+  margin-bottom: 0.8rem;
+}
+
+.whatsapp-modal-webbtn {
+  display: inline-block;
+  background: #0a8684;
+  color: #fff;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: background 0.25s ease, transform 0.2s ease;
+}
+
+.whatsapp-modal-webbtn:hover {
+  background: #08706e;
+  transform: translateY(-2px);
+}
 
 .modal-content {
   background: #fff;
@@ -2320,7 +2360,7 @@ html {
     font-size: 2.2rem;
   }
 
-  .benefits-grid {
+  .benefits-track {
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
@@ -2865,12 +2905,12 @@ html {
     margin-bottom: 0.8rem;
   }
 
-  .benefits-grid-wrapper {
+  .benefits-track-wrapper {
     position: relative;
     margin: 0 -1.5rem;
   }
 
-  .benefits-grid {
+  .benefits-track {
     display: flex;
     flex-direction: row;
     overflow-x: auto;
@@ -2882,90 +2922,88 @@ html {
     scrollbar-width: none;
   }
 
-  .benefits-grid::-webkit-scrollbar {
+  .benefits-track::-webkit-scrollbar {
     display: none;
   }
 
-  .benefits-grid::after {
+  .benefits-track::after {
     content: '';
     position: absolute;
     top: 0;
     right: 0;
     width: 80px;
     height: 100%;
-    background: linear-gradient(to left, #1a1a1a 0%, transparent 100%);
+    /* background: linear-gradient(to left, #1a1a1a 0%, transparent 100%); */
     pointer-events: none;
     z-index: 1;
     transition: opacity 0.3s ease;
   }
 
-  .benefits-grid.at-end::after {
+  .benefits-track.at-end::after {
     opacity: 0;
   }
 
-  .benefit-card {
+  .benefit-slide {
     min-width: 280px;
     max-width: 280px;
     padding: 1.8rem;
     scroll-snap-align: center;
     flex-shrink: 0;
-    opacity: 0.6;  /* Opacidad reducida */
-    transform: scale(0.95);  /* Ligeramente más pequeña */
-    transition: all 0.3s ease;
+    opacity: 0.55;
+    border-top-color: rgba(10, 134, 132, 0.3);
+    transition: opacity 0.3s ease, border-color 0.3s ease, background 0.3s ease;
   }
-  .benefit-card.active {
-    opacity: 1;  /* Opacidad completa */
-    transform: scale(1);  /* Tamaño normal */
-    border-color: rgba(10, 134, 132, 0.8);  /* Borde más visible */
-    box-shadow: 0 3px 20px rgba(10, 134, 132, 0.5);  /* Sombra fuerte */
+  .benefit-slide.active {
+    opacity: 1;
+    border-color: rgba(10, 134, 132, 0.8);
+    border-top-color: #3DBDAA;
     background: linear-gradient(135deg, rgba(22, 99, 97, 0.9) 0%, rgba(10, 25, 25, 0.95) 100%);
   }
 
-  .benefit-card.active .benefit-icon {
-    background: #0a8684;  /* Icono destacado */
-    transform: scale(1.1);
+  .benefit-slide.active .benefit-slide-icon {
+    background: #0a8684;
   }
 
-  .benefit-card.active .benefit-icon svg {
+  .benefit-slide.active .benefit-slide-icon svg {
     color: #fff;
   }
 
-  .benefit-card:first-child {
+  .benefit-slide:first-child {
     margin-left: 0.5rem;
   }
 
-  .benefit-card:last-child {
+  .benefit-slide:last-child {
     margin-right: 0.5rem;
   }
 
-  .benefit-number {
+  .benefit-slide-badge {
     font-size: 3.5rem;
     top: 1.5rem;
     right: 1.5rem;
   }
 
-  .benefit-icon {
+  .benefit-slide-icon {
     width: 45px;
     height: 45px;
     margin-bottom: 1rem;
   }
 
-  .benefit-icon svg {
+  .benefit-slide-icon svg {
     width: 24px;
     height: 24px;
   }
 
-  .benefit-title {
+  .benefit-slide-title {
     font-size: 1.2rem;
     margin-bottom: 0.8rem;
   }
 
-  .benefit-text {
+  .benefit-slide-text {
     font-size: 0.9rem;
     line-height: 1.6;
   }
 
-  .scroll-indicators {
+  .benefits-pagination {
     display: flex;
     justify-content: center;
     gap: 0.5rem;
@@ -2973,7 +3011,7 @@ html {
     padding-bottom: 0.5rem;
   }
 
-  .scroll-dot {
+  .benefits-pagination-dot {
     width: 8px;
     height: 8px;
     border-radius: 50%;
@@ -2982,14 +3020,14 @@ html {
     cursor: pointer;
   }
 
-  .scroll-dot.active {
+  .benefits-pagination-dot.active {
     background: #0a8684;
     width: 24px;
     border-radius: 4px;
   }
 
-  .scroll-hint {
-    display: block; /* Forzar para probar */
+  .benefits-hint {
+    display: block;
     text-align: center;
     font-size: 0.85rem;
     color: rgba(255, 255, 255, 0.5);
@@ -2997,7 +3035,7 @@ html {
     animation: fadeInOut 2s ease-in-out infinite;
   }
 
-  .scroll-hint.hidden {
+  .benefits-hint.hidden {
     display: none;
   }
 
