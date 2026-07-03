@@ -819,3 +819,78 @@ window.addEventListener('DOMContentLoaded', function() {
     }
   }
 });
+
+// ===== GOOGLE ANALYTICS 4: TRACKING DE CLICKS EN LINKS =====
+(function() {
+  if (typeof gtag !== 'function') return;
+
+  // Hosts que se consideran contacto por WhatsApp (incluye el flujo de QR/WhatsApp Web en desktop)
+  var WHATSAPP_HOSTS = ['wa.me', 'web.whatsapp.com', 'api.whatsapp.com'];
+
+  // Mapeo de hosts externos conocidos a un nombre de destino legible
+  var EXTERNAL_DESTINOS = {
+    'instagram.com': 'instagram',
+    'www.instagram.com': 'instagram',
+    'facebook.com': 'facebook',
+    'www.facebook.com': 'facebook',
+    'strava.com': 'strava',
+    'www.strava.com': 'strava'
+  };
+
+  // Hosts con evento propio en vez de caer en el genérico click_externo
+  var ALTERNATIVO_STUDIO_HOSTS = ['alternativostudio.com', 'www.alternativostudio.com'];
+
+  // Recorre los ancestros del elemento para identificar la sección de la página (nav, hero, footer, modales, etc.)
+  function getLinkLocation(el) {
+    var node = el;
+    while (node && node.nodeType === 1 && node !== document.body) {
+      if (node.tagName === 'HEADER' && node.classList.contains('navbar')) return 'nav';
+      if (node.tagName === 'FOOTER') return 'footer';
+      if (node.classList.contains('trainer-modal')) return node.id || 'modal';
+      if (node.tagName === 'SECTION' && node.id) return node.id;
+      node = node.parentElement;
+    }
+    return 'otro';
+  }
+
+  document.addEventListener('click', function(event) {
+    var link = event.target.closest('a[href]');
+    if (!link) return;
+
+    var url;
+    try {
+      url = new URL(link.href, window.location.href);
+    } catch (e) {
+      return;
+    }
+
+    var linkLocation = getLinkLocation(link);
+
+    // Links de WhatsApp
+    if (WHATSAPP_HOSTS.indexOf(url.hostname) !== -1) {
+      var params = { link_location: linkLocation };
+      var productoEl = link.closest('[data-producto]');
+      var servicioEl = link.closest('[data-servicio]');
+      if (productoEl) params.producto = productoEl.dataset.producto;
+      if (servicioEl) params.servicio = servicioEl.dataset.servicio;
+      gtag('event', 'click_whatsapp', params);
+      return;
+    }
+
+    // Link al footer de Alternativo Studio (lead de desarrollo web, evento propio)
+    if (ALTERNATIVO_STUDIO_HOSTS.indexOf(url.hostname) !== -1) {
+      gtag('event', 'click_alternativo_studio', { link_location: linkLocation });
+      return;
+    }
+
+    // Otros links externos relevantes (redes sociales, Strava, etc.)
+    if ((url.protocol === 'http:' || url.protocol === 'https:') && url.hostname !== window.location.hostname) {
+      var destinoEl = link.closest('[data-destino]');
+      var destino = destinoEl ? destinoEl.dataset.destino : (EXTERNAL_DESTINOS[url.hostname] || url.hostname);
+      gtag('event', 'click_externo', {
+        link_location: linkLocation,
+        destino: destino
+      });
+    }
+  });
+})();

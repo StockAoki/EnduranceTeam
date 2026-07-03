@@ -83,6 +83,9 @@ Todos los cambios relevantes del proyecto se documentan aquí.
 - Meta tags duplicados eliminados
 - Etiqueta canonical agregada
 
+### github
+- Se debe trabajar en la rama de dev
+- Cuando pida commit se hace con push a dev solamente, a MAIN solo si lo pido.
 ---
 
 ## [1.0.0] — 2025-12-18
