@@ -20,7 +20,7 @@ html {
   align-items: center;
   padding: 1.5rem 4rem;
   z-index: 1000;
-  transition: background 0.3s ease, backdrop-filter 0.3s ease, box-shadow 0.3s ease;
+  transition: background 0.3s ease, backdrop-filter 0.3s ease, box-shadow 0.3s ease, top 0.3s ease;
 }
 
 .navbar.scrolled {
@@ -38,6 +38,50 @@ html {
 .navbar.on-teal a,
 .navbar.on-teal .btn-contacto {
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+/* ===== BARRA DE PROGRESO DE SCROLL ===== */
+.scroll-progress {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2.5px;
+  width: 0%;
+  background: linear-gradient(90deg, #0a8684, #5dd9c9);
+  transition: width 0.1s linear;
+}
+
+/* ===== BOTÓN VOLVER ARRIBA ===== */
+.back-to-top {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: #0a8684;
+  color: #fff;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 900;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s, background 0.2s ease;
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.back-to-top:hover {
+  background: #08706e;
 }
 
 .logo {
@@ -81,9 +125,35 @@ html {
   transition: color 0.3s;
 }
 
+.navbar a.menu-link {
+  position: relative;
+  padding-bottom: 4px;
+}
+
+.navbar a.menu-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background: #5dd9c9;
+  transition: width 0.25s ease;
+}
+
 .navbar a.menu-link:hover,
 .navbar a.menu-link.active {
   color: #0a8684;
+}
+
+.navbar.on-teal a.menu-link:hover,
+.navbar.on-teal a.menu-link.active {
+  color: #5dd9c9;
+}
+
+.navbar a.menu-link:hover::after,
+.navbar a.menu-link.active::after {
+  width: 100%;
 }
 
 .navbar a.menu-cta.active {
@@ -125,7 +195,7 @@ html {
 .hero {
   height: 100vh;
   height: 100dvh;
-  background: url('../img/Fondo.webp') no-repeat center center/cover;
+  background: url('../img/FondoWeb.webp') no-repeat center top/cover;
   position: relative;
   display: flex;
   align-items: flex-end;
@@ -138,7 +208,7 @@ html {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(0,0,0,0) 22%, rgba(5,15,15,0.78) 100%),
+    linear-gradient(180deg, rgba(5,15,15,0.5) 0%, rgba(5,15,15,0.15) 20%, rgba(0,0,0,0) 22%, rgba(5,15,15,0.78) 100%),
     linear-gradient(90deg, rgba(5,15,15,0.7) 0%, rgba(5,15,15,0.35) 42%, rgba(5,15,15,0) 68%);
 }
 
@@ -148,6 +218,157 @@ html {
   max-width: 760px;
   margin-left: 6vw;
   padding: 2rem 0;
+}
+
+/* OPCIÓN 1: logo montado sobre la foto */
+.hero-race-photo-promo {
+  position: absolute;
+  top: 110px;
+  right: 4vw;
+  z-index: 2;
+  display: block;
+  width: 280px;
+  text-decoration: none;
+  text-align: right;
+}
+
+.hero-race-photo-logo {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.5));
+}
+
+.hero-race-photo-date {
+  margin-top: 0.5rem;
+  font-family: 'Fraunces', serif;
+  font-size: 1.1rem;
+  color: #fdfaf3;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.hero-race-photo-link {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  color: #5dd9c9;
+  font-weight: 600;
+}
+
+/* OPCIÓN 2: logo en tarjeta junto al texto */
+.hero-race-card {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9rem;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  border-radius: 14px;
+  padding: 0.6rem 1.1rem;
+  margin-bottom: 1.3rem;
+  text-decoration: none;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.hero-race-card:hover {
+  background: rgba(0, 0, 0, 0.5);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.hero-race-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  box-shadow: 0 0 0 0 rgba(93, 217, 201, 0.45);
+  animation: heroRaceCardPulse 2.4s ease-out infinite;
+  pointer-events: none;
+}
+
+@keyframes heroRaceCardPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(93, 217, 201, 0.45);
+  }
+  70% {
+    box-shadow: 0 0 0 4px rgba(93, 217, 201, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(93, 217, 201, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-race-card::after {
+    animation: none;
+  }
+}
+
+.hero-race-card-logo {
+  width: 90px;
+  height: auto;
+  display: block;
+}
+
+.hero-race-card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.hero-race-card-date {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #fdfaf3;
+}
+
+.hero-race-card-link {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #5dd9c9;
+}
+
+/* OPCIÓN 3: sticker flotante en la esquina */
+.hero-race-sticker {
+  position: absolute;
+  top: 110px;
+  right: 4vw;
+  z-index: 2;
+  width: 160px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  background: rgba(10, 20, 20, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+  border-radius: 16px;
+  padding: 1rem 0.8rem;
+  text-align: center;
+  text-decoration: none;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.hero-race-sticker:hover {
+  transform: translateY(-3px);
+  background: rgba(10, 20, 20, 0.7);
+}
+
+.hero-race-sticker-logo {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.hero-race-sticker-date {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #fdfaf3;
+}
+
+.hero-race-sticker-link {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #5dd9c9;
 }
 
 .hero-kicker {
@@ -278,7 +499,7 @@ html {
 /* ===== SECCIÓN DE ESTADÍSTICAS ===== */
 .stats-section {
   background-color: #1a1a1a;
-  padding: 5rem 2rem;
+  padding: 3.5rem 2rem;
   text-align: center;
 }
 
@@ -327,7 +548,7 @@ html {
 /* ===== SECCIÓN SOBRE NOSOTROS ===== */
 .about-section {
   background: linear-gradient(180deg, #0d7b7a 0%, #0a8684 100%);
-  padding: 5rem 2rem;
+  padding: 3.5rem 2rem;
   color: #fff;
 }
 
@@ -442,7 +663,7 @@ html {
 /* ===== SECCIÓN DE BENEFICIOS ===== */
 .benefits-section {
   background-color: #1a1a1a;
-  padding: 5rem 2rem;
+  padding: 3.5rem 2rem;
   color: #fff;
 }
 
@@ -543,7 +764,7 @@ html {
 /* ===== SECCIÓN DE EQUIPO ===== */
 .team-section {
   background: linear-gradient(180deg, #0d7b7a 0%, #0a8684 100%);
-  padding: 5rem 2rem;
+  padding: 3.5rem 2rem;
   color: #fff;
 }
 
@@ -570,7 +791,8 @@ html {
 
 .team-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(280px, 380px));
+  justify-content: center;
   gap: 2rem;
   margin-bottom: 3rem;
 }
@@ -752,6 +974,61 @@ html {
 .whatsapp-modal-webbtn:hover {
   background: #08706e;
   transform: translateY(-2px);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ===== MODAL: PAQUETE GRAN MARATÓN =====
+   Reutiliza el estilo del welcome-modal (comentado más arriba): overlay oscuro,
+   botón de cerrar flotando afuera de la imagen, imagen con esquinas redondeadas
+   y sombra. Este modal se centra siempre (a diferencia de los modales de coach,
+   que en mobile usan un patrón "bottom sheet" pegado abajo). */
+#modal-gran-maraton-paquete.active {
+  align-items: center;
+  padding: 1rem;
+}
+
+#modal-gran-maraton-paquete .welcome-modal-content {
+  flex-direction: column;
+}
+
+.package-modal-whatsapp-float {
+  margin-top: 1.1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: #0a8684;
+  color: #fff;
+  padding: 0.8rem 1.6rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+  transition: background 0.25s ease, transform 0.2s ease;
+}
+
+.package-modal-whatsapp-float:hover {
+  background: #08706e;
+  transform: translateY(-3px);
+}
+
+@media (max-width: 480px) {
+  .package-modal-whatsapp-float {
+    padding: 0.7rem 1.2rem;
+    font-size: 0.82rem;
+  }
 }
 
 .modal-content {
@@ -1011,7 +1288,7 @@ html {
 
 .pricing-section {
   background-color: #1a1a1a;
-  padding: 5rem 2rem;
+  padding: 3.5rem 2rem;
   color: #fff;
 }
 
@@ -1281,7 +1558,7 @@ html {
 /* ===== SECCIÓN DE PROGRAMAS ===== */
 .programs-section {
   background: linear-gradient(180deg, #0d7b7a 0%, #0a8684 100%);
-  padding: 5rem 2rem;
+  padding: 3.5rem 2rem;
   color: #fff;
 }
 
@@ -1344,6 +1621,11 @@ html {
   transition: transform 0.3s ease;
 }
 
+/* Foto promocional del Gran Maratón: es cuadrada, recorte parejo cortaba la franja inferior a la mitad */
+.programs-grid .program-card:first-child .program-image img {
+  object-position: center 12%;
+}
+
 .program-card:hover .program-image img {
   transform: scale(1.1);
 }
@@ -1376,6 +1658,22 @@ html {
   font-weight: 600;
   font-size: 0.95rem;
   transition: gap 0.3s ease;
+}
+
+.program-link-package {
+  display: flex;
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 0;
+  margin-bottom: 0.75rem;
+  font-family: inherit;
+  cursor: pointer;
+  color: #9fd6cf;
+}
+
+.program-link-package:hover {
+  color: #fff;
 }
 
 .program-link:hover {
@@ -1411,7 +1709,7 @@ html {
 /* ===== SECCIÓN DE CONTACTO ===== */
 .contact-section {
   background: linear-gradient(135deg, #020e0d 0%, #0a8684 100%);
-  padding: 5rem 2rem;
+  padding: 3.5rem 2rem;
   color: #fff;
 }
 
@@ -2241,7 +2539,8 @@ html {
   display: inline-flex;
   align-items: center;
   gap: 0.8rem;
-  background: linear-gradient(135deg, #833AB4, #FD1D1D, #F77737);
+  background: transparent;
+  border: 1.5px solid rgba(255, 255, 255, 0.6);
   color: #fff;
   padding: 1rem 2.5rem;
   border-radius: 50px;
@@ -2249,12 +2548,12 @@ html {
   font-weight: 700;
   font-size: 1.1rem;
   transition: all 0.3s ease;
-  box-shadow: 0 8px 30px rgba(131, 58, 180, 0.4);
 }
 
 .btn-gallery-instagram:hover {
+  background: rgba(10, 134, 132, 0.25);
+  border-color: #0a8684;
   transform: translateY(-3px);
-  box-shadow: 0 12px 40px rgba(131, 58, 180, 0.6);
 }
 
 .gallery-item {
@@ -2411,6 +2710,10 @@ html {
 }
 
 @media (max-width: 768px) {
+
+  .hero {
+    background-image: url('../img/FondoMobile.webp');
+  }
 
 /* FOOTER - Optimizado para conversión */
   .footer {
@@ -3083,125 +3386,26 @@ html {
 
   .team-grid-wrapper {
     position: relative;
-    margin: 0 -1.5rem;
   }
 
   .team-grid {
     display: flex;
-    flex-direction: row;
-    overflow-x: auto;
-    overflow-y: hidden;
+    flex-direction: column;
     gap: 1.2rem;
-    padding: 1rem 1.5rem 1.5rem;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
     margin-bottom: 0;
   }
 
-  .team-grid::-webkit-scrollbar {
-    display: none;
-  }
-
-  .team-grid::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 80px;
-    height: 100%;
-    background: linear-gradient(to left, #0a8684 0%, transparent 100%);
-    pointer-events: none;
-    z-index: 1;
-    transition: opacity 0.3s ease;
-  }
-
-  .team-grid.at-end::after {
-    opacity: 0;
-  }
-
   .team-card {
-    min-width: 280px;
-    max-width: 280px;
-    scroll-snap-align: center;
-    flex-shrink: 0;
-  }
-
-  .team-card:first-child {
-    margin-left: 0.5rem;
-  }
-
-  .team-card:last-child {
-    margin-right: 0.5rem;
+    width: 100%;
   }
 
   .team-image {
-    height: 380px;
+    height: 320px;
   }
 
-  .team-scroll-indicators {
-    display: flex;
-    justify-content: center;
-    gap: 0.5rem;
-    margin-top: 1.5rem;
-    padding-bottom: 0.5rem;
-  }
-
-  .team-scroll-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.3);
-    transition: all 0.3s ease;
-    cursor: pointer;
-  }
-
-  .team-scroll-dot.active {
-    background: #fff;
-    width: 24px;
-    border-radius: 4px;
-  }
-
+  .team-scroll-indicators,
   .team-scroll-hint {
-    display: flex  !important;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    text-align: center;
-    font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.9);
-    margin-top: 1rem;
-    font-weight: 500;
-    animation: fadeInOut 2.5s ease-in-out infinite;
-  }
-
-  .hint-arrow-left,
-  .hint-arrow-right {
-    font-size: 1.3rem;
-    font-weight: bold;
-    color: #fff;
-  }
-
-  .hint-arrow-left {
-    animation: slideLeft 1.5s ease-in-out infinite;
-  }
-
-  .hint-arrow-right {
-    animation: slideRight 1.5s ease-in-out infinite;
-  }
-
-  @keyframes slideLeft {
-    0%, 100% { transform: translateX(0); }
-    50% { transform: translateX(-5px); }
-  }
-
-  @keyframes slideRight {
-    0%, 100% { transform: translateX(0); }
-    50% { transform: translateX(5px); }
-  }
-
-  .team-scroll-hint.hidden {
-    display: none;
+    display: none !important;
   }
 
   /* MODALES */
@@ -3514,7 +3718,6 @@ html {
   }
   .program-card.active .program-description {
      color: #fff;
-    font-weight: 700;
     gap: 0.8rem;
   }
   .program-card.active .program-link svg {

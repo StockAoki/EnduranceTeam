@@ -1,3 +1,112 @@
+// ===== GSAP: SCROLLSMOOTHER + ANIMACIONES DE SCROLL =====
+var _smoother = null;
+(function () {
+  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined' || typeof ScrollSmoother === 'undefined') return;
+
+  gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+
+  var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!prefersReducedMotion) {
+    _smoother = ScrollSmoother.create({
+      wrapper: '#smooth-wrapper',
+      content: '#smooth-content',
+      smooth: 1.2,
+      effects: true,
+      smoothTouch: 0.1
+    });
+  }
+
+  // Links internos (#ancla): que respeten el scroll suave de ScrollSmoother
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var targetId = link.getAttribute('href');
+      if (!targetId || targetId.length < 2) return;
+      var target;
+      try {
+        target = document.querySelector(targetId);
+      } catch (err) {
+        return;
+      }
+      if (!target) return;
+      e.preventDefault();
+      if (_smoother) {
+        _smoother.scrollTo(target, true, 'top top');
+      } else {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  if (prefersReducedMotion) return;
+
+  // ===== Stagger de entrada: Beneficios, Equipo, Programas =====
+  // clearProps al terminar: estas cards usan .active (mobile) que controla
+  // opacity/transform por CSS — un estilo inline de GSAP lo taparía para siempre.
+  [
+    { selector: '.benefit-slide', y: 30 },
+    { selector: '.team-card', y: 30 },
+    { selector: '.program-card', y: 30 }
+  ].forEach(function (cfg) {
+    var els = gsap.utils.toArray(cfg.selector);
+    if (!els.length) return;
+
+    ScrollTrigger.batch(els, {
+      start: 'top 88%',
+      once: true,
+      onEnter: function (batch) {
+        gsap.from(batch, {
+          opacity: 0,
+          y: cfg.y,
+          stagger: 0.12,
+          duration: 0.7,
+          ease: 'power2.out',
+          clearProps: 'opacity,transform'
+        });
+      }
+    });
+  });
+
+  // ===== Galería: entrada escalonada (solo posición, no toca opacity) =====
+  // El fade/scale de aparición y el sistema de filtros ya los maneja el CSS
+  // existente (.gallery-item + .hidden) — acá solo sumamos el desplazamiento.
+  var galleryItems = gsap.utils.toArray('.gallery-item');
+  if (galleryItems.length) {
+    gsap.from(galleryItems, {
+      y: 30,
+      stagger: 0.06,
+      duration: 0.6,
+      ease: 'power2.out',
+      immediateRender: false,
+      clearProps: 'transform',
+      scrollTrigger: {
+        trigger: '.gallery-grid',
+        start: 'top 88%',
+        once: true
+      }
+    });
+
+    // Tilt sutil en hover
+    galleryItems.forEach(function (item) {
+      item.addEventListener('mousemove', function (e) {
+        var rect = item.getBoundingClientRect();
+        var px = (e.clientX - rect.left) / rect.width;
+        var py = (e.clientY - rect.top) / rect.height;
+        gsap.to(item, {
+          rotateX: (py - 0.5) * -8,
+          rotateY: (px - 0.5) * 8,
+          transformPerspective: 600,
+          duration: 0.4,
+          ease: 'power2.out'
+        });
+      });
+      item.addEventListener('mouseleave', function () {
+        gsap.to(item, { rotateX: 0, rotateY: 0, duration: 0.5, ease: 'power2.out' });
+      });
+    });
+  }
+})();
+
 // ===== MENÚ MÓVIL FULL-SCREEN =====
 const menuToggle = document.getElementById('menu-toggle');
 const menu = document.querySelector('.navbar nav');
@@ -263,13 +372,42 @@ document.addEventListener('keydown', function(event) {
 // Agregar fondo al navbar al hacer scroll
 window.addEventListener('scroll', function() {
   const navbar = document.querySelector('.navbar');
-  
+
   if (window.scrollY > 50) {
     navbar.classList.add('scrolled');
   } else {
     navbar.classList.remove('scrolled');
   }
 });
+
+// ===== BARRA DE PROGRESO DE SCROLL + BOTÓN VOLVER ARRIBA =====
+(function() {
+  const progressBar = document.getElementById('scroll-progress');
+  const backToTop = document.getElementById('back-to-top');
+  const heroSection = document.getElementById('inicio');
+  if (!progressBar || !backToTop) return;
+
+  function updateScrollUI() {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    progressBar.style.width = progress + '%';
+
+    const threshold = heroSection ? heroSection.offsetHeight * 0.6 : 400;
+    backToTop.classList.toggle('visible', scrollTop > threshold);
+  }
+
+  window.addEventListener('scroll', updateScrollUI, { passive: true });
+  updateScrollUI();
+
+  backToTop.addEventListener('click', function() {
+    if (_smoother) {
+      _smoother.scrollTo(0, true);
+      return;
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+})();
 function switchTab(tabName) {
   // Ocultar todos los formularios
   const forms = document.querySelectorAll('.form-content');

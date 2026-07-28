@@ -67,7 +67,7 @@
       "https://www.instagram.com/enduranceteamcr/",
       "https://www.facebook.com/EnduranceTeamCR"
     ],
-    "sport": ["Running", "Triatlón", "Ciclismo", "Natación"]
+    "sport": ["Running","Maratón", "Triatlón", "Ciclismo", "Natación"]
   }
   </script>
   <!-- Google tag (gtag.js) -->
@@ -83,39 +83,50 @@
 </head>
 <body>
   <!-- NAV -->
-<!-- NAV -->
 <header class="navbar">
   <div class="logo">
     <a href="index.html"><img src="img/logo2.png" alt="Endurance Team CR - Club de running y triatlón en Costa Rica"></a>
   </div>
-  
+
   <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú">
     <span class="hamburger-icon">☰</span>
     <span class="close-icon" style="display: none;">✕</span>
   </button>
-  
+
   <nav>
     <ul id="menu">
       <li><a href="#inicio" class="menu-link">Inicio</a></li>
-      <li><a href="#sobre-nosotros" class="menu-link">Nosotros</a></li>           
-      <li><a href="#BENEFICIOS" class="menu-link">Beneficios</a></li>    
+      <li><a href="#sobre-nosotros" class="menu-link">Nosotros</a></li>
+      <li><a href="#BENEFICIOS" class="menu-link">Beneficios</a></li>
       <li><a href="#equipo" class="menu-link">Equipo</a></li>
       <li><a href="#galeria" class="menu-link">Entrenamientos</a></li>
       <li><a href="#precios" class="menu-link">Planes</a></li>
-      
+      <li><a href="#programas" class="menu-link">Programas</a></li>
+
       <!-- Botón Contáctanos DENTRO del menú (solo visible en móvil) -->
       <li class="menu-cta-item">
         <a href="#contacto" class="menu-cta">Contáctanos</a>
       </li>
     </ul>
   </nav>
-  
+
   <!-- Botón desktop (se oculta en móvil) -->
   <a id="btnContacto" href="#contacto" class="btn-contacto">Contáctanos</a>
+
+  <!-- Barra de progreso de scroll -->
+  <div class="scroll-progress" id="scroll-progress"></div>
 </header>
 
 <!-- Overlay para cerrar menú (solo móvil) -->
 <div class="menu-overlay" id="menu-overlay"></div>
+
+<!-- Botón volver arriba -->
+<button class="back-to-top" id="back-to-top" aria-label="Volver arriba">
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="12" y1="19" x2="12" y2="5"></line>
+    <polyline points="5 12 12 5 19 12"></polyline>
+  </svg>
+</button>
 
 <!-- Modal Promocional de Bienvenida -->
 <!-- <div id="welcome-modal" class="welcome-modal">
@@ -125,22 +136,52 @@
     <div class="welcome-modal-body">
 
       <a href="https://wa.me/50672786445?text=Hola!+Estoy+interesado+en+información+del+plan+de+la+Media+Maraton+Cartago!" id="modal-cta-link">
-        <img src="img/banner.webp" alt="Promoción Maraton Cartago" class="welcome-modal-image">
+        <img src="img/Gran-Maraton-CostaRica-2026.webp" alt="Promoción Maraton Cartago" class="welcome-modal-image">
       </a>
     </div>
   </div>
 </div> -->
 
+<div id="smooth-wrapper">
+  <div id="smooth-content">
+
   <!-- HERO -->
   <section id="inicio" class="hero">
   <div class="overlay"></div>
+
+  <!-- OPCIÓN 1: logo montado sobre la foto -->
+  <!--
+  <a href="#programa-gran-maraton" class="hero-race-photo-promo fade-up">
+    <img src="img/Gran-Maraton-CostaRica-logo-2026.webp" alt="Gran Maratón Costa Rica 2026" class="hero-race-photo-logo">
+    <p class="hero-race-photo-date">22 Nov 2026 · <span class="hero-race-photo-link">Más información</span></p>
+  </a>
+  -->
+
+  <!-- OPCIÓN 3: sticker flotante en la esquina -->
+  <!--
+  <a href="#programa-gran-maraton" class="hero-race-sticker fade-up">
+    <img src="img/Gran-Maraton-CostaRica-logo-2026.webp" alt="Gran Maratón Costa Rica 2026" class="hero-race-sticker-logo">
+    <span class="hero-race-sticker-date">22 Nov 2026</span>
+    <span class="hero-race-sticker-link">Más información →</span>
+  </a>
+  -->
+
   <div class="hero-content">
+    <!-- OPCIÓN 2: logo en tarjeta junto al texto -->
+    <a href="#programa-gran-maraton" class="hero-race-card fade-up">
+      <img src="img/Gran-Maraton-CostaRica-logo-2026.webp" alt="Gran Maratón Costa Rica 2026" class="hero-race-card-logo">
+      <span class="hero-race-card-info">
+        <span class="hero-race-card-date">22 Nov 2026</span>
+        <span class="hero-race-card-link">Más información →</span>
+      </span>
+    </a>
+
     <h1 class="hero-kicker fade-up">Entrenamiento Running y Triatlón en Cartago, Costa Rica</h1>
-    <h2 class="hero-headline fade-up fade-up-d1">Entrenamos.<span class="hero-headline-italic">disfrutamos.</span>Competimos.</h2>
-    <p class="hero-subtext fade-up fade-up-d2">Da el primer paso. El resto lo construimos juntos.</p>
+    <h2 class="hero-headline fade-up fade-up-d1">Súmate al equipo.</h2>
+    <p class="hero-subtext fade-up fade-up-d2">Da el primer paso hoy. Coaches certificados, comunidad y un plan hecho para vos.</p>
     <div class="hero-buttons fade-up fade-up-d2">
       <a href="#stats" class="btn-primary">Conócenos</a>
-      <a href="https://wa.me/50672786445?text=Hola!+Estoy+interesado+en+información+del+club" class="btn-secondary" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="https://wa.me/50672786445?text=Hola!+Estoy+interesado+en+información+del+club" class="btn-secondary" target="_blank" rel="noopener">Escríbenos</a>
     </div>
   </div>
   <div class="hero-scroll-cue">
@@ -152,11 +193,11 @@
 <section id="stats" class="stats-section">
   <div class="stats-container reveal">
     <div class="stat-item">
-      <span class="stat-number" data-target="30">0</span>
+      <span class="stat-number" data-target="50">0</span>
       <p class="stat-label">Corredores activos</p>
     </div>
     <div class="stat-item">
-      <span class="stat-number" data-target="9">0</span>
+      <span class="stat-number" data-target="8">0</span>
       <p class="stat-label">Años de experiencia</p>
     </div>
     <div class="stat-item">
@@ -165,7 +206,7 @@
     </div>
   </div>
   <p class="stats-description">
-    Nuestro compromiso con la excelencia se refleja en estas cifras impresionantes que muestran nuestra dedicación, trabajo duro y el valor que aportamos a nuestros miembros.
+    Endurance Team es una comunidad donde preparamos a cada atleta para su meta y lo acompañamos en cada paso para cumplirla.
   </p>
 </section>
 
@@ -376,25 +417,6 @@
           </div>
         </div>
 
-        <!-- Entrenador 3 -->
-        <div class="team-card"
-             role="button"
-             tabindex="0"
-             aria-label="Ver perfil de Anderson Solano"
-             aria-haspopup="dialog"
-             onclick="openModal('modal3')"
-             onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openModal('modal3')}">
-          <div class="team-image">
-            <img src="img/SectionHero-Anderson.webp" alt="Anderson Solano Coach de running en Endurance Team Costa Rica" loading="lazy">
-            <div class="team-overlay">
-              <h3 class="team-name">Anderson Solano</h3>
-              <p class="team-role">Coach</p>
-            </div>
-            <div class="team-hover-overlay">
-              <span class="view-profile">Ver perfil completo</span>
-            </div>
-          </div>
-        </div>
 
       </div>
     </div>
@@ -402,7 +424,6 @@
     <!-- Indicadores de scroll (dots) - SOLO MÓVIL -->
     <div class="team-scroll-indicators" id="team-scroll-indicators">
       <span class="team-scroll-dot active"></span>
-      <span class="team-scroll-dot"></span>
       <span class="team-scroll-dot"></span>
     </div>
 
@@ -415,419 +436,6 @@
 
   </div>
 </section>
-
-<!-- Modales de Entrenadores -->
-<!-- Modal 2 - Brenda Corrales -->
-<div id="modal2" class="trainer-modal" role="dialog" aria-modal="true" aria-labelledby="modal2-title">
-  <div class="modal-content">
-    <button class="modal-close" id="modal2-close" aria-label="Cerrar perfil de Brenda Corrales" onclick="closeModal('modal2')">&times;</button>
-    
-    <div class="modal-header">
-      <img src="img/SectionHero-Brenda.webp" alt="Brenda Corrales Coach de running en Endurance Team Costa Rica" class="modal-photo">
-      <div class="modal-info">
-        <h2 id="modal2-title">Brenda Corrales</h2>
-        <p class="modal-role">Coach</p>
-        <div class="modal-experience">
-          <span>🏃‍♀️ 3 años de experiencia</span>
-
-        </div>
-      </div>
-    </div>
-
-    <div class="modal-body">
-      
-      <!-- ========== VERSIÓN DESKTOP (siempre expandida) ========== -->
-      <div class="modal-desktop-content">
-        
-        <div class="modal-section">
-          <h3>Sobre mí</h3>
-          <p>Mi pasión por el deporte me ha llevado a desarrollar mi carrera profesional
-como preparadora física, tengo como objetivo ayudar a las personas a mejorar su rendimiento, enfoque y energía de una forma sostenible y con ello lograr personas más integrales.</p>
-
-        </div>
-
-        <div class="modal-section">
-          <h3>Certificaciones y cursos</h3>
-          <ul>
-            <li>Técnico en Preparación Física y Rendimiento Deportivo -Universidad Florencio del Castillo </li>
-            <li>Curso Formadores de Triatletas, 2023 Feutri</li>
-
-          </ul>
-        </div>
-
-        <div class="modal-section">
-          <h3>Especialidades</h3>
-          <div class="specialty-tags">
-            <span>Entrenamientos del Running</span>
-            <span>Principiantes en running</span>
-            <span>Media Maratón</span>
-            <span> Maratón</span>
-          </div>
-        </div>
-
-        <div class="modal-section">
-          <h3>Testimonios</h3>
-          <div class="testimonial">
-            <p>"Bren y Charlie muchas gracias por toda la preparación, por aguantarme y acompañarme en el proceso de verdad que sumamente
-              agradecida por todo! Es un chuzo de equipo, este mes cumple un año de haberme metido y que mejor que celebrarlo de esta manera."</p>
-            <span>- Melania.</span>
-          </div>
-        </div>
-
-      </div>
-      
-      <!-- ========== VERSIÓN MÓVIL (con acordeones) ========== -->
-      <div class="modal-mobile-content">
-        
-        <!-- Sobre mí - SIEMPRE VISIBLE -->
-        <div class="modal-section">
-          <h3>Sobre mí</h3>
-          <p>Mi pasión por el deporte me ha llevado a desarrollar mi carrera profesional como preparadora física. Tengo como objetivo ayudar a las personas a mejorar su rendimiento, enfoque y energía de una forma sostenible y con ello lograr personas más integrales.</p>
-        </div>
-
-        <!-- ACORDEÓN: Certificaciones -->
-        <div class="collapsible-section">
-          <div class="collapsible-header" onclick="toggleCollapse(this)">
-            <h3>Certificaciones</h3>
-            <span class="collapsible-icon">▼</span>
-          </div>
-          <div class="collapsible-content">
-            <div class="collapsible-body">
-              <ul>
-                <li>Técnico en Preparación Física y Rendimiento Deportivo – Universidad Florencio del Castillo </li>
-                <li>Curso Formadores de Triatletas, 2023 Feutri</li>
-
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <!-- ACORDEÓN: Especialidades -->
-        <div class="collapsible-section">
-          <div class="collapsible-header" onclick="toggleCollapse(this)">
-            <h3>Especialidades</h3>
-            <span class="collapsible-icon">▼</span>
-          </div>
-          <div class="collapsible-content">
-            <div class="collapsible-body">
-              <div class="specialty-tags">
-                <span>Entrenamientos del Running</span>
-            <span>Principiantes en running</span>
-            <span>Media Maratón</span>
-            <span> Maratón</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- ACORDEÓN: Testimonios -->
-        <div class="collapsible-section">
-          <div class="collapsible-header" onclick="toggleCollapse(this)">
-            <h3>Testimonios</h3>
-            <span class="collapsible-icon">▼</span>
-          </div>
-          <div class="collapsible-content">
-            <div class="collapsible-body">
-             <div class="testimonial">
-            <p>"Bren y Charlie muchas gracias por toda la preparación, por aguantarme y acompañarme en el proceso de verdad que sumamente
-              agradecida por todo! Es un chuzo de equipo, este mes cumple un año de haberme metido y que mejor que celebrarlo de esta manera."</p>
-            <span>- Melania.</span>
-            </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Botones de acción -->
-      <div class="modal-actions">
-        <a href="https://wa.me/50672786445?text=Hola!+Estoy+interesado+en+iniciar+hoy" class="btn-modal-secondary" data-servicio="asesoria-brenda">¡Iniciar hoy!</a>
-      </div>
-      
-    </div>
-  </div>
-</div>
-
-
-<!-- Modal 1 - Carlos Ortega -->
-<div id="modal1" class="trainer-modal" role="dialog" aria-modal="true" aria-labelledby="modal1-title">
-  <div class="modal-content">
-    <button class="modal-close" id="modal1-close" aria-label="Cerrar perfil de Carlos Ortega" onclick="closeModal('modal1')">&times;</button>
-    
-    <div class="modal-header">
-      <img src="img/SectionHero-Carlos.webp" alt="Carlos Ortega Coach de running en Endurance Team Costa Rica" class="modal-photo">
-      <div class="modal-info">
-        <h2 id="modal1-title">Carlos Ortega</h2>
-        <p class="modal-role">Head Coach</p>
-        <div class="modal-experience">
-          <span>🏆 2 maratones completados</span>
-          <span>🏊‍♂️🚴🏃 3 Triatlones completadas</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="modal-body">
-      
-      <!-- ========== VERSIÓN DESKTOP (siempre expandida) ========== -->
-      <div class="modal-desktop-content">
-        
-        <div class="modal-section">
-          <h3>Sobre mí</h3>
-          <p>Soy Licenciado en Enseñanza de la Educación Fisica con más de 10 años de experiencia y fundador del Endurance Program.</p>
-          <p>He participado en juegos nacionales de Natación en el 2019, Maratonista en 2018-2019 y Triatleta del 2017-2020</p>
-        </div>
-
-        <div class="modal-section">
-          <h3>Certificaciones y Cursos</h3>
-          <ul>
-            <li>Complex Coach Funcional</li>
-            <li>Postgrado Entrenamiento Personal USP</li>
-            <li>Capacitación en Movilidad</li>
-            <li>Seminarios Entrenamientos Bandas de resistencia TRX, Sand Bag</li>
-          </ul>
-        </div>
-
-        <div class="modal-section">
-          <h3>Especialidades</h3>
-          <div class="specialty-tags">
-            <span>Especialización en deporte Endurance (CON)</span>
-            <span>Entrenador de Atletismo 1 y 2 (FECOA)</span>
-            <span>Formadores Triatlón 1 y 2 (FEUTRI)</span>
-          </div>
-        </div>
-
-        <div class="modal-section">
-          <h3>Testimonios</h3>
-          <div class="testimonial">
-            <p>"Fue la primera vez que competí en un duatlón y no esperaba quedar en el podio, fue muy bonito y bastante duro pero lo disfruté bastante.
-              Mil gracias a mi coach Carlos"</p>
-            <span>- Dani</span>
-          </div>
-         
-        </div>
-
-      </div>
-      
-      <!-- ========== VERSIÓN MÓVIL (con acordeones) ========== -->
-      <div class="modal-mobile-content">
-        
-        <!-- Sobre mí - SIEMPRE VISIBLE -->
-        <div class="modal-section">
-          <h3>Sobre mí</h3>
-          <p>Soy Licenciado en Enseñanza de la Educación Fisica con más de 10 años de experiencia y fundador del Endurance Program.</p>
-          <p>He participado en juegos nacionales de Natación en el 2019, Maratonista en 2018-2019 y Triatleta del 2017-2020</p>
-        </div>
-
-        <!-- ACORDEÓN: Certificaciones -->
-        <div class="collapsible-section">
-          <div class="collapsible-header" onclick="toggleCollapse(this)">
-            <h3>Certificaciones y Cursos</h3>
-            <span class="collapsible-icon">▼</span>
-          </div>
-          <div class="collapsible-content">
-            <div class="collapsible-body">
-              <ul>
-                <li>Complex Coach Funcional</li>
-                <li>Postgrado Entrenamiento Personal USP</li>
-                <li>Capacitación en Movilidad</li>
-                <li>Seminarios Entrenamientos Bandas de resistencia TRX, Sand Bag</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <!-- ACORDEÓN: Especialidades -->
-        <div class="collapsible-section">
-          <div class="collapsible-header" onclick="toggleCollapse(this)">
-            <h3>Especialidades</h3>
-            <span class="collapsible-icon">▼</span>
-          </div>
-          <div class="collapsible-content">
-            <div class="collapsible-body">
-              <div class="specialty-tags">
-                <span>Especialización en deporte Endurance (CON)</span>
-                <span>Entrenador de Atletismo 1 y 2 (FECOA)</span>
-                <span>Formadores Triatlón 1 y 2 (FEUTRI)</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- ACORDEÓN: Testimonios -->
-        <div class="collapsible-section">
-          <div class="collapsible-header" onclick="toggleCollapse(this)">
-            <h3>Testimonios</h3>
-            <span class="collapsible-icon">▼</span>
-          </div>
-          <div class="collapsible-content">
-            <div class="collapsible-body">
-              <div class="testimonial">
-            <p>"Fue la primera vez que competí en un duatlón y no esperaba quedar en el podio, fue muy bonito y bastante duro pero lo disfruté bastante.
-              Mil gracias a mi coach Carlos"</p>
-            <span>- Dani</span>
-          </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Botones de acción -->
-      <div class="modal-actions">
-        <a href="https://wa.me/50672786445?text=Hola!+Estoy+interesado+en+iniciar+hoy" class="btn-modal-secondary" data-servicio="asesoria-carlos">¡Iniciar hoy!</a>
-      </div>
-      
-    </div>
-  </div>
-</div>
-
-<!-- Modal 3 - Anderson Solano -->
-<div id="modal3" class="trainer-modal" role="dialog" aria-modal="true" aria-labelledby="modal3-title">
-  <div class="modal-content">
-    <button class="modal-close" id="modal3-close" aria-label="Cerrar perfil de Anderson Solano" onclick="closeModal('modal3')">&times;</button>
-    
-    <div class="modal-header">
-      <img src="img/SectionHero-Anderson.webp" alt="Anderson Solano Coach de running en Endurance Team Costa Rica" class="modal-photo">
-      <div class="modal-info">
-        <h2 id="modal3-title">Anderson Solano</h2>
-        <p class="modal-role">Coach</p>
-        <div class="modal-experience">
-          <span>🏃‍♀️ 3 años de experiencia</span>
-
-        </div>
-      </div>
-    </div>
-
-    <div class="modal-body">
-      
-      <!-- ========== VERSIÓN DESKTOP (siempre expandida) ========== -->
-      <div class="modal-desktop-content">
-        
-        <div class="modal-section">
-          <h3>Sobre mí</h3>
-          <p>Apasionado por mi trabajo, guiando a atletas a cumplir sus objetivos. </p>
-          <p>Tengo experiencia dirigiendo clases grupales, programando entrenamientos y guiando procesos de mejora física
-para atletas recreativos y avanzados. </p>
-<p>Capacitado en preparación física,
-dosificación del entrenamiento,
-combinando ciencia y disciplina.</p>
-        </div>
-
-        <div class="modal-section">
-          <h3>Certificaciones</h3>
-          <ul>
-            <li>Técnico en Preparación Física y Rendimiento Deportivo  Universidad Florencio del Castillo </li>
-            <li>Bases Científicas y Prácticas del Entrenamiento de la Halterofilia Universidad de San José </li>
-            <li>Múltiples talleres sobre dosificación del entrenamiento</li>
-          </ul>
-        </div>
-
-        <div class="modal-section">
-          <h3>Especialidades</h3>
-          <div class="specialty-tags">
-            <span>Programas de Entrenamiento Contra Resistencia</span>
-            <span>Entrenamiento funcional</span>
-            <span>Crossfit</span>
-            <span>Hyrox</span>
-
-          </div>
-        </div>
-
-        <div class="modal-section">
-          <h3>Testimonios</h3>
-          <div class="testimonial">
-            <p>"Los últimos 10km fueron muy desafiantes, @coach_anderson.solano los corrió conmigo y no puedo estar más agradecida porque ese retorno me tiraba abajo y sufrí del muro del 35 al 38, mi cuerpo quería parar, volvió el dolor, tenía mucho calor, me quedé sin agua, el ascenso estaba muy pronunciado, en fin, fue horrible y lo sufrí mucho, después del 38 hacía retorno y como era descenso fue más llevadero, ya solo quedaban 4 km, los terminé más tranquila ya había superado el muro, no quedaba nada.
-Los últimos 200 m apreté un poquito, los cerré a 4:40 min/km entre lágrimas. No podía creer que lo había logrado🥹"</p>
-            <span>- Dani</span>
-          </div>
-
-        </div>
-
-      </div>
-      
-      <!-- ========== VERSIÓN MÓVIL (con acordeones) ========== -->
-      <div class="modal-mobile-content">
-        
-        <!-- Sobre mí - SIEMPRE VISIBLE -->
-        <div class="modal-section">
-          <h3>Sobre mí</h3>
-          <p>Apasionado por mi trabajo, guiando a atletas a cumplir sus objetivos. 
-Tengo experiencia dirigiendo clases grupales, programando
-entrenamientos y guiando procesos de mejora física
-para atletas recreativos y avanzados. 
-</p>
-<p>
-Me caracterizo por mi
-comunicación clara, manejo de grupos, liderazgo y
-enfoque técnico. 
-</p>
-          <p>Capacitado en preparación física,
-dosificación del entrenamiento,
-combinando ciencia y disciplina.</p>
-        </div>
-
-        <!-- ACORDEÓN: Certificaciones -->
-        <div class="collapsible-section">
-          <div class="collapsible-header" onclick="toggleCollapse(this)">
-            <h3>Certificaciones</h3>
-            <span class="collapsible-icon">▼</span>
-          </div>
-          <div class="collapsible-content">
-            <div class="collapsible-body">
-              <ul>
-                <li>Técnico en Preparación Física y Rendimiento Deportivo – Universidad Florencio del Castillo </li>
-                <li>Bases Científicas y Prácticas del Entrenamiento de la Halterofilia – Universidad de San José </li>
-                <li>Múltiples talleres sobre dosificación del entrenamiento</li>
-
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <!-- ACORDEÓN: Especialidades -->
-        <div class="collapsible-section">
-          <div class="collapsible-header" onclick="toggleCollapse(this)">
-            <h3>Especialidades</h3>
-            <span class="collapsible-icon">▼</span>
-          </div>
-          <div class="collapsible-content">
-            <div class="collapsible-body">
-              <div class="specialty-tags">
-                <span>Programas de Entrenamiento Contra Resistencia</span>
-                <span>Entrenamiento funcional</span>
-                <span>Crossfit</span>
-                <span> Modalidades como Hyrox</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- ACORDEÓN: Testimonios -->
-        <div class="collapsible-section">
-          <div class="collapsible-header" onclick="toggleCollapse(this)">
-            <h3>Testimonios</h3>
-            <span class="collapsible-icon">▼</span>
-          </div>
-          <div class="collapsible-content">
-            <div class="collapsible-body">
-              <div class="testimonial">
-                <p>"Los últimos 10km fueron muy desafiantes, @coach_anderson.solano los corrió conmigo y no puedo estar más agradecida porque ese retorno me tiraba abajo. Después del 38 hacía retorno y fue más llevadero, ya solo quedaban 4 km. Los cerré a 4:40 min/km entre lágrimas. No podía creer que lo había logrado."</p>
-                <span>- Dani</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Botones de acción -->
-      <div class="modal-actions">
-        <a href="https://wa.me/50672786445?text=Hola!+Estoy+interesado+en+iniciar+hoy" class="btn-modal-secondary" data-servicio="asesoria-anderson">¡Iniciar hoy!</a>
-      </div>
-      
-    </div>
-  </div>
-</div>
 
 <!-- Sección de Galería de Entrenamientos -->
 <section id="galeria" class="gallery-section">
@@ -1400,7 +1008,7 @@ combinando ciencia y disciplina.</p>
           <p class="plan-description">Todo lo del plan Estándar más rutinas de fortalecimiento para casa, gimnasio o box. El plan más completo para atletas que buscan el siguiente nivel.</p>
         </div>
         <div class="plan-price">
-          <span class="price">₡35.000</span>
+          <span class="price">₡40.000</span>
           <span class="period">/mes</span>
         </div>
         <a href="https://wa.me/50672786445?text=Hola!+Estoy+interesado+en+iniciar+el+plan+gold"
@@ -1680,10 +1288,6 @@ combinando ciencia y disciplina.</p>
 
   </div> <!-- Cierre de .pricing-container -->
 </section>
-  </div>
-</section>
-
- 
 
 <!-- Sección de Programas de Entrenamiento -->
 <section id="programas" class="programs-section">
@@ -1694,7 +1298,32 @@ combinando ciencia y disciplina.</p>
     <div class="programs-grid reveal reveal-d2">
       
 
-      <!-- Programa 1: Iniciación -->
+
+      <!-- Programa 1: Maratón -->
+      <div class="program-card" id="programa-gran-maraton">
+        <div class="program-image">
+          <img src="img/Gran-Maraton-CostaRica-programas-2026.webp" alt="Gran Maratón 2026">
+        </div>
+        <div class="program-content">
+          <h3 class="program-title">Carrera Gran maratón 2026</h3>
+          <p class="program-description">Te preparamos para participar en esta gran carrera ya sea en 5km, 10km, 21km o 42km. Incluye seguimiento en TrainingPeaks y control de carga semanal.</p>
+          <button type="button" class="program-link program-link-package" onclick="openModal('modal-gran-maraton-paquete')">
+            Ver qué incluye
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </button>
+          <!-- <a href="https://wa.me/50672786445?text=Hola!+Estoy+interesado+en+recibir+informacion+del+programa+de+media+maraton" class="program-link" data-servicio="programa-media-maraton">
+            Recibir Información
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a> -->
+        </div>
+      </div>
+      <!-- Programa 2: Iniciación -->
       <div class="program-card">
         <div class="program-image">
           <img src="img/IniciacionRunning.webp" alt="Iniciación en el running">
@@ -1711,7 +1340,7 @@ combinando ciencia y disciplina.</p>
           </a>
         </div>
       </div>
-      <!-- Programa 2: técnicas -->
+      <!-- Programa 3: técnicas -->
       <div class="program-card">
         <div class="program-image">
           <img src="img/gallery/TallerVideoCaratula.webp" alt="Taller técnicas de carrera">
@@ -1729,23 +1358,7 @@ combinando ciencia y disciplina.</p>
         </div>
       </div>
       
-      <!-- Programa 3: Maratón -->
-      <div class="program-card">
-        <div class="program-image">
-          <img src="img/MediaMaratonMaraton.webp" alt="Programa de Maratón">
-        </div>
-        <div class="program-content">
-          <h3 class="program-title">Programa media maratón y maratón</h3>
-          <p class="program-description">Prepárate con periodización profesional para cruzar la línea de 21km o 42km. Incluye seguimiento en TrainingPeaks y control de carga semanal.</p>
-          <a href="https://wa.me/50672786445?text=Hola!+Estoy+interesado+en+recibir+informacion+del+programa+de+media+maraton" class="program-link" data-servicio="programa-media-maraton">
-            Recibir Información
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </a>
-        </div>
-      </div>
+      
       <!-- Programa 4: Triatlon -->
       <div class="program-card">
         <div class="program-image">
@@ -2061,6 +1674,291 @@ combinando ciencia y disciplina.</p>
   </div>
 </footer>
 
+  </div>
+</div>
+
+<!-- Modales de Entrenadores -->
+<!-- Modal 2 - Brenda Corrales -->
+<div id="modal2" class="trainer-modal" role="dialog" aria-modal="true" aria-labelledby="modal2-title">
+  <div class="modal-content">
+    <button class="modal-close" id="modal2-close" aria-label="Cerrar perfil de Brenda Corrales" onclick="closeModal('modal2')">&times;</button>
+    
+    <div class="modal-header">
+      <img src="img/SectionHero-Brenda.webp" alt="Brenda Corrales Coach de running en Endurance Team Costa Rica" class="modal-photo">
+      <div class="modal-info">
+        <h2 id="modal2-title">Brenda Corrales</h2>
+        <p class="modal-role">Coach</p>
+        <div class="modal-experience">
+          <span>🏃‍♀️ 3 años de experiencia</span>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-body">
+      
+      <!-- ========== VERSIÓN DESKTOP (siempre expandida) ========== -->
+      <div class="modal-desktop-content">
+        
+        <div class="modal-section">
+          <h3>Sobre mí</h3>
+          <p>Mi pasión por el deporte me ha llevado a desarrollar mi carrera profesional
+como preparadora física, tengo como objetivo ayudar a las personas a mejorar su rendimiento, enfoque y energía de una forma sostenible y con ello lograr personas más integrales.</p>
+
+        </div>
+
+        <div class="modal-section">
+          <h3>Certificaciones y cursos</h3>
+          <ul>
+            <li>Técnico en Preparación Física y Rendimiento Deportivo -Universidad Florencio del Castillo </li>
+            <li>Curso Formadores de Triatletas, 2023 Feutri</li>
+
+          </ul>
+        </div>
+
+        <div class="modal-section">
+          <h3>Especialidades</h3>
+          <div class="specialty-tags">
+            <span>Entrenamientos del Running</span>
+            <span>Principiantes en running</span>
+            <span>Media Maratón</span>
+            <span> Maratón</span>
+          </div>
+        </div>
+
+        <div class="modal-section">
+          <h3>Testimonios</h3>
+          <div class="testimonial">
+            <p>"Bren y Charlie muchas gracias por toda la preparación, por aguantarme y acompañarme en el proceso de verdad que sumamente
+              agradecida por todo! Es un chuzo de equipo, este mes cumple un año de haberme metido y que mejor que celebrarlo de esta manera."</p>
+            <span>- Melania.</span>
+          </div>
+        </div>
+
+      </div>
+      
+      <!-- ========== VERSIÓN MÓVIL (con acordeones) ========== -->
+      <div class="modal-mobile-content">
+        
+        <!-- Sobre mí - SIEMPRE VISIBLE -->
+        <div class="modal-section">
+          <h3>Sobre mí</h3>
+          <p>Mi pasión por el deporte me ha llevado a desarrollar mi carrera profesional como preparadora física. Tengo como objetivo ayudar a las personas a mejorar su rendimiento, enfoque y energía de una forma sostenible y con ello lograr personas más integrales.</p>
+        </div>
+
+        <!-- ACORDEÓN: Certificaciones -->
+        <div class="collapsible-section">
+          <div class="collapsible-header" onclick="toggleCollapse(this)">
+            <h3>Certificaciones</h3>
+            <span class="collapsible-icon">▼</span>
+          </div>
+          <div class="collapsible-content">
+            <div class="collapsible-body">
+              <ul>
+                <li>Técnico en Preparación Física y Rendimiento Deportivo – Universidad Florencio del Castillo </li>
+                <li>Curso Formadores de Triatletas, 2023 Feutri</li>
+
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- ACORDEÓN: Especialidades -->
+        <div class="collapsible-section">
+          <div class="collapsible-header" onclick="toggleCollapse(this)">
+            <h3>Especialidades</h3>
+            <span class="collapsible-icon">▼</span>
+          </div>
+          <div class="collapsible-content">
+            <div class="collapsible-body">
+              <div class="specialty-tags">
+                <span>Entrenamientos del Running</span>
+            <span>Principiantes en running</span>
+            <span>Media Maratón</span>
+            <span> Maratón</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ACORDEÓN: Testimonios -->
+        <div class="collapsible-section">
+          <div class="collapsible-header" onclick="toggleCollapse(this)">
+            <h3>Testimonios</h3>
+            <span class="collapsible-icon">▼</span>
+          </div>
+          <div class="collapsible-content">
+            <div class="collapsible-body">
+             <div class="testimonial">
+            <p>"Bren y Charlie muchas gracias por toda la preparación, por aguantarme y acompañarme en el proceso de verdad que sumamente
+              agradecida por todo! Es un chuzo de equipo, este mes cumple un año de haberme metido y que mejor que celebrarlo de esta manera."</p>
+            <span>- Melania.</span>
+            </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Botones de acción -->
+      <div class="modal-actions">
+        <a href="https://wa.me/50672786445?text=Hola!+Estoy+interesado+en+iniciar+hoy" class="btn-modal-secondary" data-servicio="asesoria-brenda">¡Iniciar hoy!</a>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal 1 - Carlos Ortega -->
+<div id="modal1" class="trainer-modal" role="dialog" aria-modal="true" aria-labelledby="modal1-title">
+  <div class="modal-content">
+    <button class="modal-close" id="modal1-close" aria-label="Cerrar perfil de Carlos Ortega" onclick="closeModal('modal1')">&times;</button>
+    
+    <div class="modal-header">
+      <img src="img/SectionHero-Carlos.webp" alt="Carlos Ortega Coach de running en Endurance Team Costa Rica" class="modal-photo">
+      <div class="modal-info">
+        <h2 id="modal1-title">Carlos Ortega</h2>
+        <p class="modal-role">Head Coach</p>
+        <div class="modal-experience">
+          <span>🏆 2 maratones completados</span>
+          <span>🏊‍♂️🚴🏃 3 Triatlones completadas</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-body">
+      
+      <!-- ========== VERSIÓN DESKTOP (siempre expandida) ========== -->
+      <div class="modal-desktop-content">
+        
+        <div class="modal-section">
+          <h3>Sobre mí</h3>
+          <p>Soy Licenciado en Enseñanza de la Educación Fisica con más de 10 años de experiencia y fundador del Endurance Program.</p>
+          <p>He participado en juegos nacionales de Natación en el 2019, Maratonista en 2018-2019 y Triatleta del 2017-2020</p>
+        </div>
+
+        <div class="modal-section">
+          <h3>Certificaciones y Cursos</h3>
+          <ul>
+            <li>Complex Coach Funcional</li>
+            <li>Postgrado Entrenamiento Personal USP</li>
+            <li>Capacitación en Movilidad</li>
+            <li>Seminarios Entrenamientos Bandas de resistencia TRX, Sand Bag</li>
+          </ul>
+        </div>
+
+        <div class="modal-section">
+          <h3>Especialidades</h3>
+          <div class="specialty-tags">
+            <span>Especialización en deporte Endurance (CON)</span>
+            <span>Entrenador de Atletismo 1 y 2 (FECOA)</span>
+            <span>Formadores Triatlón 1 y 2 (FEUTRI)</span>
+          </div>
+        </div>
+
+        <div class="modal-section">
+          <h3>Testimonios</h3>
+          <div class="testimonial">
+            <p>"Fue la primera vez que competí en un duatlón y no esperaba quedar en el podio, fue muy bonito y bastante duro pero lo disfruté bastante.
+              Mil gracias a mi coach Carlos"</p>
+            <span>- Dani</span>
+          </div>
+         
+        </div>
+
+      </div>
+      
+      <!-- ========== VERSIÓN MÓVIL (con acordeones) ========== -->
+      <div class="modal-mobile-content">
+        
+        <!-- Sobre mí - SIEMPRE VISIBLE -->
+        <div class="modal-section">
+          <h3>Sobre mí</h3>
+          <p>Soy Licenciado en Enseñanza de la Educación Fisica con más de 10 años de experiencia y fundador del Endurance Program.</p>
+          <p>He participado en juegos nacionales de Natación en el 2019, Maratonista en 2018-2019 y Triatleta del 2017-2020</p>
+        </div>
+
+        <!-- ACORDEÓN: Certificaciones -->
+        <div class="collapsible-section">
+          <div class="collapsible-header" onclick="toggleCollapse(this)">
+            <h3>Certificaciones y Cursos</h3>
+            <span class="collapsible-icon">▼</span>
+          </div>
+          <div class="collapsible-content">
+            <div class="collapsible-body">
+              <ul>
+                <li>Complex Coach Funcional</li>
+                <li>Postgrado Entrenamiento Personal USP</li>
+                <li>Capacitación en Movilidad</li>
+                <li>Seminarios Entrenamientos Bandas de resistencia TRX, Sand Bag</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- ACORDEÓN: Especialidades -->
+        <div class="collapsible-section">
+          <div class="collapsible-header" onclick="toggleCollapse(this)">
+            <h3>Especialidades</h3>
+            <span class="collapsible-icon">▼</span>
+          </div>
+          <div class="collapsible-content">
+            <div class="collapsible-body">
+              <div class="specialty-tags">
+                <span>Especialización en deporte Endurance (CON)</span>
+                <span>Entrenador de Atletismo 1 y 2 (FECOA)</span>
+                <span>Formadores Triatlón 1 y 2 (FEUTRI)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ACORDEÓN: Testimonios -->
+        <div class="collapsible-section">
+          <div class="collapsible-header" onclick="toggleCollapse(this)">
+            <h3>Testimonios</h3>
+            <span class="collapsible-icon">▼</span>
+          </div>
+          <div class="collapsible-content">
+            <div class="collapsible-body">
+              <div class="testimonial">
+            <p>"Fue la primera vez que competí en un duatlón y no esperaba quedar en el podio, fue muy bonito y bastante duro pero lo disfruté bastante.
+              Mil gracias a mi coach Carlos"</p>
+            <span>- Dani</span>
+          </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Botones de acción -->
+      <div class="modal-actions">
+        <a href="https://wa.me/50672786445?text=Hola!+Estoy+interesado+en+iniciar+hoy" class="btn-modal-secondary" data-servicio="asesoria-carlos">¡Iniciar hoy!</a>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Paquete Gran Maratón Costa Rica 2026 -->
+<div id="modal-gran-maraton-paquete" class="trainer-modal" role="dialog" aria-modal="true" aria-labelledby="paquete-gm-title">
+  <div class="welcome-modal-content">
+    <button class="welcome-modal-close" aria-label="Cerrar" onclick="closeModal('modal-gran-maraton-paquete')">&times;</button>
+    <h2 id="paquete-gm-title" class="sr-only">Paquete especial Gran Maratón Costa Rica 2026</h2>
+    <div class="welcome-modal-body">
+      <img src="img/Gran-Maraton-CostaRica-2026-Paquete.webp" alt="Paquete especial Gran Maratón Costa Rica 2026: 18 semanas de duración, 42 sesiones grupales, programa de entrenamiento, estrategia competitiva y camisas oficiales del equipo" class="welcome-modal-image">
+    </div>
+    <a href="https://wa.me/50672786445?text=Hola!+Estoy+interesado+en+el+paquete+especial+Gran+Marat%C3%B3n+Costa+Rica+2026" class="package-modal-whatsapp-float" target="_blank" rel="noopener" data-servicio="paquete-gran-maraton">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+      </svg>
+      Recibir más información
+    </a>
+  </div>
+</div>
+
 <!-- Modal: QR de WhatsApp (solo desktop) -->
 <div id="whatsapp-qr-modal" class="trainer-modal" role="dialog" aria-modal="true" aria-labelledby="whatsapp-qr-title">
   <div class="whatsapp-modal-content">
@@ -2074,6 +1972,10 @@ combinando ciencia y disciplina.</p>
 
   <!-- QRCode.js (para modal de WhatsApp en desktop) -->
   <script src="js/qrcode.min.js"></script>
+  <!-- GSAP + ScrollTrigger + ScrollSmoother -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14/dist/ScrollSmoother.min.js"></script>
   <script src="js/script.js"></script>
   <!-- GLightbox JS -->
  <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
