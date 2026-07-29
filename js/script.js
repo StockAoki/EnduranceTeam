@@ -26,11 +26,24 @@
 
   updateDuration();
 
-  // Pausa al pasar el mouse o al tocar (para poder abrir una foto sin que se mueva)
-  carousel.addEventListener('mouseenter', function () { carousel.classList.add('paused'); });
-  carousel.addEventListener('mouseleave', function () { carousel.classList.remove('paused'); });
-  carousel.addEventListener('touchstart', function () { carousel.classList.add('paused'); }, { passive: true });
-  carousel.addEventListener('touchend', function () { carousel.classList.remove('paused'); });
+  // Pausa al pasar el mouse/tocar Y cuando la galería no está en pantalla
+  // (evita gastar CPU/GPU en una animación infinita que nadie está viendo).
+  var hoverPaused = false;
+  var offscreen = false;
+  function applyPaused() {
+    carousel.classList.toggle('paused', hoverPaused || offscreen);
+  }
+  carousel.addEventListener('mouseenter', function () { hoverPaused = true; applyPaused(); });
+  carousel.addEventListener('mouseleave', function () { hoverPaused = false; applyPaused(); });
+  carousel.addEventListener('touchstart', function () { hoverPaused = true; applyPaused(); }, { passive: true });
+  carousel.addEventListener('touchend', function () { hoverPaused = false; applyPaused(); });
+
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      offscreen = !entries[0].isIntersecting;
+      applyPaused();
+    }, { rootMargin: '200px 0px' }).observe(carousel);
+  }
 
   // Filtros: togglean .hidden en ambas copias (original + clon) y recalculan el ritmo
   var filterBtns = document.querySelectorAll('.filter-btn');
@@ -71,11 +84,28 @@
   var duration = originalItems.length * SECONDS_PER_ITEM;
   carousel.style.setProperty('--productos-duration', duration + 's');
 
-  // Pausa al pasar el mouse o al tocar (igual que la galería)
-  carousel.addEventListener('mouseenter', function () { carousel.classList.add('paused'); });
-  carousel.addEventListener('mouseleave', function () { carousel.classList.remove('paused'); });
-  carousel.addEventListener('touchstart', function () { carousel.classList.add('paused'); }, { passive: true });
-  carousel.addEventListener('touchend', function () { carousel.classList.remove('paused'); });
+  // Pausa al pasar el mouse/tocar, cuando el carrusel no está en pantalla, o
+  // mientras el modal de un producto está abierto (ver más abajo). Las tres
+  // razones comparten este mismo estado para no pisarse entre sí.
+  var hoverPaused = false;
+  var offscreen = false;
+  var modalOpen = false;
+  function applyPaused() {
+    carousel.classList.toggle('paused', hoverPaused || offscreen || modalOpen);
+  }
+  carousel._setModalPaused = function (v) { modalOpen = v; applyPaused(); };
+
+  carousel.addEventListener('mouseenter', function () { hoverPaused = true; applyPaused(); });
+  carousel.addEventListener('mouseleave', function () { hoverPaused = false; applyPaused(); });
+  carousel.addEventListener('touchstart', function () { hoverPaused = true; applyPaused(); }, { passive: true });
+  carousel.addEventListener('touchend', function () { hoverPaused = false; applyPaused(); });
+
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      offscreen = !entries[0].isIntersecting;
+      applyPaused();
+    }, { rootMargin: '200px 0px' }).observe(carousel);
+  }
 })();
 
 // ===== GSAP: SCROLLSMOOTHER + ANIMACIONES DE SCROLL =====
@@ -93,7 +123,7 @@ var _smoother = null;
       content: '#smooth-content',
       smooth: 1.2,
       effects: true,
-      smoothTouch: 0.1
+      smoothTouch: false
     });
   }
 
@@ -490,9 +520,9 @@ document.addEventListener('keydown', function(event) {
   // Pausa el carrusel de productos mientras el modal está abierto,
   // sin importar cómo se cierre (botón, ESC o clic en el fondo).
   var productosCarousel = document.getElementById('productos-carousel');
-  if (productosCarousel) {
+  if (productosCarousel && productosCarousel._setModalPaused) {
     new MutationObserver(function () {
-      productosCarousel.classList.toggle('paused', modal.classList.contains('active'));
+      productosCarousel._setModalPaused(modal.classList.contains('active'));
     }).observe(modal, { attributes: true, attributeFilter: ['class'] });
   }
 })();
@@ -537,15 +567,17 @@ document.addEventListener('keydown', function(event) {
 })();
 
 // Agregar fondo al navbar al hacer scroll
-window.addEventListener('scroll', function() {
-  const navbar = document.querySelector('.navbar');
-
-  if (window.scrollY > 50) {
-    navbar.classList.add('scrolled');
-  } else {
-    navbar.classList.remove('scrolled');
-  }
-});
+(function() {
+  var navbar = document.querySelector('.navbar');
+  if (!navbar) return;
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > 50) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  }, { passive: true });
+})();
 
 // ===== BARRA DE PROGRESO DE SCROLL + BOTÓN VOLVER ARRIBA =====
 (function() {
