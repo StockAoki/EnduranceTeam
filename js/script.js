@@ -1,3 +1,58 @@
+// ===== GALERÍA: CARRUSEL INFINITO =====
+// Corre antes que todo lo demás para que, cuando GSAP y GLightbox lean el DOM
+// más abajo, los clones ya existan (tilt-hover y lightbox los detectan solos).
+(function () {
+  var carousel = document.getElementById('gallery-carousel');
+  var track = document.getElementById('gallery-track');
+  if (!carousel || !track) return;
+
+  var originalItems = Array.prototype.slice.call(track.querySelectorAll('.gallery-item'));
+  if (!originalItems.length) return;
+
+  // Duplicar una vez: con translateX(-50%) el loop no muestra costura.
+  originalItems.forEach(function (item) {
+    track.appendChild(item.cloneNode(true));
+  });
+
+  var SECONDS_PER_ITEM = 3.5;
+
+  function updateDuration() {
+    var visibleCount = originalItems.filter(function (item) {
+      return !item.classList.contains('hidden');
+    }).length;
+    var duration = Math.max(visibleCount, 1) * SECONDS_PER_ITEM;
+    carousel.style.setProperty('--gallery-duration', duration + 's');
+  }
+
+  updateDuration();
+
+  // Pausa al pasar el mouse o al tocar (para poder abrir una foto sin que se mueva)
+  carousel.addEventListener('mouseenter', function () { carousel.classList.add('paused'); });
+  carousel.addEventListener('mouseleave', function () { carousel.classList.remove('paused'); });
+  carousel.addEventListener('touchstart', function () { carousel.classList.add('paused'); }, { passive: true });
+  carousel.addEventListener('touchend', function () { carousel.classList.remove('paused'); });
+
+  // Filtros: togglean .hidden en ambas copias (original + clon) y recalculan el ritmo
+  var filterBtns = document.querySelectorAll('.filter-btn');
+  filterBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      filterBtns.forEach(function (b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+
+      var filter = btn.getAttribute('data-filter');
+      track.querySelectorAll('.gallery-item').forEach(function (item) {
+        if (filter === 'all' || item.classList.contains(filter)) {
+          item.classList.remove('hidden');
+        } else {
+          item.classList.add('hidden');
+        }
+      });
+
+      updateDuration();
+    });
+  });
+})();
+
 // ===== GSAP: SCROLLSMOOTHER + ANIMACIONES DE SCROLL =====
 var _smoother = null;
 (function () {
@@ -67,26 +122,11 @@ var _smoother = null;
     });
   });
 
-  // ===== Galería: entrada escalonada (solo posición, no toca opacity) =====
-  // El fade/scale de aparición y el sistema de filtros ya los maneja el CSS
-  // existente (.gallery-item + .hidden) — acá solo sumamos el desplazamiento.
+  // ===== Galería: tilt sutil en hover =====
+  // El carrusel ya aporta movimiento propio (ver arriba), así que acá no
+  // sumamos otra animación de entrada — solo el tilt al pasar el mouse.
   var galleryItems = gsap.utils.toArray('.gallery-item');
   if (galleryItems.length) {
-    gsap.from(galleryItems, {
-      y: 30,
-      stagger: 0.06,
-      duration: 0.6,
-      ease: 'power2.out',
-      immediateRender: false,
-      clearProps: 'transform',
-      scrollTrigger: {
-        trigger: '.gallery-grid',
-        start: 'top 88%',
-        once: true
-      }
-    });
-
-    // Tilt sutil en hover
     galleryItems.forEach(function (item) {
       item.addEventListener('mousemove', function (e) {
         var rect = item.getBoundingClientRect();
@@ -505,39 +545,12 @@ function switchTab(tabName) {
     tipoEl.value = '';
   });
 
-    // Inicializar GLightbox
+    // Inicializar GLightbox (corre después del carrusel, así detecta también los clones)
 document.addEventListener('DOMContentLoaded', function() {
-  const lightbox = GLightbox({
+  GLightbox({
     touchNavigation: true,
     loop: true,
     autoplayVideos: true
-  });
-
-  // Sistema de filtros de galería
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  const galleryItems = document.querySelectorAll('.gallery-item');
-
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', function() {
-      // Remover active de todos los botones
-      filterBtns.forEach(b => b.classList.remove('active'));
-      // Agregar active al botón clickeado
-      this.classList.add('active');
-
-      const filter = this.getAttribute('data-filter');
-
-      galleryItems.forEach(item => {
-        if (filter === 'all') {
-          item.classList.remove('hidden');
-        } else {
-          if (item.classList.contains(filter)) {
-            item.classList.remove('hidden');
-          } else {
-            item.classList.add('hidden');
-          }
-        }
-      });
-    });
   });
 });
 
