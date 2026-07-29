@@ -440,21 +440,11 @@
 <!-- Sección de Galería de Entrenamientos -->
 <section id="galeria" class="gallery-section">
   <div class="gallery-container">
-    <!-- Video Hero -->
-    <div class="gallery-hero">
-      <div class="hero-video-wrapper">
-        <video class="hero-video" autoplay muted loop playsinline>
-          <source src="img/run.mp4" type="video/mp4">
-          Tu navegador no soporta video HTML5.
-        </video>
-        <div class="hero-video-overlay"></div>
-      </div>
-      <div class="hero-video-content">
-        <p class="gallery-subtitle">NUESTROS ENTRENAMIENTOS</p>
-        <h2 class="gallery-title">Alcanza tus metas más rápido</h2>
-        <p class="gallery-description">Entrenamientos diseñados para tu nivel y tus metas.</p>
-   
-      </div>
+    <!-- Header -->
+    <div class="gallery-header reveal">
+      <p class="gallery-subtitle">NUESTROS ENTRENAMIENTOS</p>
+      <h2 class="gallery-title">Alcanza tus metas más rápido</h2>
+      <p class="gallery-description">Entrenamientos diseñados para tu nivel y tus metas.</p>
     </div>
 
     <!-- Tabs de Filtro -->
@@ -465,8 +455,9 @@
       <button class="filter-btn" data-filter="logros">Logros</button>
     </div>
 
-    <!-- Grid de Galería -->
-    <div class="gallery-grid">
+    <!-- Carrusel de Galería -->
+    <div class="gallery-carousel" id="gallery-carousel">
+    <div class="gallery-grid" id="gallery-track">
             <!-- Gran Maratón Cartago 2026 - Carreras -->
 <a href="img/GMC1.webp"
    class="gallery-item glightbox carreras"
@@ -824,6 +815,7 @@
           </div>
         </div>
       </a>
+    </div>
     </div>
 
     <!-- Botón Ver Más -->
@@ -1396,6 +1388,8 @@
     </div>
     <div class="programs-scroll-indicators" id="programs-scroll-indicators">
       <span class="programs-scroll-dot active"></span>
+      <span class="programs-scroll-dot"></span>
+      <span class="programs-scroll-dot"></span>
       <span class="programs-scroll-dot"></span>
       <span class="programs-scroll-dot"></span>
     </div>
