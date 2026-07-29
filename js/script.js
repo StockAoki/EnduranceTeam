@@ -108,26 +108,15 @@
   }
 })();
 
-// ===== GSAP: SCROLLSMOOTHER + ANIMACIONES DE SCROLL =====
-var _smoother = null;
+// ===== GSAP: ANIMACIONES DE SCROLL (sin ScrollSmoother — usamos el scroll nativo) =====
 (function () {
-  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined' || typeof ScrollSmoother === 'undefined') return;
+  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
 
-  gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+  gsap.registerPlugin(ScrollTrigger);
 
   var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  if (!prefersReducedMotion) {
-    _smoother = ScrollSmoother.create({
-      wrapper: '#smooth-wrapper',
-      content: '#smooth-content',
-      smooth: 1.2,
-      effects: true,
-      smoothTouch: false
-    });
-  }
-
-  // Links internos (#ancla): que respeten el scroll suave de ScrollSmoother
+  // Links internos (#ancla): scroll suave nativo
   document.querySelectorAll('a[href^="#"]').forEach(function (link) {
     link.addEventListener('click', function (e) {
       var targetId = link.getAttribute('href');
@@ -140,11 +129,7 @@ var _smoother = null;
       }
       if (!target) return;
       e.preventDefault();
-      if (_smoother) {
-        _smoother.scrollTo(target, true, 'top top');
-      } else {
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });
 
@@ -600,10 +585,6 @@ document.addEventListener('keydown', function(event) {
   updateScrollUI();
 
   backToTop.addEventListener('click', function() {
-    if (_smoother) {
-      _smoother.scrollTo(0, true);
-      return;
-    }
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 })();
