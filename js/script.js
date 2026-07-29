@@ -53,6 +53,31 @@
   });
 })();
 
+// ===== PRODUCTOS: CARRUSEL INFINITO (mismo mecanismo que la galería) =====
+(function () {
+  var carousel = document.getElementById('productos-carousel');
+  var track = document.getElementById('productos-track');
+  if (!carousel || !track) return;
+
+  var originalItems = Array.prototype.slice.call(track.querySelectorAll('.product-card'));
+  if (!originalItems.length) return;
+
+  // Duplicar una vez: con translateX(-50%) el loop no muestra costura.
+  originalItems.forEach(function (item) {
+    track.appendChild(item.cloneNode(true));
+  });
+
+  var SECONDS_PER_ITEM = 3.5;
+  var duration = originalItems.length * SECONDS_PER_ITEM;
+  carousel.style.setProperty('--productos-duration', duration + 's');
+
+  // Pausa al pasar el mouse o al tocar (igual que la galería)
+  carousel.addEventListener('mouseenter', function () { carousel.classList.add('paused'); });
+  carousel.addEventListener('mouseleave', function () { carousel.classList.remove('paused'); });
+  carousel.addEventListener('touchstart', function () { carousel.classList.add('paused'); }, { passive: true });
+  carousel.addEventListener('touchend', function () { carousel.classList.remove('paused'); });
+})();
+
 // ===== GSAP: SCROLLSMOOTHER + ANIMACIONES DE SCROLL =====
 var _smoother = null;
 (function () {
@@ -368,6 +393,108 @@ document.addEventListener('keydown', function(event) {
     webLink.href = buildWebUrl(link.href);
     openModal('whatsapp-qr-modal');
   });
+})();
+
+// ===== PRODUCTOS: MODAL DE DETALLE =====
+(function () {
+  var modal = document.getElementById('product-modal');
+  var track = document.getElementById('productos-track');
+  if (!modal || !track) return;
+
+  var slideTrack = document.getElementById('product-modal-track');
+  var dotsWrap = document.getElementById('product-modal-dots');
+  var prevBtn = document.getElementById('product-modal-prev');
+  var nextBtn = document.getElementById('product-modal-next');
+  var titleEl = document.getElementById('product-modal-title');
+  var priceEl = document.getElementById('product-modal-price');
+  var descEl = document.getElementById('product-modal-desc');
+  var ctaEl = document.getElementById('product-modal-cta');
+  var slideIndex = 0;
+  var slideCount = 1;
+
+  var ACCENTS = { 'á': 'a', 'é': 'e', 'í': 'i', 'ó': 'o', 'ú': 'u', 'ñ': 'n', 'ü': 'u' };
+  function slugify(str) {
+    return str
+      .toLowerCase()
+      .replace(/[áéíóúñü]/g, function (c) { return ACCENTS[c]; })
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/(^-|-$)/g, '');
+  }
+
+  function updateSlide() {
+    slideTrack.style.transform = 'translateX(-' + (slideIndex * 100) + '%)';
+    Array.prototype.forEach.call(dotsWrap.children, function (d, i) {
+      d.className = i === slideIndex ? 'active' : '';
+    });
+  }
+
+  function openProductModal(card) {
+    var title = card.getAttribute('data-title');
+    var price = card.getAttribute('data-price');
+    var desc = card.getAttribute('data-desc');
+    var photos = card.querySelectorAll('.product-photos img');
+
+    titleEl.textContent = title;
+    priceEl.textContent = price;
+    descEl.textContent = desc;
+
+    slideTrack.innerHTML = '';
+    dotsWrap.innerHTML = '';
+    slideIndex = 0;
+    slideCount = photos.length || 1;
+
+    photos.forEach(function (photo, i) {
+      var slide = document.createElement('div');
+      slide.className = 'product-modal-slide';
+      var img = document.createElement('img');
+      img.src = photo.getAttribute('src');
+      img.alt = photo.getAttribute('alt') || title;
+      slide.appendChild(img);
+      slideTrack.appendChild(slide);
+
+      var dot = document.createElement('span');
+      if (i === 0) dot.className = 'active';
+      dot.addEventListener('click', function () { slideIndex = i; updateSlide(); });
+      dotsWrap.appendChild(dot);
+    });
+
+    var multi = photos.length > 1;
+    prevBtn.style.display = multi ? 'flex' : 'none';
+    nextBtn.style.display = multi ? 'flex' : 'none';
+    dotsWrap.style.display = multi ? 'flex' : 'none';
+
+    var waText = 'Hola! Quiero reservar: ' + title + ' (' + price + ')';
+    ctaEl.href = 'https://wa.me/50672786445?text=' + encodeURIComponent(waText);
+    ctaEl.setAttribute('data-producto', slugify(title));
+
+    updateSlide();
+    openModal('product-modal');
+  }
+
+  // Los clones del carrusel infinito ya existen (ver script arriba): se
+  // delega en el track para capturar clics en original y clon por igual.
+  track.addEventListener('click', function (e) {
+    var card = e.target.closest('.product-card');
+    if (card) openProductModal(card);
+  });
+
+  prevBtn.addEventListener('click', function () {
+    slideIndex = (slideIndex - 1 + slideCount) % slideCount;
+    updateSlide();
+  });
+  nextBtn.addEventListener('click', function () {
+    slideIndex = (slideIndex + 1) % slideCount;
+    updateSlide();
+  });
+
+  // Pausa el carrusel de productos mientras el modal está abierto,
+  // sin importar cómo se cierre (botón, ESC o clic en el fondo).
+  var productosCarousel = document.getElementById('productos-carousel');
+  if (productosCarousel) {
+    new MutationObserver(function () {
+      productosCarousel.classList.toggle('paused', modal.classList.contains('active'));
+    }).observe(modal, { attributes: true, attributeFilter: ['class'] });
+  }
 })();
 
 // ===== NAV ACTIVO POR SECCIÓN =====
